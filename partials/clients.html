@@ -1,0 +1,66 @@
+<section id="clients" class="clients section">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-i18n="clients.title">Đối tác</h2>
+      <p data-i18n="clients.subtitle">Những thương hiệu đã tin tưởng</p>
+    </div>
+    
+    <div class="clients-grid grid grid-4">
+      <div class="client-logo reveal-stagger">
+        <img src="../asset/image/Activation Event/IMG_7116.JPG" alt="Client 1" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+      </div>
+      
+      <div class="client-logo reveal-stagger">
+        <img src="../asset/image/Activation Event/IMG_7241.JPG" alt="Client 2" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+      </div>
+      
+      <div class="client-logo reveal-stagger">
+        <img src="../asset/image/Activation Event/IMG_7242.JPG" alt="Client 3" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+      </div>
+      
+      <div class="client-logo reveal-stagger">
+        <img src="../asset/image/Gala Dinner/IMG_7434.JPG" alt="Client 4" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+      </div>
+      
+      <div class="client-logo reveal-stagger">
+        <img src="../asset/image/Gala Dinner/IMG_7439.JPG" alt="Client 5" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+      </div>
+      
+      <div class="client-logo reveal-stagger">
+        <img src="../asset/image/Gala Dinner/IMG_7440.JPG" alt="Client 6" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.clients {
+  background: var(--bg-card);
+}
+
+.client-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  height: 120px;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: var(--transition);
+}
+
+.client-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+.client-logo img {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+}
+</style>
+

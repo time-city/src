@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MC Thanh Tiến - Professional Master of Ceremonies for Events, Gala, Year End Party">
+  <title>MC Thanh Tiến - Professional MC</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <div data-include="nav.html"></div>
+  
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <div data-include="hero.html"></div>
+    
+    <!-- Event Sections -->
+    <div data-include="event-activation.html"></div>
+    <div data-include="event-gala.html"></div>
+    <div data-include="event-yearend.html"></div>
+    
+    <!-- Social Proof -->
+    <div data-include="proof.html"></div>
+    
+    <!-- Services -->
+    <div data-include="services.html"></div>
+    
+    <!-- USP -->
+    <div data-include="usp.html"></div>
+    
+    <!-- Gallery -->
+    <div data-include="gallery.html"></div>
+    
+    <!-- Clients -->
+    <div data-include="clients.html"></div>
+    
+    <!-- Testimonials -->
+    <div data-include="testimonials.html"></div>
+    
+    <!-- Process -->
+    <div data-include="process.html"></div>
+    
+    <!-- Contact -->
+    <div data-include="contact.html"></div>
+  </main>
+  
+  <!-- Footer -->
+  <div data-include="footer.html"></div>
+  
+  <!-- Table of Contents (Desktop) -->
+  <nav class="toc" aria-label="Table of contents">
+    <a href="#home" class="toc-item" data-section="home">
+      <span data-i18n="nav.home">Home</span>
+    </a>
+    <a href="#services" class="toc-item" data-section="services">
+      <span data-i18n="nav.services">Services</span>
+    </a>
+    <a href="#gallery" class="toc-item" data-section="gallery">
+      <span data-i18n="nav.gallery">Gallery</span>
+    </a>
+    <a href="#clients" class="toc-item" data-section="clients">
+      <span data-i18n="nav.clients">Clients</span>
+    </a>
+    <a href="#testimonials" class="toc-item" data-section="testimonials">
+      <span data-i18n="nav.testimonials">Testimonials</span>
+    </a>
+    <a href="#contact" class="toc-item" data-section="contact">
+      <span data-i18n="nav.contact">Contact</span>
+    </a>
+  </nav>
+  
+  <!-- Bottom Navigation (Mobile) -->
+  <nav class="bottom-nav" aria-label="Mobile navigation">
+    <a href="#home" class="bottom-nav-item" data-section="home">
+      <span data-i18n="nav.home">Home</span>
+    </a>
+    <a href="#services" class="bottom-nav-item" data-section="services">
+      <span data-i18n="nav.services">Services</span>
+    </a>
+    <a href="#gallery" class="bottom-nav-item" data-section="gallery">
+      <span data-i18n="nav.gallery">Gallery</span>
+    </a>
+    <a href="#contact" class="bottom-nav-item" data-section="contact">
+      <span data-i18n="nav.contact">Contact</span>
+    </a>
+    <button class="bottom-nav-item" data-modal="more-menu" style="background: none; border: none; cursor: pointer;">
+      <span data-i18n="nav.more">More</span>
+    </button>
+  </nav>
+  
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  
+  <!-- More Menu Modal (Mobile) -->
+  <div id="more-menu" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h2 class="modal-title" data-i18n="nav.home">Menu</h2>
+      </div>
+      <div class="modal-body">
+        <nav style="display: flex; flex-direction: column; gap: 1rem;">
+          <a href="#clients" data-i18n="nav.clients">Clients</a>
+          <a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a>
+          <a href="#process" data-i18n="nav.process">Process</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Showreel Modal -->
+  <div id="showreel-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="showreel-modal-title">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h2 class="modal-title" id="showreel-modal-title">Showreel</h2>
+      </div>
+      <div class="modal-body">
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+          <div class="image-placeholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            Video Player Placeholder
+          </div>
+        </div>
+        <p style="margin-top: 1rem; color: var(--text-muted); text-align: center;">
+          Replace with actual video embed (YouTube/Vimeo)
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <script type="module" src="app.js"></script>
+</body>
+</html>

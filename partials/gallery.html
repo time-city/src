@@ -1,0 +1,136 @@
+<section id="gallery" class="gallery section">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-i18n="gallery.title">Thư viện ảnh</h2>
+      <p data-i18n="gallery.subtitle">Khoảnh khắc từ các sự kiện</p>
+    </div>
+    
+    <div class="gallery-filters reveal">
+      <button class="filter-btn active" data-filter="all" data-i18n="gallery.filter_all">Tất cả</button>
+      <button class="filter-btn" data-filter="gala" data-i18n="gallery.filter_gala">Gala</button>
+      <button class="filter-btn" data-filter="conference" data-i18n="gallery.filter_conference">Hội nghị</button>
+      <button class="filter-btn" data-filter="teambuilding" data-i18n="gallery.filter_teambuilding">Team Building</button>
+      <button class="filter-btn" data-filter="activation" data-i18n="gallery.filter_activation">Activation</button>
+    </div>
+    
+    <div class="gallery-grid grid grid-3">
+      <div class="gallery-item reveal-stagger" data-category="event">
+        <img src="../asset/image/Activation Event/IMG_3343.JPG" alt="Gallery 1" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <div class="gallery-item reveal-stagger" data-category="event">
+        <img src="../asset/image/Activation Event/IMG_4488.JPG" alt="Gallery 2" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <div class="gallery-item reveal-stagger" data-category="event">
+        <img src="../asset/image/Activation Event/IMG_4493.JPG" alt="Gallery 3" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <div class="gallery-item reveal-stagger" data-category="event">
+        <img src="../asset/image/Activation Event/IMG_4494.JPG" alt="Gallery 4" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <div class="gallery-item reveal-stagger" data-category="event">
+        <img src="../asset/image/Gala Dinner/IMG_0853.JPG" alt="Gallery 5" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <div class="gallery-item reveal-stagger" data-category="event">
+        <img src="../asset/image/Gala Dinner/IMG_0854.JPG" alt="Gallery 6" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <div class="gallery-item reveal-stagger" data-category="event">
+        <img src="../asset/image/Year End Party/IMG_0051.JPG" alt="Gallery 7" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <div class="gallery-item reveal-stagger" data-category="event">
+        <img src="../asset/image/Year End Party/IMG_0161.JPG" alt="Gallery 8" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <div class="gallery-item reveal-stagger" data-category="event">
+        <img src="../asset/image/Year End Party/IMG_0162.JPG" alt="Gallery 9" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <!-- Additional items for load more -->
+      <div class="gallery-item reveal-stagger" data-category="event" style="display: none;">
+        <img src="../asset/image/Activation Event/IMG_4496.JPG" alt="Gallery 10" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <div class="gallery-item reveal-stagger" data-category="event" style="display: none;">
+        <img src="../asset/image/Activation Event/IMG_4500.JPG" alt="Gallery 11" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <div class="gallery-item reveal-stagger" data-category="event" style="display: none;">
+        <img src="../asset/image/Activation Event/IMG_4501.JPG" alt="Gallery 12" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <div class="gallery-item reveal-stagger" data-category="event" style="display: none;">
+        <img src="../asset/image/Gala Dinner/IMG_7434.JPG" alt="Gallery 13" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <div class="gallery-item reveal-stagger" data-category="event" style="display: none;">
+        <img src="../asset/image/Gala Dinner/IMG_7439.JPG" alt="Gallery 14" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+      
+      <div class="gallery-item reveal-stagger" data-category="event" style="display: none;">
+        <img src="../asset/image/Gala Dinner/IMG_7440.JPG" alt="Gallery 15" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Gallery Image</div>'">
+      </div>
+    </div>
+    
+    <div class="text-center reveal">
+      <button class="btn btn-outline gallery-load-more" data-i18n="gallery.loadMore">Xem thêm</button>
+    </div>
+  </div>
+</section>
+
+<style>
+.gallery-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+  font-family: var(--font-primary);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: rgba(214, 178, 94, 0.2);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.gallery-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-load-more {
+  margin-top: 2rem;
+}
+</style>
+

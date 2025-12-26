@@ -1,0 +1,200 @@
+/**
+ * Hero Section Styles
+ * Background generated from main.JPG color analysis
+ * Dark luxury theme with gold accents
+ */
+
+:root {
+  /* Hero Background Colors (extracted from main.JPG analysis) */
+  --hero-bg-primary: #0B0F1A;
+  --hero-bg-secondary: #1A1F3A;
+  --hero-bg-accent: #2A2F4A;
+  --hero-gold: #D6B25E;
+  --hero-gold-light: #E8C97A;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    var(--hero-bg-primary) 0%,
+    var(--hero-bg-secondary) 50%,
+    var(--hero-bg-accent) 100%
+  );
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  /* Background: gradient with overlay, image will be added via JS if available */
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(214, 178, 94, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(214, 178, 94, 0.08) 0%, transparent 50%),
+    linear-gradient(
+      135deg,
+      var(--hero-bg-primary) 0%,
+      var(--hero-bg-secondary) 50%,
+      var(--hero-bg-accent) 100%
+    );
+  /* Subtle noise texture */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 20% 50%, rgba(214, 178, 94, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(214, 178, 94, 0.08) 0%, transparent 50%),
+    linear-gradient(
+      135deg,
+      var(--hero-bg-primary) 0%,
+      var(--hero-bg-secondary) 50%,
+      var(--hero-bg-accent) 100%
+    );
+}
+
+.hero-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 15, 26, 0.4) 0%,
+    rgba(11, 15, 26, 0.6) 50%,
+    rgba(11, 15, 26, 0.9) 100%
+  );
+  z-index: 1;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 8rem 0 4rem;
+}
+
+.hero-text {
+  z-index: 2;
+}
+
+.hero-tagline {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(214, 178, 94, 0.1);
+  border: 1px solid rgba(214, 178, 94, 0.3);
+  border-radius: var(--radius-sm);
+  color: var(--hero-gold);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-text h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--hero-gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.hero-cta {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 968px) {
+  .hero-cta {
+    justify-content: center;
+  }
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.model-image {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 3/4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(214, 178, 94, 0.2);
+  position: relative;
+  background: var(--bg-card);
+}
+
+.model-image::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, var(--hero-gold), var(--hero-gold-light), var(--hero-gold));
+  border-radius: var(--radius-lg);
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(10px);
+}
+
+.model-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 968px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+    padding: 6rem 0 3rem;
+  }
+  
+  .hero-image {
+    order: -1;
+  }
+  
+  .model-image {
+    max-width: 300px;
+  }
+  
+  .hero-text {
+    text-align: center;
+  }
+}
+
