@@ -31,6 +31,9 @@
 <style>
 .usp {
   background: var(--bg-card);
+  transition: background-color 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: background-color, background;
 }
 
 .usp-item {

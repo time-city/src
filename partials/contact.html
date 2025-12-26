@@ -7,7 +7,7 @@
     
     <div class="contact-content">
       <div class="contact-methods grid grid-3">
-        <a href="tel:+84901234567" class="contact-method card reveal-stagger">
+        <a href="tel:0902174751" class="contact-method contact-phone card reveal-stagger">
           <div class="contact-method-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
@@ -15,11 +15,12 @@
           </div>
           <div class="contact-method-content">
             <h3 class="card-title" data-i18n="contact.phone_label">Số điện thoại</h3>
-            <p class="card-text">+84 901 234 567</p>
+            <p class="card-text card-phone-number">0902 174 751</p>
+            <p class="card-hint" data-i18n="contact.phone_hint">Gọi trực tiếp cho MC</p>
           </div>
         </a>
         
-        <a href="mailto:contact@mcthanhtien.com" class="contact-method card reveal-stagger">
+        <div class="contact-method contact-email card reveal-stagger">
           <div class="contact-method-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -28,11 +29,12 @@
           </div>
           <div class="contact-method-content">
             <h3 class="card-title" data-i18n="contact.email_label">Email</h3>
-            <p class="card-text">contact@mcthanhtien.com</p>
+            <p class="card-text">Truongthanhtien28022002@gmail.com</p>
+            <a href="mailto:Truongthanhtien28022002@gmail.com" class="contact-btn-secondary" data-i18n="contact.btn_email">Gửi email</a>
           </div>
-        </a>
+        </div>
         
-        <a href="https://facebook.com/mcthanhtien" target="_blank" rel="noopener noreferrer" class="contact-method card reveal-stagger">
+        <a href="https://www.facebook.com/thanhtien.truong.77770" target="_blank" rel="noopener noreferrer" class="contact-method card reveal-stagger">
           <div class="contact-method-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
@@ -40,12 +42,15 @@
           </div>
           <div class="contact-method-content">
             <h3 class="card-title" data-i18n="contact.facebook_label">Facebook</h3>
-            <p class="card-text">facebook.com/mcthanhtien</p>
+            <p class="card-text">Thanh Tiến</p>
           </div>
         </a>
       </div>
     </div>
   </div>
+  
+  <!-- Nút CTA cố định "Gọi ngay" cho mobile -->
+  
 </section>
 
 <style>
@@ -69,34 +74,58 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2.5rem 2rem;
+  padding: 3rem 2rem;
   text-decoration: none;
-  transition: var(--transition);
-  min-height: 200px;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 220px;
   justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  will-change: transform;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .contact-method:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(214, 178, 94, 0.2);
+  border-color: rgba(214, 178, 94, 0.3);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .contact-method-icon {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(214, 178, 94, 0.1);
-  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(214, 178, 94, 0.15), rgba(214, 178, 94, 0.05));
+  border-radius: 50%;
   color: var(--gold);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   flex-shrink: 0;
-  transition: var(--transition);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 4px 15px rgba(214, 178, 94, 0.15);
 }
 
 .contact-method:hover .contact-method-icon {
-  background: rgba(214, 178, 94, 0.2);
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, rgba(214, 178, 94, 0.25), rgba(214, 178, 94, 0.15));
+  box-shadow: 0 6px 20px rgba(214, 178, 94, 0.3);
+}
+
+.contact-method-icon svg {
+  width: 28px;
+  height: 28px;
 }
 
 .contact-method-content {
@@ -104,54 +133,290 @@
 }
 
 .contact-method-content .card-title {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  margin-bottom: 0.875rem;
   color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .contact-method-content .card-text {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin: 0;
   font-size: 1rem;
   word-break: break-word;
+  line-height: 1.6;
+  transition: color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@media (max-width: 968px) {
+.contact-method:hover .contact-method-content .card-text {
+  color: var(--gold);
+}
+
+/* Mobile-first: Layout dọc, dễ bấm */
+@media (max-width: 768px) {
+  .contact {
+    padding: 2.5rem 0 5rem;
+  }
+  
+  .contact-content {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
   .contact-methods {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    max-width: 500px;
-    margin: 0 auto;
+    gap: 1rem;
+    max-width: 100%;
   }
   
   .contact-method {
     min-height: auto;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1rem;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease,
+                background 0.3s ease;
+    -webkit-tap-highlight-color: rgba(214, 178, 94, 0.2);
+  }
+  
+  /* Active state cho mobile (không chỉ hover) */
+  .contact-method:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 20px rgba(214, 178, 94, 0.3);
+    border-color: rgba(214, 178, 94, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+  }
+  
+  .contact-method-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  
+  .contact-method-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .contact-method-content {
+    flex: 1;
+    text-align: center;
+    min-width: 0;
+    width: 100%;
+  }
+  
+  .contact-method-content .card-title {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .contact-method-content .card-text {
+    font-size: 0.9375rem;
+    word-break: break-word;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Phone card - ưu tiên, font to đậm */
+  .contact-phone {
+    order: -1;
+    border-color: rgba(214, 178, 94, 0.2);
+    background: rgba(214, 178, 94, 0.05);
+  }
+  
+  .contact-phone .card-phone-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-phone:active {
+    box-shadow: 0 6px 25px rgba(214, 178, 94, 0.4);
+    border-color: rgba(214, 178, 94, 0.5);
+    background: rgba(214, 178, 94, 0.08);
+  }
+  
+  .card-hint {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0.5rem 0 0;
+    opacity: 0.9;
+  }
+  
+  /* Email card - có nút phụ */
+  .contact-email {
+    order: 0;
+  }
+  
+  .contact-btn-secondary {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.625rem 1.25rem;
+    background: rgba(214, 178, 94, 0.1);
+    border: 1px solid rgba(214, 178, 94, 0.3);
+    border-radius: 8px;
+    color: var(--gold);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: rgba(214, 178, 94, 0.2);
+  }
+  
+  .contact-btn-secondary:active {
+    transform: scale(0.95);
+    background: rgba(214, 178, 94, 0.2);
+    border-color: rgba(214, 178, 94, 0.5);
+  }
+  
+  /* Facebook card - cuối cùng */
+  .contact-method:last-child {
+    order: 1;
+  }
+  
+  .contact-method:last-child .contact-method-icon {
+    width: 72px;
+    height: 72px;
+  }
+  
+  .contact-method:last-child .contact-method-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Nút CTA cố định "Gọi ngay" ở dưới màn hình mobile */
+.contact-fixed-cta {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .contact-fixed-cta {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem;
+    background: linear-gradient(180deg, transparent 0%, rgba(11, 15, 26, 0.95) 20%, rgba(11, 15, 26, 0.98) 100%);
+    backdrop-filter: blur(10px);
+    pointer-events: none;
+  }
+  
+  .contact-fixed-cta a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--gold), #C9A04A);
+    color: var(--bg-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(214, 178, 94, 0.4);
+    transition: all 0.3s ease;
+    pointer-events: all;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .contact-fixed-cta a:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 15px rgba(214, 178, 94, 0.5);
+  }
+  
+  .contact-fixed-cta svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 2rem 0 5.5rem;
+  }
+  
+  .contact-content {
+    padding: 0 0.75rem;
+  }
+  
+  .contact-methods {
+    gap: 0.875rem;
+  }
+  
+  .contact-method {
+    padding: 1.25rem 0.875rem;
+    border-radius: 16px;
   }
   
   .contact-method-icon {
     width: 56px;
     height: 56px;
-    margin-bottom: 1.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-method {
-    padding: 1.5rem 1rem;
   }
   
-  .contact-method-icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 1rem;
+  .contact-method-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .contact-phone .card-phone-number {
+    font-size: 1.375rem;
   }
   
   .contact-method-content .card-title {
-    font-size: 1.125rem;
+    font-size: 0.9375rem;
+    margin-bottom: 0.625rem;
   }
   
   .contact-method-content .card-text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  
+  .card-hint {
+    font-size: 0.8125rem;
+  }
+  
+  .contact-btn-secondary {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+  
+  .contact-method:last-child .contact-method-icon {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .contact-method:last-child .contact-method-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .contact-fixed-cta {
+    padding: 0.875rem;
+  }
+  
+  .contact-fixed-cta a {
+    padding: 0.875rem 1.25rem;
     font-size: 0.9375rem;
   }
 }

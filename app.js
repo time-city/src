@@ -12,6 +12,7 @@ import { initModals } from './js/modal.js';
 import { initCounters } from './js/counters.js';
 import { initReveal } from './js/reveal.js';
 import { initGallery } from './js/gallery.js';
+import { initImageLoader } from './js/imageLoader.js';
 // import { initAccordion } from './js/accordion.js'; // Removed - FAQ section removed
 
 // Initialize app
@@ -33,11 +34,14 @@ async function init() {
     initCounters();
     initReveal();
     initGallery();
+    initImageLoader(); // Initialize smooth image loading
     // initAccordion(); // Removed - FAQ section removed
     
     // Step 4: Re-apply i18n after modules init (some modules may add elements dynamically)
     requestAnimationFrame(() => {
       applyI18n(getLang());
+      // Re-init image loader for dynamically added images
+      setTimeout(() => initImageLoader(), 200);
     });
     
     console.log('✅ App initialized successfully');

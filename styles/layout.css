@@ -2,6 +2,12 @@
 .section {
   padding: 5rem 0;
   position: relative;
+  background-color: var(--bg-primary);
+  transition: background-color 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-image 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: background-color, background, background-image;
+  overflow: hidden;
 }
 
 .section-title {
@@ -13,6 +19,13 @@
   position: relative;
   display: inline-block;
   padding-bottom: 1rem;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.section-title p {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
 }
 
 .section-title h2::after {

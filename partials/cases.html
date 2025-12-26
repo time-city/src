@@ -8,7 +8,7 @@
     <div class="cases-grid grid grid-3">
       <div class="case-card card reveal-stagger">
         <div class="case-image">
-          <img src="../asset/image/Gala Dinner/IMG_0853.JPG" alt="Case 1" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Case Image</div>'">
+          <img src="asset/image/Gala Dinner/IMG_0853.JPG" alt="Case 1" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Case Image</div>'">
         </div>
         <div class="case-content">
           <h3 class="card-title">Corporate Gala 2024</h3>
@@ -18,7 +18,7 @@
       
       <div class="case-card card reveal-stagger">
         <div class="case-image">
-          <img src="../asset/image/Year End Party/IMG_0161.JPG" alt="Case 2" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Case Image</div>'">
+          <img src="asset/image/Year End Party/IMG_0161.JPG" alt="Case 2" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Case Image</div>'">
         </div>
         <div class="case-content">
           <h3 class="card-title">Tech Conference</h3>
@@ -28,7 +28,7 @@
       
       <div class="case-card card reveal-stagger">
         <div class="case-image">
-          <img src="../asset/image/Year End Party/IMG_0162.JPG" alt="Case 3" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Case Image</div>'">
+          <img src="asset/image/Year End Party/IMG_0162.JPG" alt="Case 3" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Case Image</div>'">
         </div>
         <div class="case-content">
           <h3 class="card-title">Luxury Wedding</h3>
@@ -38,7 +38,7 @@
       
       <div class="case-card card reveal-stagger">
         <div class="case-image">
-          <img src="../asset/image/Gala Dinner/IMG_0854.JPG" alt="Case 4" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Case Image</div>'">
+          <img src="asset/image/Gala Dinner/IMG_0854.JPG" alt="Case 4" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Case Image</div>'">
         </div>
         <div class="case-content">
           <h3 class="card-title">Product Launch</h3>
@@ -48,7 +48,7 @@
       
       <div class="case-card card reveal-stagger">
         <div class="case-image">
-          <img src="../asset/image/Activation Event/IMG_4488.JPG" alt="Case 5" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Case Image</div>'">
+          <img src="asset/image/Activation Event/IMG_4488.JPG" alt="Case 5" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Case Image</div>'">
         </div>
         <div class="case-content">
           <h3 class="card-title">Annual Summit</h3>
@@ -58,7 +58,7 @@
       
       <div class="case-card card reveal-stagger">
         <div class="case-image">
-          <img src="../asset/image/Activation Event/IMG_4493.JPG" alt="Case 6" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Case Image</div>'">
+          <img src="asset/image/Activation Event/IMG_4493.JPG" alt="Case 6" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Case Image</div>'">
         </div>
         <div class="case-content">
           <h3 class="card-title">Charity Event</h3>
@@ -105,8 +105,22 @@
   transition: transform 0.5s ease;
 }
 
+.case-image {
+  overflow: hidden;
+  border-radius: var(--radius);
+  will-change: transform;
+}
+
+.case-image img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 .case-card:hover .case-image img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .case-content {

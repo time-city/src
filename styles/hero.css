@@ -25,7 +25,11 @@
     var(--hero-bg-secondary) 50%,
     var(--hero-bg-accent) 100%
   );
+  transition: background 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-image 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: background, background-image;
 }
+
 
 .hero-background {
   position: absolute;
@@ -55,6 +59,10 @@
       var(--hero-bg-secondary) 50%,
       var(--hero-bg-accent) 100%
     );
+  transition: background 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-image 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-position 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: background, background-image, background-position;
 }
 
 .hero-background::before {
@@ -71,6 +79,9 @@
     rgba(11, 15, 26, 0.9) 100%
   );
   z-index: 1;
+  transition: background 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: background, opacity;
 }
 
 .hero .container {
@@ -116,10 +127,12 @@
 }
 
 .hero-subtitle {
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-style: italic;
+  font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+  line-height: 1.7;
+  max-width: 700px;
   color: var(--text-muted);
   margin-bottom: 2.5rem;
-  line-height: 1.6;
 }
 
 .hero-cta {

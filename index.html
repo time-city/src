@@ -36,9 +36,6 @@
     <!-- Clients -->
     <div data-include="clients.html"></div>
     
-    <!-- Testimonials -->
-    <div data-include="testimonials.html"></div>
-    
     <!-- Process -->
     <div data-include="process.html"></div>
     
@@ -48,47 +45,6 @@
   
   <!-- Footer -->
   <div data-include="footer.html"></div>
-  
-  <!-- Table of Contents (Desktop) -->
-  <nav class="toc" aria-label="Table of contents">
-    <a href="#home" class="toc-item" data-section="home">
-      <span data-i18n="nav.home">Home</span>
-    </a>
-    <a href="#services" class="toc-item" data-section="services">
-      <span data-i18n="nav.services">Services</span>
-    </a>
-    <a href="#gallery" class="toc-item" data-section="gallery">
-      <span data-i18n="nav.gallery">Gallery</span>
-    </a>
-    <a href="#clients" class="toc-item" data-section="clients">
-      <span data-i18n="nav.clients">Clients</span>
-    </a>
-    <a href="#testimonials" class="toc-item" data-section="testimonials">
-      <span data-i18n="nav.testimonials">Testimonials</span>
-    </a>
-    <a href="#contact" class="toc-item" data-section="contact">
-      <span data-i18n="nav.contact">Contact</span>
-    </a>
-  </nav>
-  
-  <!-- Bottom Navigation (Mobile) -->
-  <nav class="bottom-nav" aria-label="Mobile navigation">
-    <a href="#home" class="bottom-nav-item" data-section="home">
-      <span data-i18n="nav.home">Home</span>
-    </a>
-    <a href="#services" class="bottom-nav-item" data-section="services">
-      <span data-i18n="nav.services">Services</span>
-    </a>
-    <a href="#gallery" class="bottom-nav-item" data-section="gallery">
-      <span data-i18n="nav.gallery">Gallery</span>
-    </a>
-    <a href="#contact" class="bottom-nav-item" data-section="contact">
-      <span data-i18n="nav.contact">Contact</span>
-    </a>
-    <button class="bottom-nav-item" data-modal="more-menu" style="background: none; border: none; cursor: pointer;">
-      <span data-i18n="nav.more">More</span>
-    </button>
-  </nav>
   
   <!-- Back to Top -->
   <button class="back-to-top" aria-label="Back to top">↑</button>
@@ -103,7 +59,6 @@
       <div class="modal-body">
         <nav style="display: flex; flex-direction: column; gap: 1rem;">
           <a href="#clients" data-i18n="nav.clients">Clients</a>
-          <a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a>
           <a href="#process" data-i18n="nav.process">Process</a>
         </nav>
       </div>
@@ -126,6 +81,50 @@
         <p style="margin-top: 1rem; color: var(--text-muted); text-align: center;">
           Replace with actual video embed (YouTube/Vimeo)
         </p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Video Modal -->
+  <div id="video-modal" class="modal video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+    <div class="modal-content modal-content-video">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h2 class="modal-title" id="video-modal-title" data-i18n="video.title">Video</h2>
+      </div>
+      <div class="modal-body modal-body-video">
+        <div class="video-wrapper">
+          <video id="event-video-player" controls preload="metadata" playsinline>
+            <source id="event-video-source" src="" type="video/mp4">
+            <p data-i18n="video.not_supported">Trình duyệt của bạn không hỗ trợ video.</p>
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- About Modal -->
+  <div id="about-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
+    <div class="modal-content modal-content-about">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h2 class="modal-title" id="about-modal-title" data-i18n="about.title">Về MC Thanh Tiến</h2>
+      </div>
+      <div class="modal-body modal-body-about">
+        <div class="about-modal-stats">
+          <div class="about-modal-stat">
+            <span class="stat-label" data-i18n="about.height_label">Chiều cao</span>
+            <span class="stat-value">1m79</span>
+          </div>
+          <div class="about-modal-stat">
+            <span class="stat-label" data-i18n="about.weight_label">Cân nặng</span>
+            <span class="stat-value">75kg</span>
+          </div>
+        </div>
+        <div class="about-modal-description">
+          <p data-i18n="about.description_1">Với phong thái tự tin, khả năng xử lý tình huống linh hoạt cùng chất giọng truyền cảm, MC Thanh Tiến luôn là lựa chọn hàng đầu cho các chương trình sự kiện doanh nghiệp, lễ khai trương, hội nghị, tiệc tất niên và các hoạt động team-building.</p>
+          <p data-i18n="about.description_2">Không chỉ đơn thuần là người dẫn dắt, Thanh Tiến còn là "người kể chuyện" đưa cảm xúc và thông điệp của chương trình đến gần hơn với khán giả. Kinh nghiệm nhiều năm trong nghề cùng sự tâm huyết, chỉn chu trong từng sự kiện giúp MC Thanh Tiến luôn ghi dấu ấn mạnh mẽ và nhận được sự tin tưởng từ các đối tác, doanh nghiệp trong và ngoài khu vực.</p>
+        </div>
       </div>
     </div>
   </div>

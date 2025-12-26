@@ -6,28 +6,47 @@
     </div>
     
     <div class="clients-grid grid grid-4">
+      <!-- Row 1 -->
       <div class="client-logo reveal-stagger">
-        <img src="../asset/image/Activation Event/IMG_7116.JPG" alt="Client 1" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+        <img src="asset/image/Logo/logo-1.png" alt="Client Logo 1" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
       </div>
       
       <div class="client-logo reveal-stagger">
-        <img src="../asset/image/Activation Event/IMG_7241.JPG" alt="Client 2" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+        <img src="asset/image/Logo/logo-2.png" alt="Client Logo 2" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
       </div>
       
       <div class="client-logo reveal-stagger">
-        <img src="../asset/image/Activation Event/IMG_7242.JPG" alt="Client 3" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+        <img src="asset/image/Logo/logo-3.png" alt="Client Logo 3" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
       </div>
       
       <div class="client-logo reveal-stagger">
-        <img src="../asset/image/Gala Dinner/IMG_7434.JPG" alt="Client 4" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+        <img src="asset/image/Logo/logo-4.jpg" alt="Client Logo 4" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+      </div>
+      
+      <!-- Row 2 -->
+      <div class="client-logo reveal-stagger">
+        <img src="asset/image/Logo/logo-5.png" alt="Client Logo 5" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
       </div>
       
       <div class="client-logo reveal-stagger">
-        <img src="../asset/image/Gala Dinner/IMG_7439.JPG" alt="Client 5" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+        <img src="asset/image/Logo/logo-6.jpg" alt="Client Logo 6" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
       </div>
       
       <div class="client-logo reveal-stagger">
-        <img src="../asset/image/Gala Dinner/IMG_7440.JPG" alt="Client 6" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+        <img src="asset/image/Logo/logo-7.avif" alt="Client Logo 7" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+      </div>
+      
+      <div class="client-logo reveal-stagger">
+        <img src="asset/image/Logo/logo-8.jpg" alt="Client Logo 8" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+      </div>
+      
+      <!-- Row 3 -->
+      <div class="client-logo reveal-stagger">
+        <img src="asset/image/Logo/logo-9.webp" alt="Client Logo 9" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
+      </div>
+      
+      <div class="client-logo reveal-stagger">
+        <img src="asset/image/Logo/logo-10.jpg" alt="Client Logo 10" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Client Logo</div>'">
       </div>
     </div>
   </div>
@@ -38,29 +57,38 @@
   background: var(--bg-card);
 }
 
+.clients-grid {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .client-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  height: 120px;
-  filter: grayscale(100%);
-  opacity: 0.6;
+  padding: 1.5rem;
   transition: var(--transition);
 }
 
 .client-logo:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: translateY(-4px);
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 .client-logo img {
   max-width: 100%;
-  max-height: 80px;
+  max-height: 60px;
   object-fit: contain;
+  filter: grayscale(0%);
+  opacity: 0.9;
+  transition: var(--transition);
+}
+
+.client-logo:hover img {
+  opacity: 1;
+  filter: brightness(1.15);
 }
 </style>
 

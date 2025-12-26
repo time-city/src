@@ -8,7 +8,6 @@
       <div class="nav-menu" id="nav-menu">
         <a href="#home" data-i18n="nav.home">Trang chủ</a>
         <a href="#services" data-i18n="nav.services">Dịch vụ</a>
-        <a href="#cases" data-i18n="nav.cases">Dự án</a>
         <a href="#gallery" data-i18n="nav.gallery">Thư viện</a>
         <a href="#clients" data-i18n="nav.clients">Đối tác</a>
         <a href="#contact" data-i18n="nav.contact">Liên hệ</a>
@@ -37,8 +36,12 @@
   width: 100%;
   z-index: 1000;
   padding: 1rem 0;
-  transition: var(--transition);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.3s ease,
+              padding 0.3s ease,
+              box-shadow 0.3s ease;
   background: transparent;
+  transform: translateY(0);
 }
 
 .navbar.scrolled {
@@ -46,6 +49,10 @@
   backdrop-filter: blur(20px);
   box-shadow: var(--shadow-md);
   padding: 0.75rem 0;
+}
+
+.navbar.navbar-hidden {
+  transform: translateY(-100%);
 }
 
 .navbar-content {

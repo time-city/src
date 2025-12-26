@@ -33,10 +33,10 @@
         </div>
       </div>
     </div>
-    
+<!--     
     <div class="text-center reveal">
       <button class="btn btn-outline" data-modal="testimonials-modal" data-i18n="testimonials.seeMore">Xem thêm đánh giá</button>
-    </div>
+    </div> -->
   </div>
 </section>
 
@@ -57,6 +57,19 @@
 .testimonial-card {
   position: relative;
   padding: 2.5rem;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(214, 178, 94, 0.25);
+  border-color: rgba(214, 178, 94, 0.4);
 }
 
 .testimonial-quote {
@@ -66,6 +79,11 @@
   opacity: 0.3;
   font-family: var(--font-heading);
   margin-bottom: 1rem;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-card:hover .testimonial-quote {
+  opacity: 0.5;
 }
 
 .testimonial-text {
@@ -74,22 +92,42 @@
   color: var(--text-primary);
   margin-bottom: 1.5rem;
   font-style: italic;
+  transition: color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-card:hover .testimonial-text {
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .testimonial-author {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-card:hover .testimonial-author {
+  transform: translateY(-2px);
 }
 
 .testimonial-author strong {
   color: var(--text-primary);
   font-size: 1.125rem;
+  transition: color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-card:hover .testimonial-author strong {
+  color: var(--gold);
 }
 
 .testimonial-author span {
   color: var(--text-muted);
   font-size: 0.875rem;
+  transition: color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-card:hover .testimonial-author span {
+  color: rgba(255, 255, 255, 0.8);
 }
 </style>
 

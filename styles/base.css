@@ -12,9 +12,10 @@
   --bg-overlay: rgba(11, 15, 26, 0.85);
   
   /* Text Colors */
-  --text-primary: #E5E7EB;
-  --text-muted: #9CA3AF;
+  --text-primary: #FFFFFF;
+  --text-muted: #B8BCC8;
   --text-accent: #D6B25E;
+  --text-secondary: #E5E7EB;
   
   /* Accent Gold */
   --gold: #D6B25E;
@@ -53,24 +54,47 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  transition: background-color 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: background-color, background;
+}
+
+main {
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  transition: background-color 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: background-color, background;
 }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
-  color: var(--text-primary);
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
 }
 
-h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
-h2 { font-size: clamp(2rem, 4vw, 3rem); }
-h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h1 { 
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+}
+h2 { 
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+}
+h3 { 
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+}
 
 p {
   margin-bottom: 1rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
 }
 
 a {

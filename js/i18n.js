@@ -35,9 +35,49 @@ export const translations = {
     hero: {
       name: "MC Thanh Tiến",
       tagline: "MC Event • Gala • Year End Party",
-      subtitle: "Biến mọi sự kiện thành trải nghiệm đáng nhớ",
-      cta_quote: "Nhận báo giá",
-      cta_reel: "Xem showreel"
+      subtitle: "\"Tôi tin rằng, mỗi khoảnh khắc trên sân khấu là một cơ hội để chạm đến trái tim người nghe.\"",
+      cta_reel: "Xem showreel",
+      cta_about: "Thông tin cá nhân"
+    },
+    
+    // C1. About
+    about: {
+      title: "Về MC Thanh Tiến",
+      height_label: "Chiều cao",
+      weight_label: "Cân nặng",
+      description_1: "Với phong thái tự tin, khả năng xử lý tình huống linh hoạt cùng chất giọng truyền cảm, MC Thanh Tiến luôn là lựa chọn hàng đầu cho các chương trình sự kiện doanh nghiệp, lễ khai trương, hội nghị, tiệc tất niên và các hoạt động team-building.",
+      description_2: "Không chỉ đơn thuần là người dẫn dắt, Thanh Tiến còn là \"người kể chuyện\" đưa cảm xúc và thông điệp của chương trình đến gần hơn với khán giả. Kinh nghiệm nhiều năm trong nghề cùng sự tâm huyết, chỉn chu trong từng sự kiện giúp MC Thanh Tiến luôn ghi dấu ấn mạnh mẽ và nhận được sự tin tưởng từ các đối tác, doanh nghiệp trong và ngoài khu vực."
+    },
+    
+    // C2. Events
+    events: {
+      activation: {
+        title: "Activation Event",
+        subtitle: "Sự kiện kích hoạt thương hiệu với năng lượng cao",
+        usp_1: "Tạo buzz và tương tác mạnh mẽ với khách hàng",
+        usp_2: "Phong cách năng động, hiện đại, phù hợp giới trẻ",
+        usp_3: "Kết hợp MC chuyên nghiệp với hoạt động tương tác",
+        btn_gallery: "Xem hình ảnh",
+        btn_video: "Xem video"
+      },
+      gala: {
+        title: "Gala Dinner",
+        subtitle: "Sự kiện gala sang trọng, đẳng cấp cao cấp",
+        usp_1: "Phong cách chuyên nghiệp, trang trọng, phù hợp doanh nghiệp",
+        usp_2: "Tạo không khí sang trọng và đáng nhớ cho khách mời VIP",
+        usp_3: "Điều phối chương trình mượt mà, đúng timeline",
+        btn_gallery: "Xem hình ảnh",
+        btn_video: "Xem video"
+      },
+      yearend: {
+        title: "Year End Party",
+        subtitle: "Tiệc cuối năm ấm áp, đầy cảm xúc",
+        usp_1: "Tạo không khí ấm cúng, gắn kết team và khách hàng",
+        usp_2: "Phong cách thân thiện, vui vẻ, phù hợp tổng kết năm",
+        usp_3: "Kết hợp giải trí và cảm xúc, tạo kỷ niệm đáng nhớ",
+        btn_gallery: "Xem hình ảnh",
+        btn_video: "Xem video"
+      }
     },
     
     // D. Social proof
@@ -89,11 +129,11 @@ export const translations = {
       title: "Thư viện ảnh",
       subtitle: "Khoảnh khắc từ các sự kiện",
       filter_all: "Tất cả",
-      filter_gala: "Gala",
-      filter_conference: "Hội nghị",
-      filter_teambuilding: "Team Building",
-      filter_activation: "Activation",
-      cta_more: "Xem thêm hình",
+      filter_gala: "Gala Dinner",
+      filter_yearend: "Year End Party",
+      filter_activation: "Activation Event",
+      see_more: "Xem thêm",
+      see_less: "Thu gọn",
       empty: "Chưa có hình phù hợp"
     },
     
@@ -148,6 +188,9 @@ export const translations = {
     contact: {
       title: "Liên hệ",
       subtitle: "Hãy liên hệ với tôi qua các kênh sau",
+      phone_label: "Số điện thoại",
+      email_label: "Email",
+      facebook_label: "Facebook",
       btn_call: "Gọi ngay",
       btn_zalo: "Nhắn Zalo",
       btn_email: "Gửi email",
@@ -171,6 +214,13 @@ export const translations = {
       form_submit: "Gửi yêu cầu",
       form_success: "Đã nhận thông tin! Tôi sẽ phản hồi sớm.",
       form_error: "Vui lòng kiểm tra lại thông tin."
+    },
+    
+    // M. Video
+    video: {
+      title: "Video",
+      not_supported: "Trình duyệt của bạn không hỗ trợ video.",
+      loading: "Đang tải video..."
     },
     
     // N. Modal / Accessibility ARIA
@@ -222,9 +272,49 @@ export const translations = {
     hero: {
       name: "MC Thanh Tien",
       tagline: "MC Event • Gala • Year End Party",
-      subtitle: "Turning every event into a memorable experience",
-      cta_quote: "Get a Quote",
-      cta_reel: "Watch Showreel"
+      subtitle: "\"I believe that every moment on stage is an opportunity to touch the hearts of the audience.\"",
+      cta_reel: "Watch Showreel",
+      cta_about: "About Me"
+    },
+    
+    // C1. About
+    about: {
+      title: "About MC Thanh Tien",
+      height_label: "Height",
+      weight_label: "Weight",
+      description_1: "With a confident demeanor, flexible handling of situations, and an engaging voice, MC Thanh Tiến is always the top choice for corporate events, grand openings, conferences, year-end parties, and team-building activities.",
+      description_2: "More than just a host, Thanh Tiến is a \"storyteller\" who brings emotion and the program's message closer to the audience. Many years of experience in the profession, along with dedication and meticulousness in every event, help MC Thanh Tiến always leave a strong impression and earn the trust of partners and businesses within and outside the region."
+    },
+    
+    // C2. Events
+    events: {
+      activation: {
+        title: "Activation Event",
+        subtitle: "High-energy brand activation events",
+        usp_1: "Create buzz and strong customer engagement",
+        usp_2: "Dynamic, modern style suitable for young audiences",
+        usp_3: "Combine professional MC with interactive activities",
+        btn_gallery: "View Gallery",
+        btn_video: "Watch Video"
+      },
+      gala: {
+        title: "Gala Dinner",
+        subtitle: "Luxurious, high-end gala events",
+        usp_1: "Professional, formal style suitable for corporate events",
+        usp_2: "Create an elegant and memorable atmosphere for VIP guests",
+        usp_3: "Smooth program coordination, on-time execution",
+        btn_gallery: "View Gallery",
+        btn_video: "Watch Video"
+      },
+      yearend: {
+        title: "Year End Party",
+        subtitle: "Warm, emotional year-end celebrations",
+        usp_1: "Create a cozy atmosphere, connect team and customers",
+        usp_2: "Friendly, cheerful style, suitable for year-end summary",
+        usp_3: "Combine entertainment and emotions, create memorable experiences",
+        btn_gallery: "View Gallery",
+        btn_video: "Watch Video"
+      }
     },
     
     // D. Social proof
@@ -276,11 +366,11 @@ export const translations = {
       title: "Photo Gallery",
       subtitle: "Moments from our events",
       filter_all: "All",
-      filter_gala: "Gala",
-      filter_conference: "Conference",
-      filter_teambuilding: "Team Building",
-      filter_activation: "Activation",
-      cta_more: "Load More Photos",
+      filter_gala: "Gala Dinner",
+      filter_yearend: "Year End Party",
+      filter_activation: "Activation Event",
+      see_more: "See More",
+      see_less: "See Less",
       empty: "No matching photos"
     },
     
@@ -335,6 +425,10 @@ export const translations = {
     contact: {
       title: "Contact",
       subtitle: "Get in touch with me through the following channels",
+      phone_label: "Phone",
+      phone_hint: "Call MC directly",
+      email_label: "Email",
+      facebook_label: "Facebook",
       btn_call: "Call Now",
       btn_zalo: "Message on Zalo",
       btn_email: "Send Email",
@@ -358,6 +452,13 @@ export const translations = {
       form_submit: "Submit",
       form_success: "Received! I'll get back to you soon.",
       form_error: "Please check your details."
+    },
+    
+    // M. Video
+    video: {
+      title: "Video",
+      not_supported: "Your browser does not support video.",
+      loading: "Loading video..."
     },
     
     // N. Modal / Accessibility ARIA
