@@ -271,6 +271,16 @@ body {
 
   .hero-text {
     order: 2;
+    text-align: center;
+  }
+
+  .hero-bio {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-stats {
+    justify-content: center;
   }
 
   .hero-frame {
@@ -345,8 +355,8 @@ body {
 
 .personal-info-content {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: var(--spacing-xl);
+  grid-template-columns: 1fr; /* vertical layout */
+  gap: var(--spacing-lg);
   align-items: start;
 }
 
@@ -356,6 +366,60 @@ body {
   justify-content: center;
 }
 
+.personal-info-image .model-visual--about {
+  width: min(420px, 86vw);
+}
+
+.personal-info-image .model-visual--about {
+  max-height: 520px;
+}
+
+/* iPhone-size tuning: keep everything within one screen comfortably */
+@media (max-width: 430px) {
+  .personal-info-section {
+    padding: 1.75rem 0;
+  }
+
+  .personal-info-card {
+    padding: 1.25rem;
+  }
+
+  .personal-info-header {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .personal-info-title {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+
+  .personal-info-content {
+    gap: 1rem;
+  }
+
+  .personal-info-image .model-visual--about {
+    width: min(280px, 72vw);
+    max-height: 260px;
+  }
+
+  .personal-info-text {
+    gap: 1rem;
+  }
+
+  .personal-stats {
+    gap: 0.75rem;
+  }
+
+  .personal-stat-item {
+    padding: 0.85rem;
+    min-width: 0;
+  }
+
+  .personal-bio p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+}
 .personal-info-text {
   display: flex;
   flex-direction: column;
@@ -417,27 +481,24 @@ body {
   padding: clamp(2.25rem, 3.5vw, 3.25rem) 0;
 }
 
-.poster-card {
-  background: rgba(11, 15, 26, 0.4);
-  backdrop-filter: blur(10px);
-  border: var(--border-gold);
-  border-radius: var(--radius-lg);
-  padding: clamp(1rem, 1.8vw, 1.6rem);
-  box-shadow: var(--border-gold-glow);
+/* ============================================
+   EVENT SECTION - MASTER COLLAGE TEMPLATE
+   ============================================ */
+.event-block {
   position: relative;
   z-index: 2;
   max-width: 1180px;
   margin: 0 auto;
 }
 
-.poster-header {
+.event-header {
   text-align: center;
   margin-bottom: clamp(0.75rem, 1.4vw, 1.25rem);
   padding-bottom: clamp(0.75rem, 1.2vw, 1rem);
-  border-bottom: 1px solid rgba(216, 181, 106, 0.2);
+  border-bottom: 1px solid rgba(216, 181, 106, 0.18);
 }
 
-.poster-title {
+.event-title {
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 2.8vw, 2.4rem);
   font-weight: 700;
@@ -447,7 +508,7 @@ body {
   text-shadow: 0 2px 15px rgba(216, 181, 106, 0.3);
 }
 
-.poster-subtitle {
+.event-subtitle {
   font-size: clamp(0.8rem, 1.1vw, 1rem);
   color: var(--text-secondary);
   font-weight: 400;
@@ -455,311 +516,120 @@ body {
   letter-spacing: 0.1em;
 }
 
-.poster-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(0.85rem, 1.6vw, 1.25rem);
-  align-items: start;
-}
-
-/* Two-column poster layout: model photo (framed) + collage */
-@media (min-width: 1025px) {
-  .poster-content--two-col {
-    /* default: model (smaller) + collage (bigger) */
-    grid-template-columns: minmax(300px, 1fr) minmax(560px, 1.6fr);
-    align-items: start; /* IMPORTANT: prevent portrait frame stretching tall */
-    gap: clamp(1rem, 2.4vw, 2rem);
-  }
-
-  /* reverse: collage (bigger) + model (smaller) */
-  .poster-content--two-col.poster-content--reverse {
-    grid-template-columns: minmax(560px, 1.6fr) minmax(300px, 1fr);
-  }
-
-  /* make placement deterministic */
-  .poster-content--two-col:not(.poster-content--reverse) .event-model-col {
-    grid-column: 1;
-  }
-  .poster-content--two-col:not(.poster-content--reverse) .collage-frame {
-    grid-column: 2;
-  }
-
-  .poster-content--two-col.poster-content--reverse .event-model-col {
-    grid-column: 2;
-  }
-
-  .poster-content--two-col.poster-content--reverse .collage-frame {
-    grid-column: 1;
-  }
-}
-
-.event-model-col {
+.event-stage {
   position: relative;
-  z-index: 2;
 }
 
-.portrait-frame {
-  border: 1px solid rgba(216, 181, 106, 0.55);
-  border-radius: 14px;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.18);
-  box-shadow: 0 10px 36px rgba(216, 181, 106, 0.12);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: start;
+/* Model PNG floating - must NOT be inside frame */
+.model-visual--event {
+  position: absolute;
+  bottom: clamp(-22px, -1.8vw, -10px);
+  right: clamp(-22px, -1.6vw, -8px);
+  width: clamp(220px, 26vw, 420px);
+  z-index: 4; /* above collage frame */
+  pointer-events: none;
+  opacity: 0.98;
 }
 
-.event-model-photo {
+.model-visual--activation { right: clamp(-18px, -1.2vw, -6px); }
+.model-visual--gala { right: clamp(-22px, -1.6vw, -8px); }
+.model-visual--yearend { right: clamp(-22px, -1.6vw, -8px); }
+
+.event-collage-frame {
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 18px;
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow:
+    0 18px 60px rgba(0, 0, 0, 0.55),
+    0 0 28px rgba(212, 175, 55, 0.12);
+  backdrop-filter: blur(6px);
+}
+
+.event-collage {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 0.44fr 0.28fr 0.28fr; /* IMG-1 ~44%, right ~56% */
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "img1 img2 img3"
+    "img1 img4 img4"
+    "img1 img5 img6";
+  /* no fixed height: scale by slot aspect ratios to avoid overflow/blank gaps */
+}
+
+.event-collage-item { position: relative; overflow: hidden; border-radius: 12px; }
+.event-collage-item > img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  border-radius: 10px;
-  object-fit: contain; /* show full body (no crop) */
-  max-height: min(520px, 56vh);
-  background: rgba(11, 15, 26, 0.22);
-}
-
-/* ============================================
-   COLLAGE GRID
-   ============================================ */
-.collage-frame {
-  border: 1px solid rgba(216, 181, 106, 0.55);
-  border-radius: 14px;
-  padding: 10px; /* match portrait-frame for consistency */
-  background: rgba(0, 0, 0, 0.18);
-  box-shadow: 0 10px 36px rgba(216, 181, 106, 0.12);
-  backdrop-filter: blur(8px);
-  align-self: start;
-}
-
-.collage-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-sm);
-}
-
-.collage-item {
-  position: relative;
-  aspect-ratio: 1;
-}
-
-.collage-item--hero {
-  grid-column: span 2;
-  grid-row: span 2;
-  aspect-ratio: 4 / 3;
-}
-
-.collage-item .frame {
-  width: 100%;
-  height: 100%;
-  border: var(--border-gold);
-  border-radius: var(--radius);
-  padding: 3px;
-  box-shadow: var(--border-gold-glow);
-  background: rgba(216, 181, 106, 0.05);
-  overflow: hidden;
-}
-
-.collage-item img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  display: block;
-  border-radius: calc(var(--radius) - 3px);
-  transition: var(--transition);
+  border-radius: 12px;
+  outline: 1px solid rgba(255, 255, 255, 0.08);
+  outline-offset: -1px;
 }
 
-.collage-item:hover img {
-  transform: scale(1.02);
-}
+.event-collage-item--1 { grid-area: img1; }
+.event-collage-item--2 { grid-area: img2; }
+.event-collage-item--3 { grid-area: img3; }
+.event-collage-item--4 { grid-area: img4; }
+.event-collage-item--5 { grid-area: img5; }
+.event-collage-item--6 { grid-area: img6; }
 
-.image-placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(216, 181, 106, 0.1) 0%,
-    rgba(216, 181, 106, 0.05) 100%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  font-size: 0.875rem;
-  border-radius: calc(var(--radius) - 3px);
-}
+/* Slot aspect ratios (stable scaling across devices, logic unchanged) */
+.event-collage-item--1 { aspect-ratio: 3 / 4; }
+.event-collage-item--2,
+.event-collage-item--3,
+.event-collage-item--5,
+.event-collage-item--6 { aspect-ratio: 1 / 1; }
+.event-collage-item--4 { aspect-ratio: 16 / 9; }
 
-/* Alternative Layout (Year End Part 2) - keep grid but slightly different rhythm */
-.collage-grid--alt {
-  grid-template-columns: repeat(4, 1fr);
-}
-.collage-grid--alt .collage-item--hero {
-  grid-column: span 3;
-  grid-row: span 2;
-  aspect-ratio: 16 / 9;
-}
-
-@media (max-width: 1024px) {
-  .poster-content:not(.poster-content--two-col) {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-  }
-
-  .portrait-frame {
-    padding: 8px;
-  }
-  .event-model-photo {
-    max-height: min(620px, 66vh);
-  }
-
-  .collage-grid--alt {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
+/* MOBILE: keep same logic, only change columns/areas */
 @media (max-width: 768px) {
-  .poster-card {
-    padding: var(--spacing-md);
-  }
-  
-  .section {
-    padding: 2.5rem 0;
-  }
-  
-  /* Personal Info Section - Mobile */
-  .personal-info-card {
-    padding: var(--spacing-lg);
-  }
-  
-  .personal-info-content {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-  }
-  
-  .personal-info-image {
-    order: 1;
-  }
-  
-  .personal-info-text {
-    order: 2;
-  }
-  
-  .personal-stats {
-    gap: var(--spacing-md);
-  }
-  
-  .personal-stat-item {
-    flex: 1 1 calc(50% - var(--spacing-md));
-    min-width: 140px;
-  }
-  
-  /* Mobile layout still poster-like (model on top, collage stays grid) */
-  .poster-content:not(.poster-content--two-col) {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+  .event-collage-frame {
+    /* Stronger poster card on mobile (keep 1 fixed frame) */
+    border: 1px solid rgba(212, 175, 55, 0.72);
+    background: rgba(0, 0, 0, 0.32);
+    box-shadow:
+      0 20px 70px rgba(0, 0, 0, 0.62),
+      0 0 30px rgba(212, 175, 55, 0.16),
+      inset 0 0 0 1px rgba(212, 175, 55, 0.18),
+      inset 0 0 22px rgba(212, 175, 55, 0.10);
+    backdrop-filter: blur(6px);
+    overflow: hidden; /* ensure nothing spills outside the frame */
   }
 
-  /* Keep portrait-frame & collage-frame SIDE-BY-SIDE on mobile */
-  .poster-content--two-col {
-    grid-template-columns: minmax(150px, 0.92fr) minmax(0, 1.08fr);
-    gap: 12px;
-    align-items: start;
+  .event-collage {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "img1 img1"
+      "img2 img3"
+      "img4 img4"
+      "img5 img6";
+    gap: 12px; /* keep same feel as desktop */
   }
 
-  .poster-content--two-col.poster-content--reverse .event-model-col {
-    grid-column: 2;
-  }
-
-  .poster-content--two-col.poster-content--reverse .collage-frame {
-    grid-column: 1;
-  }
-
-  .portrait-frame {
-    padding: 8px;
-  }
-
-  .event-model-photo {
-    max-height: min(420px, 52vh);
-  }
-
-  .collage-frame {
-    padding: 10px;
-  }
-  
-  /* Text responsive */
-  .poster-title {
-    font-size: clamp(1.5rem, 5vw, 2rem);
-    margin-bottom: 0.375rem;
-  }
-  
-  .poster-subtitle {
-    font-size: clamp(0.75rem, 2vw, 0.875rem);
-  }
-  
-  /* Mobile Collage Grid - Keep Poster Look */
-  .collage-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-  
-  /* Hero Image - Full Width, Large */
-  .collage-item--hero {
-    grid-column: 1 / -1;
-    min-height: 200px;
-    aspect-ratio: 16 / 9;
-    grid-row: span 1;
-  }
-  
-  /* Regular Items - Square */
-  .collage-item:not(.collage-item--hero) {
-    aspect-ratio: 1;
-    min-height: 100px;
-  }
-  
-  /* Collage with 5 images: 1 large (full width) + 2x2 small */
-  .collage-grid .collage-item--hero:first-child ~ .collage-item:nth-child(2),
-  .collage-grid .collage-item--hero:first-child ~ .collage-item:nth-child(3),
-  .collage-grid .collage-item--hero:first-child ~ .collage-item:nth-child(4),
-  .collage-grid .collage-item--hero:first-child ~ .collage-item:nth-child(5) {
-    aspect-ratio: 1;
-    min-height: 110px;
-  }
-  
-  .collage-grid--alt {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .collage-grid--alt .collage-item--hero {
-    grid-column: 1 / -1;
-    min-height: 200px;
-  }
-  
-  /* Enhanced frame styling for mobile */
-  .collage-item .frame {
-    border: 1px solid rgba(216, 181, 106, 0.4);
-    border-radius: 10px;
-    padding: 2px;
-    box-shadow: 0 2px 8px rgba(216, 181, 106, 0.2);
-  }
-  
-  .collage-item img {
-    border-radius: calc(10px - 2px);
-    outline: 1px solid rgba(255, 255, 255, 0.1);
+  .event-collage-item > img {
+    /* Slightly warmer outline on mobile for poster look */
+    outline: 1px solid rgba(212, 175, 55, 0.18);
     outline-offset: -1px;
   }
 
-  .portrait-frame {
-    border-radius: 12px;
-    padding: 8px;
-  }
+  /* Mobile slot ratios: keep logic, prevent overly tall cells */
+  .event-collage-item--1 { aspect-ratio: 16 / 9; }
+  .event-collage-item--4 { aspect-ratio: 16 / 9; }
 
-  .event-model-photo {
-    border-radius: 10px;
-    max-height: min(560px, 60vh);
+  .model-visual--event {
+    width: clamp(200px, 44vw, 320px);
+    right: -10px;
+    bottom: -12px;
   }
 }
+
+/* (Legacy collage-grid / poster-content / portrait-frame rules removed)
+   Event sections now use the single MASTER template:
+   `.event-collage-frame` + `.event-collage` (6 fixed slots) */
 
 /* ============================================
    REVEAL ANIMATION - Simplified

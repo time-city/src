@@ -23,15 +23,15 @@
           <p class="hero-bio">Với phong thái tự tin, khả năng xử lý tình huống linh hoạt cùng chất giọng truyền cảm, MC Thanh Tiến luôn là lựa chọn hàng đầu cho các chương trình sự kiện doanh nghiệp, lễ khai trương, hội nghị, tiệc tất niên và các hoạt động team-building.</p>
           <div class="hero-stats">
             <div class="stat-item">
-              <span class="stat-number">700+</span>
+              <span class="stat-number" data-count-to="700" data-suffix="+">700+</span>
               <span class="stat-label">Chương trình</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">4+</span>
+              <span class="stat-number" data-count-to="4" data-suffix="+">4+</span>
               <span class="stat-label">Năm kinh nghiệm</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">200+</span>
+              <span class="stat-number" data-count-to="200" data-suffix="+">200+</span>
               <span class="stat-label">Đối tác</span>
             </div>
           </div>
@@ -84,19 +84,23 @@
     <div class="bg-layer" style="background-image: url('asset/image/background/activation event.png');"></div>
     <div class="overlay"></div>
     <div class="container">
-      <div class="poster-card reveal">
-        <div class="poster-header">
-          <h2 class="poster-title">Activation Event</h2>
-          <p class="poster-subtitle">Sự kiện kích hoạt thương hiệu</p>
+      <div class="event-block reveal">
+        <div class="event-header">
+          <h2 class="event-title">Activation Event</h2>
+          <p class="event-subtitle">Sự kiện kích hoạt thương hiệu</p>
         </div>
-        <div class="poster-content poster-content--two-col">
-          <div class="event-model-col">
-            <div class="portrait-frame">
-              <img class="event-model-photo" src="asset/image/Model/Activation event.JPG" alt="Activation Event (MC)" loading="lazy" decoding="async">
+
+        <div class="event-stage">
+
+          <div class="event-collage-frame">
+            <div class="event-collage" data-event="activation" aria-label="Activation Event collage">
+              <div class="event-collage-item event-collage-item--1"><img data-slot="1" alt="Activation photo 1" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--2"><img data-slot="2" alt="Activation photo 2" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--3"><img data-slot="3" alt="Activation photo 3" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--4"><img data-slot="4" alt="Activation photo 4" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--5"><img data-slot="5" alt="Activation photo 5" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--6"><img data-slot="6" alt="Activation photo 6" loading="lazy" decoding="async"></div>
             </div>
-          </div>
-          <div class="collage-frame">
-            <div class="collage-grid" data-collage="activation" aria-label="Activation Event photos"></div>
           </div>
         </div>
       </div>
@@ -108,43 +112,51 @@
     <div class="bg-layer" style="background-image: url('asset/image/background/gala.png');"></div>
     <div class="overlay"></div>
     <div class="container">
-      <div class="poster-card reveal">
-        <div class="poster-header">
-          <h2 class="poster-title">Gala Dinner</h2>
-          <p class="poster-subtitle">Sự kiện gala sang trọng, đẳng cấp</p>
+      <div class="event-block reveal">
+        <div class="event-header">
+          <h2 class="event-title">Gala Dinner</h2>
+          <p class="event-subtitle">Sự kiện gala sang trọng, đẳng cấp</p>
         </div>
-        <div class="poster-content poster-content--two-col poster-content--reverse">
-          <div class="event-model-col">
-            <div class="portrait-frame">
-              <img class="event-model-photo" src="asset/image/Model/gala dinner.JPG" alt="Gala Dinner (MC)" loading="lazy" decoding="async">
+
+        <div class="event-stage">
+
+          <div class="event-collage-frame">
+            <div class="event-collage" data-event="gala" aria-label="Gala Dinner collage">
+              <div class="event-collage-item event-collage-item--1"><img data-slot="1" alt="Gala photo 1" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--2"><img data-slot="2" alt="Gala photo 2" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--3"><img data-slot="3" alt="Gala photo 3" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--4"><img data-slot="4" alt="Gala photo 4" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--5"><img data-slot="5" alt="Gala photo 5" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--6"><img data-slot="6" alt="Gala photo 6" loading="lazy" decoding="async"></div>
             </div>
-          </div>
-          <div class="collage-frame">
-            <div class="collage-grid" data-collage="gala" aria-label="Gala Dinner photos"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Year End Party - Part 1 -->
-  <section id="yearend-1" class="section event-section">
+  <!-- Year End Party -->
+  <section id="yearend" class="section event-section">
     <div class="bg-layer" style="background-image: url('asset/image/background/yearend.png');"></div>
     <div class="overlay"></div>
     <div class="container">
-      <div class="poster-card reveal">
-        <div class="poster-header">
-          <h2 class="poster-title">Year End Party</h2>
-          <p class="poster-subtitle">Tiệc cuối năm ấm áp, đầy cảm xúc</p>
+      <div class="event-block reveal">
+        <div class="event-header">
+          <h2 class="event-title">Year End Party</h2>
+          <p class="event-subtitle">Tiệc cuối năm ấm áp, đầy cảm xúc</p>
         </div>
-        <div class="poster-content poster-content--two-col">
-          <div class="event-model-col">
-            <div class="portrait-frame">
-              <img class="event-model-photo" src="asset/image/Model/Year end.JPG" alt="Year End Party (MC)" loading="lazy" decoding="async">
+
+        <div class="event-stage">
+
+          <div class="event-collage-frame">
+            <div class="event-collage" data-event="yearend" aria-label="Year End Party collage">
+              <div class="event-collage-item event-collage-item--1"><img data-slot="1" alt="Year End photo 1" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--2"><img data-slot="2" alt="Year End photo 2" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--3"><img data-slot="3" alt="Year End photo 3" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--4"><img data-slot="4" alt="Year End photo 4" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--5"><img data-slot="5" alt="Year End photo 5" loading="lazy" decoding="async"></div>
+              <div class="event-collage-item event-collage-item--6"><img data-slot="6" alt="Year End photo 6" loading="lazy" decoding="async"></div>
             </div>
-          </div>
-          <div class="collage-frame">
-            <div class="collage-grid" data-collage="yearend-1" aria-label="Year End Party photos (part 1)"></div>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@
     activation: {
       folder: 'asset/image/Activation Event/',
       images: [
-        'image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-5.jpg', 'image-9.jpg'
+        'image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-5.jpg', 'image-9.jpg', 'image-10.jpg'
       ]
     },
     gala: {
@@ -22,16 +22,10 @@
         'image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg', 'image-6.jpg'
       ]
     },
-    yearend1: {
+    yearend: {
       folder: 'asset/image/Year End Party/',
       images: [
-        'image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg'
-      ]
-    },
-    yearend2: {
-      folder: 'asset/image/Year End Party/',
-      images: [
-        'image-10.jpg', 'image-11.jpg', 'image-12.jpg', 'image-13.jpg', 'image-14.jpg'
+        'image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg', 'image-10.jpg'
       ]
     }
   };
@@ -39,24 +33,8 @@
   // ============================================
   // Load Image with Skeleton - Simplified
   // ============================================
-  function createCollageItem(imagePath, isHero = false) {
-    const item = document.createElement('div');
-    item.className = isHero ? 'collage-item collage-item--hero' : 'collage-item';
-
-    const frame = document.createElement('div');
-    frame.className = 'frame';
-
-    // Create skeleton
-    const skeleton = document.createElement('div');
-    skeleton.className = 'image-skeleton';
-
-    // Create image
-    const img = document.createElement('img');
-    img.alt = 'Event Image';
-    img.loading = 'eager';
-    img.decoding = 'async';
-
-    // Set image source directly
+  function safeSetImage(img, imagePath) {
+    if (!img) return;
     img.src = imagePath;
 
     img.onload = function() {
@@ -64,49 +42,33 @@
     };
 
     img.onerror = function() {
-      // Try alternative extensions if original fails
       const lastDot = imagePath.lastIndexOf('.');
       if (lastDot > 0) {
         const basePath = imagePath.substring(0, lastDot);
-        const extensions = ['jpg', 'JPG', 'png', 'PNG', 'webp'];
+        const extensions = ['jpg', 'JPG', 'png', 'PNG', 'webp', 'WEBP'];
         const currentExt = imagePath.substring(lastDot + 1);
-        
-        // Try next extension
         const nextExt = extensions.find(ext => ext !== currentExt && ext.toLowerCase() !== currentExt.toLowerCase());
-        if (nextExt) {
-          img.src = `${basePath}.${nextExt}`;
-        } else {
-          // All failed, show placeholder
-          skeleton.style.display = 'none';
-          frame.innerHTML = '<div class="image-placeholder">Image</div>';
-        }
-      } else {
-        skeleton.style.display = 'none';
-        frame.innerHTML = '<div class="image-placeholder">Image</div>';
+        if (nextExt) img.src = `${basePath}.${nextExt}`;
       }
     };
-
-    frame.appendChild(skeleton);
-    frame.appendChild(img);
-    item.appendChild(frame);
-    return item;
   }
 
   // ============================================
   // Load Collage Images
   // ============================================
-  function mountCollage(selector, config, count) {
-    const grid = document.querySelector(selector);
-    if (!grid) return;
+  function mountEventCollage(eventKey, config) {
+    const collage = document.querySelector(`.event-collage[data-event="${eventKey}"]`);
+    if (!collage) return;
 
-    const images = config.images.slice(0, count);
-    grid.innerHTML = '';
-    grid.dataset.count = String(images.length);
+    // Fixed 6-slot template; do NOT reorder DOM
+    const slots = collage.querySelectorAll('img[data-slot]');
+    const images = config.images.slice(0, 6);
 
-    images.forEach((imageFile, index) => {
+    slots.forEach((img, idx) => {
+      const imageFile = images[idx];
+      if (!imageFile) return;
       const imagePath = `${config.folder}${imageFile}`;
-      const isHero = index === 0;
-      grid.appendChild(createCollageItem(imagePath, isHero));
+      safeSetImage(img, imagePath);
     });
   }
 
@@ -119,6 +81,72 @@
     revealElements.forEach(element => {
       element.classList.add('visible');
     });
+  }
+
+  // ============================================
+  // Count Up Numbers (Hero Stats)
+  // ============================================
+  function initCountUp() {
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    const statsRoot = document.querySelector('.hero-stats');
+    if (!statsRoot) return;
+
+    const numbers = Array.from(statsRoot.querySelectorAll('.stat-number[data-count-to]'));
+    if (numbers.length === 0) return;
+
+    function formatNumber(n) {
+      try {
+        return new Intl.NumberFormat('vi-VN').format(n);
+      } catch (_) {
+        return String(n);
+      }
+    }
+
+    function animateOne(el) {
+      if (el.dataset.animated === 'true') return;
+      el.dataset.animated = 'true';
+
+      const target = Number(el.dataset.countTo || el.getAttribute('data-count-to') || 0);
+      const suffix = el.dataset.suffix || '';
+      const duration = Number(el.dataset.duration || 1100);
+
+      const startValue = 0;
+      const startTime = performance.now();
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function tick(now) {
+        const t = Math.min(1, (now - startTime) / duration);
+        const eased = easeOutCubic(t);
+        const value = Math.round(startValue + (target - startValue) * eased);
+        el.textContent = `${formatNumber(value)}${suffix}`;
+        if (t < 1) requestAnimationFrame(tick);
+      }
+
+      // start from 0 immediately for visual pop
+      el.textContent = `${formatNumber(0)}${suffix}`;
+      requestAnimationFrame(tick);
+    }
+
+    // Run when visible (fallback: run immediately)
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            numbers.forEach(animateOne);
+            io.disconnect();
+          }
+        });
+      }, { threshold: 0.35 });
+
+      io.observe(statsRoot);
+    } else {
+      numbers.forEach(animateOne);
+    }
   }
 
   // ============================================
@@ -140,14 +168,16 @@
   // Initialize on DOM Ready
   // ============================================
   function init() {
-    // Collage: ONLY event photos go into frames/grids
-    mountCollage('.collage-grid[data-collage="activation"]', imageConfig.activation, 5);
-    mountCollage('.collage-grid[data-collage="gala"]', imageConfig.gala, 6);
-    mountCollage('.collage-grid[data-collage="yearend-1"]', imageConfig.yearend1, 5);
-    mountCollage('.collage-grid[data-collage="yearend-2"]', imageConfig.yearend2, 5);
+    // Collage: master 6-slot template per section
+    mountEventCollage('activation', imageConfig.activation);
+    mountEventCollage('gala', imageConfig.gala);
+    mountEventCollage('yearend', imageConfig.yearend);
 
     // Initialize reveal animation
     initRevealAnimation();
+
+    // Hero count up
+    initCountUp();
 
     // Simplified loader - hide after short delay
     setTimeout(() => {
