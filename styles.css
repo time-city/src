@@ -633,15 +633,21 @@ body {
   display: grid;
   gap: 12px;
   grid-template-columns: 0.44fr 0.28fr 0.28fr; /* IMG-1 ~44%, right ~56% */
-  grid-template-rows: auto auto auto;
+  grid-template-rows: 1fr 1.1fr 1fr; /* explicit rows so left = total right */
   grid-template-areas:
     "img1 img2 img3"
     "img1 img4 img4"
     "img1 img5 img6";
-  /* no fixed height: scale by slot aspect ratios to avoid overflow/blank gaps */
+  align-items: stretch;
+  height: clamp(360px, 55vw, 640px); /* taller on desktop for better presence */
 }
 
-.event-collage-item { position: relative; overflow: hidden; border-radius: 12px; }
+.event-collage-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  height: 100%;
+}
 .event-collage-item > img {
   width: 100%;
   height: 100%;
@@ -659,13 +665,10 @@ body {
 .event-collage-item--5 { grid-area: img5; }
 .event-collage-item--6 { grid-area: img6; }
 
-/* Slot aspect ratios (stable scaling across devices, logic unchanged) */
-.event-collage-item--1 { aspect-ratio: 3 / 4; }
-.event-collage-item--2,
-.event-collage-item--3,
-.event-collage-item--5,
-.event-collage-item--6 { aspect-ratio: 1 / 1; }
-.event-collage-item--4 { aspect-ratio: 16 / 9; }
+.event-collage-item--1 {
+  grid-row: 1 / span 3;
+  height: 100%;
+}
 
 /* MOBILE: keep same logic, only change columns/areas */
 @media (max-width: 768px) {
@@ -682,26 +685,15 @@ body {
     overflow: hidden; /* ensure nothing spills outside the frame */
   }
 
-  .event-collage {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto auto;
-    grid-template-areas:
-      "img1 img1"
-      "img2 img3"
-      "img4 img4"
-      "img5 img6";
-    gap: 12px; /* keep same feel as desktop */
-  }
-
   .event-collage-item > img {
     /* Slightly warmer outline on mobile for poster look */
     outline: 1px solid rgba(212, 175, 55, 0.18);
     outline-offset: -1px;
   }
 
-  /* Mobile slot ratios: keep logic, prevent overly tall cells */
-  .event-collage-item--1 { aspect-ratio: 16 / 9; }
-  .event-collage-item--4 { aspect-ratio: 16 / 9; }
+  .event-collage {
+    height: clamp(240px, 73vw, 426px); /* ~2/3 of previous for mobile scale */
+  }
 
   .model-visual--event {
     width: clamp(200px, 44vw, 320px);
