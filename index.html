@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="global-bg" class="global-bg" aria-hidden="true"></div>
   <!-- Hero Section -->
   <section id="hero" class="section hero-section">
     <div class="bg-layer" style="background-image: url('asset/image/background/bg_1.png');"></div>
@@ -22,7 +23,7 @@
           <p class="hero-tagline">MC Event • Gala • Year End Party</p>
           <p class="hero-bio">Với phong thái tự tin, khả năng xử lý tình huống linh hoạt cùng chất giọng truyền cảm, MC Thanh Tiến luôn là lựa chọn hàng đầu cho các chương trình sự kiện doanh nghiệp, lễ khai trương, hội nghị, tiệc tất niên và các hoạt động team-building.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="tel:+84999999999">Liên hệ ngay</a>
+            <a class="btn btn-primary" href="tel:+840902174751">Liên hệ ngay</a>
           </div>
           <div class="hero-stats">
             <div class="stat-item">
@@ -164,36 +165,81 @@
       </div>
     </div>
   </section>
-
   <section id="clients" class="section clients-section">
     <div class="bg-layer" style="background-image: url('asset/image/background/bg_1.png');"></div>
     <div class="overlay"></div>
     <div class="container">
       <div class="clients-content reveal">
-        <h2 class="section-title">Đối tác</h2>
-        <div class="clients-grid">
-          <!-- Logos will be loaded dynamically -->
+        <h2 class="section-title">Đơn vị khách hàng từng hợp tác</h2>
+        <div class="logo-frame">
+          <div class="clients-grid">
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="bg-layer" style="background-image: url('asset/image/background/bg_2.png');"></div>
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="contact-card reveal">
+        <div class="contact-header">
+          <p class="contact-subtitle">Kết nối & hợp tác</p>
+          <h2 class="contact-title">Liên hệ</h2>
+        </div>
+        <div class="contact-list">
+          <div class="contact-item">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="contact-icon-svg" role="presentation">
+                <path d="M4 6.75A2.75 2.75 0 0 1 6.75 4h10.5A2.75 2.75 0 0 1 20 6.75v10.5A2.75 2.75 0 0 1 17.25 20H6.75A2.75 2.75 0 0 1 4 17.25V6.75Zm2.75-.25a.75.75 0 0 0-.75.75v.33l5.66 3.78a.75.75 0 0 0 .68 0L18 7.58v-.33a.75.75 0 0 0-.75-.75H6.75Zm11.25 3.41-4.87 3.25a2.25 2.25 0 0 1-2.36 0L5.9 9.91v7.34c0 .41.34.75.75.75h10.7c.41 0 .75-.34.75-.75V9.91Z" />
+              </svg>
+            </span>
+            <span class="contact-text">Truongthanhtien28022002@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="contact-icon-svg" role="presentation">
+                <path d="M8.83 3.5c.52 0 .97.37 1.07.88l.64 3.17c.08.4-.1.81-.45 1.02l-1.26.78a11.5 11.5 0 0 0 5.12 5.12l.78-1.26c.21-.35.62-.53 1.02-.45l3.17.64c.5.1.88.55.88 1.07v2.23a1.25 1.25 0 0 1-1.25 1.25h-.5c-7.18 0-13-5.82-13-13v-.5C5.25 4.12 5.87 3.5 6.6 3.5h2.23Z" />
+              </svg>
+            </span>
+            <span class="contact-text">0902174751</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="contact-icon-svg" role="presentation">
+                <path d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75S6.615 21.75 12 21.75s9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm1.91 6.03c-.322-.046-.656-.08-1.01-.08-.86 0-.9.15-.9.87v1.08h1.76l-.24 1.9h-1.52v5.28h-2.04v-5.28H8.97v-1.9h1.99v-1.26c0-1.6.93-2.5 2.56-2.5.67 0 1.17.07 1.4.12l-0.02 1.78Z" />
+              </svg>
+            </span>
+            <a class="contact-link" href="https://www.facebook.com/thanhtien.truong.77770" target="_blank" rel="noopener">Facebook</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Thank You Section -->
   <section id="thankyou" class="section thankyou-section">
     <div class="bg-layer" style="background-image: url('asset/image/background/bg_2.png');"></div>
-    
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="thankyou-poster reveal">
+        <div class="thankyou-copy">
+          <h2 class="thankyou-title">Thank You</h2>
+          <p class="thankyou-text">Cảm ơn bạn đã xem profile.</p>
+          <p class="thankyou-text">Rất mong được đồng hành cùng bạn trong những sự kiện sắp tới.</p>
+        </div>
+
+        <div class="thankyou-visual" aria-hidden="true">
+          <img class="model-visual model-visual--thankyou" src="asset/image/Model/thankyou.png" alt="MC Thanh Tiến" loading="lazy" decoding="async">
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Clients Section -->
- 
+  
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>Thank you!</p>
-    </div>
-  </footer>
+  
 
 
   <!-- Loading Overlay -->

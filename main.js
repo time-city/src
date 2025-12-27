@@ -30,6 +30,19 @@
     }
   };
 
+  const logos = [
+    'asset/image/Logo/logo-1.png',
+    'asset/image/Logo/logo-2.png',
+    'asset/image/Logo/logo-3.png',
+    'asset/image/Logo/logo-4.jpg',
+    'asset/image/Logo/logo-5.png',
+    'asset/image/Logo/logo-6.jpg',
+    'asset/image/Logo/logo-7.avif',
+    'asset/image/Logo/logo-8.jpg',
+    'asset/image/Logo/logo-9.webp',
+    'asset/image/Logo/logo-10.jpg'
+  ];
+
   // ============================================
   // Load Image with Skeleton - Simplified
   // ============================================
@@ -162,6 +175,79 @@
     }
   }
 
+  function renderClientLogos() {
+    const grid = document.querySelector('.clients-grid');
+    if (!grid) return;
+
+    const isMobile = window.innerWidth <= 768;
+    const maxItems = isMobile ? 12 : logos.length;
+    const list = logos.slice(0, maxItems);
+
+    grid.innerHTML = list.map((src, idx) => {
+      const alt = `Logo đối tác ${idx + 1}`;
+      return `<img src="${src}" alt="${alt}" loading="lazy" decoding="async">`;
+    }).join('');
+  }
+
+  function initMobileGlobalBackground() {
+    const globalBg = document.getElementById('global-bg');
+    if (!globalBg) return;
+
+    const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+    if (!isMobile) {
+      globalBg.style.display = 'none';
+      return;
+    }
+
+    globalBg.style.display = 'block';
+
+    const sections = Array.from(document.querySelectorAll('.section'));
+    if (!sections.length) return;
+
+    const getBg = (section) => {
+      const layer = section.querySelector('.bg-layer');
+      if (!layer) return '';
+      return layer.style.backgroundImage || window.getComputedStyle(layer).backgroundImage || '';
+    };
+
+    let currentBg = getBg(sections[0]) || '';
+    if (currentBg) {
+      globalBg.style.backgroundImage = currentBg;
+    }
+
+    let lastChange = performance.now();
+    const MIN_DELAY = 700; // avoid rapid swaps that feel laggy
+
+    const io = new IntersectionObserver((entries) => {
+      let best = null;
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+      });
+      if (!best) return;
+
+      const nextBg = getBg(best.target);
+      if (!nextBg || nextBg === currentBg) return;
+
+       // throttle changes to reduce jank on mobile
+      const now = performance.now();
+      if (now - lastChange < MIN_DELAY) return;
+      lastChange = now;
+
+      globalBg.style.opacity = '0';
+      setTimeout(() => {
+        globalBg.style.backgroundImage = nextBg;
+        globalBg.style.opacity = '1';
+        currentBg = nextBg;
+      }, 220);
+    }, { threshold: [0.25, 0.4, 0.6] });
+
+    sections.forEach((section) => io.observe(section));
+  }
+
   // Model PNGs are rendered as floating visuals (no frame/skeleton needed)
 
   // ============================================
@@ -178,6 +264,12 @@
 
     // Hero count up
     initCountUp();
+
+    // Mobile global background swap (parallax-like)
+    initMobileGlobalBackground();
+
+    // Render client logos
+    renderClientLogos();
 
     // Simplified loader - hide after short delay
     setTimeout(() => {

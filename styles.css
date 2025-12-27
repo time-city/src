@@ -82,6 +82,19 @@ body {
   z-index: 0;
 }
 
+.global-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: opacity 450ms ease;
+  pointer-events: none;
+  display: none; /* shown only on mobile */
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -95,6 +108,17 @@ body {
     rgba(11, 15, 26, 0.85) 100%
   );
   z-index: 1;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 15px rgba(216, 181, 106, 0.3);
 }
 
 .container {
@@ -146,9 +170,6 @@ body {
     padding: var(--spacing-lg) 0;
   }
   
-  .bg-layer {
-    background-attachment: scroll;
-  }
 }
 
 /* ============================================
@@ -707,8 +728,384 @@ body {
    `.event-collage-frame` + `.event-collage` (6 fixed slots) */
 
 /* ============================================
+   CLIENT LOGO SECTION - POSTER STYLE
+   ============================================ */
+.clients-section {
+  padding: clamp(2.5rem, 4vw, 3.25rem) 0;
+}
+
+.logo-frame {
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.55), rgba(243, 237, 220, 0.95)),
+              linear-gradient(135deg, #f3eddc 0%, #e8dfc5 100%);
+  border: 1px solid rgba(216, 181, 106, 0.7);
+  border-radius: 18px;
+  padding: clamp(1.4rem, 2.2vw, 1.75rem);
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.24),
+    inset 0 0 0 1px rgba(216, 181, 106, 0.28),
+    inset 0 0 22px rgba(216, 181, 106, 0.16);
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.9rem, 1.4vw, 1.25rem);
+  align-items: center;
+  justify-items: center;
+}
+
+.clients-grid img {
+  width: 100%;
+  max-width: 120px;
+  height: clamp(36px, 3vw, 46px);
+  object-fit: contain;
+  filter: none;
+  opacity: 1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clients-grid img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 768px) {
+  .logo-frame {
+    padding: clamp(1.2rem, 3vw, 1.5rem);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .logo-frame::-webkit-scrollbar {
+    height: 6px;
+  }
+  .logo-frame::-webkit-scrollbar-thumb {
+    background: rgba(216, 181, 106, 0.5);
+    border-radius: 999px;
+  }
+
+  .clients-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(120px, 32vw);
+    gap: 12px;
+    align-items: center;
+    justify-items: center;
+    scroll-snap-type: x mandatory;
+  }
+
+  .clients-grid img {
+    height: clamp(36px, 9vw, 50px);
+    max-width: 110px;
+    scroll-snap-align: start;
+  }
+}
+
+/* ============================================
    REVEAL ANIMATION - Simplified
    ============================================ */
+
+/* Mobile overrides for logo frame & grid (poster style) */
+@media (max-width: 768px) {
+  .logo-frame{
+    padding: 0.9rem;
+    border-radius: 16px;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255,255,255,.75), rgba(243,237,220,.96)),
+      linear-gradient(135deg, #f3eddc 0%, #efe4c9 100%);
+    border: 1px solid rgba(216,181,106,.75);
+    box-shadow:
+      0 14px 34px rgba(0,0,0,.18),
+      inset 0 0 0 1px rgba(216,181,106,.22),
+      inset 0 0 16px rgba(216,181,106,.10);
+  }
+
+  /* ưu tiên 4 cột, nếu màn quá hẹp tự xuống 3 cột */
+  .clients-grid{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px 12px;
+    align-items: center;
+  }
+
+  @media (max-width: 420px){
+    .clients-grid{
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+  }
+
+  /* logo luôn sáng, không hover mới sáng */
+  .clients-grid img{
+    width: 100%;
+    height: clamp(28px, 7vw, 38px);
+    object-fit: contain;
+
+    filter: none !important;
+    opacity: 1 !important;
+
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* vô hiệu hover effect trên mobile */
+  .clients-grid img:hover{
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 768px) {
+  /* grid 4 cột -> nhiều logo hơn, nhỏ hơn */
+  .clients-grid{
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 10px 10px !important;
+    align-items: center;
+  }
+  @media (max-width: 420px){
+    .clients-grid{
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+  }
+
+  /* tạo tile để ảnh không bị kéo full */
+  .clients-grid > *{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px !important;
+    min-height: 56px !important; /* chiều cao mỗi ô logo */
+  }
+
+  /* IMG: bỏ width:100%, giới hạn kích thước thật */
+  .clients-grid img{
+    width: auto !important;
+    height: auto !important;
+    max-height: 34px !important;  /* LOGO NHỎ LẠI */
+    max-width: 90% !important;    /* không chạm mép */
+    object-fit: contain !important;
+
+    filter: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .clients-grid img:hover{
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* ensure logo frame is grid (no horizontal scroll), all 10 logos visible */
+  .logo-frame {
+    overflow: visible !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    padding: 0.9rem !important;
+  }
+
+  .clients-grid{
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 8px 10px !important;
+    align-items: center !important;
+    justify-items: center !important;
+    grid-auto-flow: row !important;
+    grid-auto-columns: auto !important;
+    scroll-snap-type: none !important;
+  }
+  @media (max-width: 420px){
+    .clients-grid{
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+  }
+
+  .clients-grid > *{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 4px !important;
+    min-height: 52px !important;
+  }
+
+  .clients-grid img{
+    width: auto !important;
+    height: auto !important;
+    max-height: 30px !important;
+    max-width: 80% !important;
+    object-fit: contain !important;
+  }
+
+  .bg-layer {
+    display: none;
+  }
+
+  .global-bg {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateZ(0);
+    will-change: opacity;
+    transition: opacity 450ms ease;
+  }
+}
+
+/* ============================================
+   CONTACT & THANK YOU - POSTER STYLE
+   ============================================ */
+.contact-section,
+.thankyou-section {
+  padding: clamp(2.75rem, 4vw, 3.5rem) 0;
+}
+
+.contact-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: rgba(11, 15, 26, 0.5);
+  backdrop-filter: blur(10px);
+  border: var(--border-gold);
+  border-radius: 16px;
+  padding: clamp(1.75rem, 3vw, 2.2rem);
+  box-shadow: var(--border-gold-glow);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2vw, 1.6rem);
+}
+
+.contact-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.contact-subtitle {
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.contact-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--gold);
+  letter-spacing: -0.015em;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+.contact-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(216, 181, 106, 0.25);
+  border-radius: 12px;
+  background: rgba(216, 181, 106, 0.06);
+}
+
+.contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(216, 181, 106, 0.12);
+  border: 1px solid rgba(216, 181, 106, 0.35);
+}
+
+.contact-icon-svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--gold);
+}
+
+.contact-text,
+.contact-link {
+  font-size: clamp(1rem, 2.4vw, 1.1rem);
+  color: var(--text-primary);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+  color: var(--gold);
+}
+
+.thankyou-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+  align-items: center;
+}
+
+.thankyou-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.thankyou-message {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.thankyou-visual {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .contact-card {
+    max-width: 92vw;
+    padding: 1.4rem;
+    gap: 1.1rem;
+  }
+
+  .contact-item {
+    padding: 0.75rem 0.9rem;
+  }
+
+  .contact-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .contact-icon-svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .thankyou-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .thankyou-text {
+    align-items: center;
+  }
+
+  .thankyou-visual {
+    order: 2;
+  }
+}
 .reveal {
   opacity: 0;
 }
@@ -800,69 +1197,133 @@ body {
 /* ============================================
    THANK YOU SECTION
    ============================================ */
-.thankyou-section {
-  min-height: auto;
-  padding: var(--spacing-xl) 0;
-}
-
-.thankyou-content {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: var(--spacing-xl);
+/* ===== THANK YOU (Poster style) ===== */
+.thankyou-section{
+  min-height: 100vh;
+  padding: clamp(2.5rem, 4vw, 3.5rem) 0;
   align-items: center;
 }
 
-@media (max-width: 768px) {
-  .thankyou-content {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+.thankyou-poster{
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.46fr 0.54fr;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  min-height: min(72vh, 720px); /* không kéo quá dài */
+}
+
+.thankyou-copy{
+  position: relative;
+  padding-left: clamp(0rem, 0.5vw, 0.5rem);
+  max-width: 520px;
+}
+
+/* halo vòng sáng phía sau text */
+.thankyou-copy::before{
+  content:"";
+  position: absolute;
+  left: -12%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(240px, 32vw, 520px);
+  height: clamp(240px, 32vw, 520px);
+  background:
+    radial-gradient(circle at 50% 50%,
+      rgba(216,181,106,0.22) 0%,
+      rgba(216,181,106,0.10) 28%,
+      rgba(11,15,20,0.00) 62%);
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.thankyou-title{
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: clamp(2.1rem, 3.2vw, 3.2rem);
+  color: var(--gold);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.9rem;
+  text-shadow: 0 2px 18px rgba(216,181,106,0.28);
+}
+
+.thankyou-text{
+  position: relative;
+  z-index: 1;
+  color: rgba(255,255,255,0.82);
+  font-size: clamp(0.95rem, 1.05vw, 1.08rem);
+  line-height: 1.7;
+  margin-bottom: 0.45rem;
+  max-width: 520px;
+}
+
+.thankyou-visual{
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+}
+
+/* model phải “đứng” như poster, không bị cắt */
+.model-visual--thankyou{
+  width: clamp(320px, 42vw, 680px);
+  max-height: min(78vh, 760px);
+  object-fit: contain;
+  margin: 0;
+  filter:
+    drop-shadow(0 22px 44px rgba(0,0,0,0.55))
+    drop-shadow(0 0 30px rgba(216,181,106,0.16));
+}
+
+/* MOBILE: vẫn gọn, không kéo dài; text ưu tiên trên, model neo phải */
+@media (max-width: 768px){
+  .thankyou-section{
+    min-height: 100svh;
+    padding: 2.25rem 0;
   }
 
-  .model-visual--thankyou {
-    width: min(560px, 92vw);
+  .thankyou-poster{
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    min-height: auto;
+    align-items: center;
+  }
+
+  .thankyou-copy{
+    max-width: 92vw;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .thankyou-copy::before{
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    width: 78vw;
+    height: 78vw;
+    opacity: 0.8;
+  }
+
+  .thankyou-visual{
+    justify-content: center;
+    align-items: center;
+    padding-right: 0;
+  }
+
+  .model-visual--thankyou{
+    width: min(72vw, 420px);
+    max-height: 52svh; /* để không vượt 1 màn hình */
     margin: 0 auto;
   }
 }
 
-/* ============================================
-   CLIENTS SECTION
-   ============================================ */
-.clients-section {
-  min-height: auto;
-  padding: var(--spacing-xl) 0;
-}
-
-.section-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  color: var(--gold);
-  text-align: center;
-  margin-bottom: var(--spacing-xl);
-  letter-spacing: -0.02em;
-  text-shadow: 0 2px 15px rgba(216, 181, 106, 0.3);
-}
-
-.clients-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: var(--spacing-lg);
-  align-items: center;
-  justify-items: center;
-}
-
-.clients-grid img {
-  max-width: 100%;
-  height: auto;
-  filter: grayscale(100%);
-  opacity: 0.7;
-  transition: var(--transition);
-}
-
-.clients-grid img:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.05);
+/* iPhone nhỏ: giảm thêm để fit 1 màn hình */
+@media (max-width: 430px){
+  .model-visual--thankyou{ max-height: 46svh; width: min(84vw, 360px); }
+  .thankyou-title{ font-size: clamp(1.8rem, 8vw, 2.3rem); }
 }
 
 /* ============================================
@@ -881,4 +1342,3 @@ body {
   font-weight: 500;
   letter-spacing: 0.1em;
 }
-
