@@ -1321,7 +1321,7 @@ body {
     left: 50%;
     top: 18%;
     transform: translateX(-50%);
-    width: 110%;
+    width: 120%;
     text-align: center;
 
     font-family: var(--font-heading);
@@ -1331,7 +1331,7 @@ body {
     color: var(--gold);
     opacity: 0.42;
 
-    font-size: clamp(2.2rem, 12vw, 4rem);
+    font-size: clamp(1.8rem, 10vw, 3.6rem);
     line-height: 0.95;
 
     z-index: 1;
@@ -1675,6 +1675,14 @@ body {
 
 /* MOBILE override: giữ layout ngang + giảm khoảng trống */
 @media (max-width: 768px){
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    height: 100%;
+    overscroll-behavior: none;
+    touch-action: pan-y;
+  }
+
   #thankyou .thankyou-poster{
     grid-template-columns: 1.25fr 0.75fr;
     gap: 10px;
