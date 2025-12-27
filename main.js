@@ -22,6 +22,12 @@
         'image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg', 'image-6.jpg'
       ]
     },
+    galaPlus: {
+      folder: 'asset/image/Gala Dinner/',
+      images: [
+        'image-9.jpg', 'image-13.png', 'image-7.jpg', 'image-10.jpg', 'image-11.jpg', 'image-12.jpg'
+      ]
+    },
     yearend: {
       folder: 'asset/image/Year End Party/',
       images: [
@@ -40,7 +46,14 @@
     'asset/image/Logo/logo-7.avif',
     'asset/image/Logo/logo-8.jpg',
     'asset/image/Logo/logo-9.webp',
-    'asset/image/Logo/logo-10.jpg'
+    'asset/image/Logo/logo-10.jpg',
+    'asset/image/Logo/logo-11.png',
+    'asset/image/Logo/logo-12.png',
+    'asset/image/Logo/logo-13.png',
+    'asset/image/Logo/logo-14.png',
+    'asset/image/Logo/logo-15.png',
+    'asset/image/Logo/logo-16.png',
+    'asset/image/Logo/logo-17.png'
   ];
 
   // ============================================
@@ -180,13 +193,19 @@
     if (!grid) return;
 
     const isMobile = window.innerWidth <= 768;
-    const maxItems = isMobile ? 12 : logos.length;
-    const list = logos.slice(0, maxItems);
+    const list = logos;
 
     grid.innerHTML = list.map((src, idx) => {
       const alt = `Logo đối tác ${idx + 1}`;
       return `<img src="${src}" alt="${alt}" loading="lazy" decoding="async">`;
     }).join('');
+  }
+
+  function syncHeroBacktitle() {
+    const back = document.querySelector('.hero-backtitle');
+    const title = document.querySelector('.hero-title');
+    if (!back || !title) return;
+    back.textContent = title.textContent || '';
   }
 
   function initMobileGlobalBackground() {
@@ -257,6 +276,7 @@
     // Collage: master 6-slot template per section
     mountEventCollage('activation', imageConfig.activation);
     mountEventCollage('gala', imageConfig.gala);
+    mountEventCollage('galaPlus', imageConfig.galaPlus);
     mountEventCollage('yearend', imageConfig.yearend);
 
     // Initialize reveal animation
@@ -264,6 +284,9 @@
 
     // Hero count up
     initCountUp();
+
+    // Sync hero back-title text for mobile poster effect
+    syncHeroBacktitle();
 
     // Mobile global background swap (parallax-like)
     initMobileGlobalBackground();

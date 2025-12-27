@@ -299,15 +299,13 @@ body {
 }
 
 .hero-frame {
-  border: 1px solid rgba(216, 181, 106, 0.55);
-  border-radius: 18px;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.18);
-  box-shadow:
-    0 12px 44px rgba(0, 0, 0, 0.45),
-    0 0 28px rgba(216, 181, 106, 0.18);
-  backdrop-filter: blur(10px);
-  width: min(560px, 40vw);
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  width: min(520px, 40vw);
   margin-left: auto;
 }
 
@@ -315,9 +313,9 @@ body {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 14px;
-  object-fit: cover;
-  max-height: min(640px, 74vh);
+  border-radius: 0;
+  object-fit: contain;
+  max-height: min(680px, 80vh);
 }
 
 @media (max-width: 1024px) {
@@ -357,13 +355,14 @@ body {
   }
 
   .hero-frame {
-    width: min(560px, 92vw);
+    width: min(520px, 92vw);
     margin: 0 auto;
-    padding: 8px;
+    padding: 0;
   }
 
   .hero-photo {
-    max-height: min(560px, 62vh);
+    max-height: min(520px, 70vh);
+    object-fit: contain;
   }
   
   .hero-title {
@@ -402,7 +401,7 @@ body {
 }
 
 .personal-info-card {
-  background: rgba(11, 15, 26, 0.5);
+  background: rgba(11, 15, 26, 0.32);
   backdrop-filter: blur(10px);
   border: var(--border-gold);
   border-radius: var(--radius-lg);
@@ -440,11 +439,9 @@ body {
 }
 
 .personal-info-image .model-visual--about {
-  width: min(420px, 86vw);
-}
-
-.personal-info-image .model-visual--about {
-  max-height: 520px;
+  width: min(360px, 72vw);
+  max-height: 480px;
+  object-fit: contain;
 }
 
 /* iPhone-size tuning: keep everything within one screen comfortably */
@@ -493,6 +490,13 @@ body {
     line-height: 1.65;
   }
 }
+
+@media (max-width: 768px) {
+  .personal-info-image .model-visual--about {
+    width: min(320px, 68vw);
+    max-height: 420px;
+  }
+}
 .personal-info-text {
   display: flex;
   flex-direction: column;
@@ -510,8 +514,8 @@ body {
   flex-direction: column;
   gap: 0.5rem;
   padding: var(--spacing-md);
-  background: rgba(216, 181, 106, 0.08);
-  border: 1px solid rgba(216, 181, 106, 0.2);
+  background: rgba(216, 181, 106, 0.05);
+  border: 1px solid rgba(216, 181, 106, 0.16);
   border-radius: var(--radius);
   flex: 1;
   min-width: 120px;
@@ -748,8 +752,8 @@ body {
 
 .clients-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(0.9rem, 1.4vw, 1.25rem);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.85rem, 1.3vw, 1.15rem);
   align-items: center;
   justify-items: center;
 }
@@ -1194,53 +1198,43 @@ body {
   pointer-events: none;
 }
 
-/* ============================================
-   THANK YOU SECTION
-   ============================================ */
-/* ===== THANK YOU (Poster style) ===== */
+/* ===== THANKYOU: FIX NO EMPTY SPACE + FIT ONE SCREEN ===== */
 .thankyou-section{
-  min-height: 100vh;
-  padding: clamp(2.5rem, 4vw, 3.5rem) 0;
-  align-items: center;
+  min-height: 92vh;
+  padding: 0;                 /* bỏ padding gây dư */
+  align-items: stretch;       /* section cho con tự quản chiều cao */
+}
+
+.thankyou-section .container{
+  height: 100%;
+  min-height: 92vh;
+  display: flex;
+  align-items: stretch;
 }
 
 .thankyou-poster{
-  position: relative;
+  width: 100%;
+  min-height: 100%;
   display: grid;
-  grid-template-columns: 0.46fr 0.54fr;
+  grid-template-columns: 1fr 1fr;       /* desktop 2 cột */
   align-items: center;
-  gap: clamp(1.5rem, 3vw, 3rem);
-  min-height: min(72vh, 720px); /* không kéo quá dài */
+  gap: clamp(1rem, 3vw, 3rem);
+  padding: clamp(1.5rem, 3vw, 3rem) 1.25rem;  /* padding chỉ bên trong poster */
+  background: rgba(11, 15, 26, 0.28);
+  border: 1px solid rgba(216, 181, 106, 0.32);
+  border-radius: 18px;
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(216, 181, 106, 0.18),
+    inset 0 0 18px rgba(216, 181, 106, 0.08);
 }
 
+/* copy block giữ gọn, không đẩy cao quá */
 .thankyou-copy{
-  position: relative;
-  padding-left: clamp(0rem, 0.5vw, 0.5rem);
   max-width: 520px;
 }
 
-/* halo vòng sáng phía sau text */
-.thankyou-copy::before{
-  content:"";
-  position: absolute;
-  left: -12%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: clamp(240px, 32vw, 520px);
-  height: clamp(240px, 32vw, 520px);
-  background:
-    radial-gradient(circle at 50% 50%,
-      rgba(216,181,106,0.22) 0%,
-      rgba(216,181,106,0.10) 28%,
-      rgba(11,15,20,0.00) 62%);
-  filter: blur(2px);
-  pointer-events: none;
-  z-index: 0;
-}
-
 .thankyou-title{
-  position: relative;
-  z-index: 1;
   font-family: var(--font-heading);
   font-size: clamp(2.1rem, 3.2vw, 3.2rem);
   color: var(--gold);
@@ -1250,8 +1244,6 @@ body {
 }
 
 .thankyou-text{
-  position: relative;
-  z-index: 1;
   color: rgba(255,255,255,0.82);
   font-size: clamp(0.95rem, 1.05vw, 1.08rem);
   line-height: 1.7;
@@ -1259,64 +1251,53 @@ body {
   max-width: 520px;
 }
 
+/* ép khối visual bám đáy */
 .thankyou-visual{
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
   height: 100%;
+  display: flex;
+  align-items: flex-end;     /* chạm đáy */
+  justify-content: flex-end;
 }
 
-/* model phải “đứng” như poster, không bị cắt */
+/* giới hạn chiều cao model để không làm dư section */
 .model-visual--thankyou{
-  width: clamp(320px, 42vw, 680px);
-  max-height: min(78vh, 760px);
-  object-fit: contain;
-  margin: 0;
-  filter:
-    drop-shadow(0 22px 44px rgba(0,0,0,0.55))
-    drop-shadow(0 0 30px rgba(216,181,106,0.16));
+  max-height: calc(100vh - 140px);  /* trừ khoảng header text */
+  width: min(520px, 42vw);
+  height: auto;
 }
 
-/* MOBILE: vẫn gọn, không kéo dài; text ưu tiên trên, model neo phải */
+/* ============ MOBILE ============ */
 @media (max-width: 768px){
   .thankyou-section{
-    min-height: 100svh;
-    padding: 2.25rem 0;
+    min-height: 94svh;
+  }
+
+  .thankyou-section .container{
+    min-height: 94svh;
   }
 
   .thankyou-poster{
-    grid-template-columns: 1fr;
-    gap: 1.1rem;
-    min-height: auto;
-    align-items: center;
+    grid-template-columns: 1fr;     /* mobile 1 cột */
+    grid-template-rows: auto 1fr;   /* text trên, model dưới */
+    padding: 1.5rem 1rem;
+    align-content: center;
+    justify-items: center;
   }
 
   .thankyou-copy{
-    max-width: 92vw;
     text-align: center;
     margin: 0 auto;
-  }
-
-  .thankyou-copy::before{
-    left: 50%;
-    top: 48%;
-    transform: translate(-50%, -50%);
-    width: 78vw;
-    height: 78vw;
-    opacity: 0.8;
+    margin-top: clamp(1.5rem, 5vw, 3rem);
   }
 
   .thankyou-visual{
     justify-content: center;
-    align-items: center;
-    padding-right: 0;
+    align-items: flex-end;
   }
 
   .model-visual--thankyou{
-    width: min(72vw, 420px);
-    max-height: 52svh; /* để không vượt 1 màn hình */
-    margin: 0 auto;
+    width: min(420px, 86vw);
+    max-height: 50svh;       /* đảm bảo không kéo dài */
   }
 }
 
@@ -1324,6 +1305,472 @@ body {
 @media (max-width: 430px){
   .model-visual--thankyou{ max-height: 46svh; width: min(84vw, 360px); }
   .thankyou-title{ font-size: clamp(1.8rem, 8vw, 2.3rem); }
+}
+
+/* ===== HERO MOBILE BACKTITLE (text behind model) ===== */
+@media (max-width: 768px){
+  /* đảm bảo hero-visual làm “poster stage” */
+  .hero-visual{
+    position: relative;
+    width: 100%;
+  }
+
+  /* chữ lớn phía sau model */
+  .hero-backtitle{
+    position: absolute;
+    left: 50%;
+    top: 18%;
+    transform: translateX(-50%);
+    width: 110%;
+    text-align: center;
+
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.42;
+
+    font-size: clamp(2.2rem, 12vw, 4rem);
+    line-height: 0.95;
+
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+
+    text-shadow:
+      0 2px 22px rgba(216,181,106,0.28),
+      0 0 24px rgba(255, 214, 122, 0.18);
+    filter: blur(0.1px);
+    animation: heroBacktitlePulse 3s ease-in-out infinite alternate;
+  }
+
+  /* model phải nằm TRÊN chữ nền */
+  .hero-frame{
+    position: relative;
+    z-index: 2;
+  }
+
+  /* nếu ảnh bị che: ép img nổi hơn */
+  .hero-photo{
+    position: relative;
+    z-index: 3;
+    animation: heroFloat 3s ease-in-out infinite alternate;
+  }
+}
+
+@media (min-width: 769px){
+  .hero-backtitle{
+    display: none;
+  }
+}
+
+@keyframes heroFloat {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-10px); }
+}
+
+@keyframes heroBacktitlePulse {
+  from { transform: translateX(-50%) scale(1); opacity: 0.3; }
+  to   { transform: translateX(-50%) scale(1.04); opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo,
+  .hero-backtitle {
+    animation: none !important;
+  }
+}
+
+/* THANKYOU mobile: horizontal template */
+@media (max-width: 768px){
+  .thankyou-section{
+    min-height: auto !important;
+    padding: 0.5rem 0 0.5rem !important;
+    align-items: stretch !important;
+  }
+
+  .thankyou-section .container{
+    min-height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .thankyou-poster{
+    width: 100%;
+    display: grid !important;
+    grid-template-columns: 1.05fr 0.95fr !important; /* text | model */
+    grid-template-rows: auto !important;
+    align-items: end !important;
+    align-content: start !important;
+    gap: 12px !important;
+    padding: 12px 0 !important;
+  }
+
+  .thankyou-copy{
+    text-align: left !important;
+    margin: 0 !important;
+    max-width: 420px;
+  }
+
+  .thankyou-title{
+    margin-bottom: 10px !important;
+  }
+
+  .thankyou-text{
+    margin-bottom: 6px !important;
+    max-width: 36ch;
+  }
+
+  .thankyou-visual{
+    height: auto !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: flex-end !important;
+    margin: 0 !important;
+  }
+
+  .model-visual--thankyou{
+    width: auto !important;
+    height: min(48svh, 400px) !important;
+    max-width: 42vw !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+  }
+}
+
+/* Phone hẹp: ưu tiên giữ ngang -> giảm model + giảm chữ */
+@media (max-width: 420px){
+  .thankyou-poster{
+    grid-template-columns: 1.15fr 0.85fr !important;
+    gap: 10px !important;
+  }
+
+  .model-visual--thankyou{
+    height: min(44svh, 340px) !important;
+    max-width: 44vw !important;
+  }
+
+  .thankyou-text{ max-width: 32ch; }
+}
+
+/* ===== CTA button subtle attention effect ===== */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  animation: btnPulse 2s ease-in-out infinite;
+}
+
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 140%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 75%
+  );
+  transform: skewX(-16deg);
+  transition: transform 0.4s ease, left 0.4s ease;
+  pointer-events: none;
+}
+
+.btn-primary:hover::after,
+.btn-primary:focus-visible::after {
+  left: 160%;
+}
+
+@keyframes btnPulse {
+  0% {
+    transform: translateZ(0) scale(1);
+    box-shadow:
+      0 10px 26px rgba(0,0,0,0.38),
+      0 0 18px rgba(216, 181, 106, 0.42);
+  }
+  50% {
+    transform: translateZ(0) scale(1.03);
+    box-shadow:
+      0 12px 32px rgba(0,0,0,0.44),
+      0 0 24px rgba(232, 201, 122, 0.58);
+  }
+  100% {
+    transform: translateZ(0) scale(1);
+    box-shadow:
+      0 10px 26px rgba(0,0,0,0.38),
+      0 0 18px rgba(216, 181, 106, 0.42);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary {
+    animation: none !important;
+  }
+  .btn-primary::after {
+    display: none;
+  }
+}
+
+/* ===== GOLDEN LIGHT SWEEP BORDER EFFECT ===== */
+.gold-sweep,
+.event-collage-frame,
+.logo-frame,
+.thankyou-poster,
+.contact-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.event-collage-frame::after,
+.logo-frame::after,
+.thankyou-poster::after,
+.contact-card::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+
+  background: linear-gradient(
+    120deg,
+    transparent 35%,
+    rgba(255, 215, 120, 0.15) 45%,
+    rgba(255, 215, 120, 0.45) 50%,
+    rgba(255, 215, 120, 0.15) 55%,
+    transparent 65%
+  );
+
+  transform: translateX(-120%);
+  animation: goldSweep 4.5s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+.event-collage-frame::before,
+.logo-frame::before,
+.thankyou-poster::before,
+.contact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  box-shadow:
+    inset 0 0 22px rgba(216,181,106,0.18),
+    inset 0 0 44px rgba(216,181,106,0.08);
+}
+
+@keyframes goldSweep {
+  0%   { transform: translateX(-120%); opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { opacity: 1; }
+  90%  { opacity: 0; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+
+@media (max-width: 768px){
+  .event-collage-frame::after,
+  .logo-frame::after,
+  .thankyou-poster::after,
+  .contact-card::after {
+    animation-duration: 6s;
+    opacity: 0.6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .event-collage-frame::after,
+  .logo-frame::after,
+  .thankyou-poster::after,
+  .contact-card::after {
+    animation: none;
+    opacity: 0.25;
+  }
+}
+
+/* Disable sweep effect for clients logo frame */
+.logo-frame::after {
+  content: none !important;
+  animation: none !important;
+  opacity: 0 !important;
+}
+
+.logo-frame::before {
+  box-shadow: none !important;
+}
+
+/* ===== THANKYOU MOBILE: HORIZONTAL POSTER (TEXT LEFT / MODEL RIGHT) ===== */
+#thankyou.thankyou-section{
+  min-height: 100svh;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+#thankyou .container{
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+
+/* poster card */
+#thankyou .thankyou-poster{
+  width: 100%;
+  border: 1px solid rgba(216,181,106,0.35);
+  border-radius: 20px;
+  background: rgba(0,0,0,0.18);
+  box-shadow:
+    0 18px 60px rgba(0,0,0,0.45),
+    0 0 28px rgba(216,181,106,0.14);
+  backdrop-filter: blur(6px);
+
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+}
+
+/* text block gọn */
+#thankyou .thankyou-copy{
+  max-width: 340px;
+  padding: 0 0 0 14px;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+#thankyou .thankyou-title{
+  margin: 0 0 6px 0;
+  line-height: 1.05;
+}
+
+#thankyou .thankyou-text{
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* model nằm phải, không quá to */
+#thankyou .thankyou-visual{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+#thankyou .model-visual--thankyou{
+  width: min(220px, 42vw);
+  max-height: 62svh;
+  height: auto;
+  object-fit: contain;
+  margin: 0;
+}
+
+/* MOBILE override: giữ layout ngang + giảm khoảng trống */
+@media (max-width: 768px){
+  #thankyou .thankyou-poster{
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 10px;
+    padding: 14px !important;
+  }
+
+  #thankyou .thankyou-copy{
+    max-width: none;
+    width: 100%;
+    padding: 0 0 0 12px;
+  }
+
+  #thankyou .thankyou-title{
+    margin-bottom: 6px;
+    font-size: clamp(1.7rem, 7.2vw, 2.15rem);
+  }
+
+  #thankyou .thankyou-text{
+    margin: 0;
+    line-height: 1.55;
+    font-size: clamp(0.95rem, 3.7vw, 1.05rem);
+  }
+
+  #thankyou .model-visual--thankyou{
+    width: min(200px, 42vw);
+    max-height: 54svh;
+    transform: translateY(6px);
+  }
+}
+
+/* iPhone nhỏ: vẫn ngang, nhưng gọn hơn */
+@media (max-width: 430px){
+  #thankyou .thankyou-poster{
+    grid-template-columns: 1.35fr 0.65fr;
+    padding: 12px !important;
+  }
+
+  #thankyou .thankyou-copy{
+    padding: 14px 12px;
+  }
+
+  #thankyou .model-visual--thankyou{
+    width: min(180px, 44vw);
+    max-height: 50svh;
+  }
+}
+
+@media (min-width: 1024px){
+  #contact .contact-card{
+    max-width: 980px;
+    padding: clamp(2.25rem, 3vw, 2.8rem);
+    gap: clamp(1.5rem, 2vw, 2rem);
+  }
+
+  #contact .contact-item{
+    padding: clamp(1.1rem, 2vw, 1.35rem);
+  }
+}
+
+/* Subtle interaction effects (not too flashy) */
+#contact .contact-card{
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+#contact .contact-card:hover,
+#contact .contact-card:focus-within{
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.38),
+    0 0 32px rgba(216, 181, 106, 0.16),
+    inset 0 0 0 1px rgba(216, 181, 106, 0.2);
+  transform: translateY(-2px);
+}
+
+#contact .contact-item{
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+#contact .contact-item:hover,
+#contact .contact-item:focus-within{
+  background: rgba(216, 181, 106, 0.12);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(216, 181, 106, 0.22);
+  transform: translateY(-1px);
+}
+
+#contact .contact-link,
+#contact .contact-text{
+  transition: color 0.2s ease;
+}
+
+#contact .contact-item:hover .contact-link,
+#contact .contact-item:hover .contact-text,
+#contact .contact-item:focus-within .contact-link,
+#contact .contact-item:focus-within .contact-text{
+  color: var(--gold);
 }
 
 /* ============================================
@@ -1341,4 +1788,26 @@ body {
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.1em;
+}
+
+/* ===== HERO DESKTOP FIX: show full model (no head cut) ===== */
+@media (min-width: 1024px){
+  .hero-frame{
+    width: min(620px, 44vw);
+    padding: 12px;
+    border-radius: 22px;
+    display: flex;
+    align-items: flex-end; /* neo xuống đáy */
+    justify-content: center;
+  }
+
+  .hero-photo{
+    width: 100%;
+    height: min(78vh, 760px);   /* FIX: đặt height rõ ràng */
+    max-height: none;           /* bỏ max-height cũ gây crop */
+    object-fit: contain;        /* FIX: không crop */
+    object-position: center bottom;
+    border-radius: 16px;
+    background: transparent;
+  }
 }
