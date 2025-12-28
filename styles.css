@@ -1321,7 +1321,7 @@ body {
     left: 50%;
     top: 18%;
     transform: translateX(-50%);
-    width: 110%;
+    width: 130%;
     text-align: center;
 
     font-family: var(--font-heading);
@@ -1591,6 +1591,20 @@ body {
   }
 }
 
+@media (max-width: 768px){
+  html, body{
+    overflow-x: hidden !important;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+    overscroll-behavior-x: none;
+  }
+  .container{
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
+
 /* Personal Info - force horizontal layout on mobile */
 @media (max-width: 768px){
   .personal-info-card{
@@ -1601,42 +1615,43 @@ body {
   }
   .personal-info-content{
     display: grid;
-    grid-template-columns: 0.45fr 0.55fr;
-    gap: 14px;
-    align-items: end;
-    text-align: left;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
   }
   .personal-info-image{
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
   }
   .personal-info-image .model-visual--about{
-    width: 100%;
-    max-width: none;
-    max-height: min(52vh, 420px);
+    width: min(320px, 70vw);
+    max-height: 220px;
     object-fit: contain;
-    margin: 0;
+    margin: 0 auto;
   }
   .personal-collage{
     display: none;
   }
   .personal-info-text{
+    align-items: center;
     gap: 12px;
   }
   .personal-stats{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 12px;
     margin-bottom: 12px;
   }
   .personal-stat-item{
     padding: 12px 14px;
-    min-width: 0;
+    min-width: 150px;
   }
   .personal-bio p{
     font-size: 0.95rem;
     line-height: 1.68;
-    max-width: 100%;
+    max-width: 90vw;
   }
 }
 
@@ -1709,6 +1724,7 @@ body {
   max-width: 90vw;
   text-align: center;
   padding: 0 14px;
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
 }
 
 /* model nằm phải, không quá to */
@@ -1744,14 +1760,14 @@ body {
 
   #thankyou .thankyou-title{
     margin-bottom: 6px;
-    font-size: clamp(1.7rem, 7.2vw, 2.15rem);
+    font-size: clamp(1.5rem, 7.2vw, 2.15rem);
     letter-spacing: 0.02em;
   }
 
   #thankyou .thankyou-text{
     margin: 0;
     line-height: 1.55;
-    font-size: clamp(0.95rem, 3.7vw, 1.05rem);
+    font-size: clamp(0.82rem, 3.2vw, 0.98rem);
     color: var(--gold);
     max-width: 90vw;
     padding: 0 14px;
@@ -1864,4 +1880,41 @@ body {
     border-radius: 16px;
     background: transparent;
   }
+}
+/* ===== THANKYOU FIX: avoid class conflict + better mobile type ===== */
+#thankyou .thankyou-copy { max-width: 520px; }
+
+#thankyou .thankyou-title{
+  font-family: var(--font-heading);
+  font-size: clamp(2.1rem, 3.2vw, 3.2rem);
+  line-height: 1.05;
+  margin: 0 0 10px 0;
+  color: var(--gold);
+}
+
+#thankyou .thankyou-message{
+  margin: 0;
+  color: var(--gold);
+  font-size: clamp(0.95rem, 1.05vw, 1.08rem);
+  line-height: 1.65;
+  max-width: 52ch;
+}
+
+/* MOBILE: keep horizontal but smaller text */
+@media (max-width: 768px){
+  #thankyou .thankyou-title{
+    font-size: clamp(1.35rem, 6.2vw, 1.9rem);
+    margin-bottom: 6px;
+  }
+  #thankyou .thankyou-message{
+    font-size: clamp(0.78rem, 3.2vw, 0.95rem);
+    line-height: 1.45;
+    max-width: 34ch;
+  }
+}
+
+/* iPhone nhỏ */
+@media (max-width: 430px){
+  #thankyou .thankyou-title{ font-size: clamp(1.25rem, 6.8vw, 1.75rem); }
+  #thankyou .thankyou-message{ font-size: clamp(0.74rem, 3.4vw, 0.9rem); }
 }

@@ -16,6 +16,12 @@
         'image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-5.jpg', 'image-9.jpg', 'image-10.jpg'
       ]
     },
+    activation2: {
+      folder: 'asset/image/ActivationEvent2/',
+      images: [
+        'LQT07986.jpeg', 'LQT08001.jpeg', 'LQT08032.jpeg', 'IMG_4499.WEBP', 'IMG_4498.WEBP', 'IMG_4497.WEBP'
+      ]
+    },
     gala: {
       folder: 'asset/image/Gala Dinner/',
       images: [
@@ -275,6 +281,7 @@
   function init() {
     // Collage: master 6-slot template per section
     mountEventCollage('activation', imageConfig.activation);
+    mountEventCollage('activation2', imageConfig.activation2);
     mountEventCollage('gala', imageConfig.gala);
     mountEventCollage('galaPlus', imageConfig.galaPlus);
     mountEventCollage('yearend', imageConfig.yearend);
