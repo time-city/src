@@ -1321,7 +1321,7 @@ body {
     left: 50%;
     top: 18%;
     transform: translateX(-50%);
-    width: 120%;
+    width: 110%;
     text-align: center;
 
     font-family: var(--font-heading);
@@ -1331,7 +1331,7 @@ body {
     color: var(--gold);
     opacity: 0.42;
 
-    font-size: clamp(1.8rem, 10vw, 3.6rem);
+    font-size: clamp(2.2rem, 12vw, 4rem);
     line-height: 0.95;
 
     z-index: 1;
@@ -1591,6 +1591,55 @@ body {
   }
 }
 
+/* Personal Info - force horizontal layout on mobile */
+@media (max-width: 768px){
+  .personal-info-card{
+    padding: 16px 14px;
+  }
+  .personal-info-header{
+    margin-bottom: 14px;
+  }
+  .personal-info-content{
+    display: grid;
+    grid-template-columns: 0.45fr 0.55fr;
+    gap: 14px;
+    align-items: end;
+    text-align: left;
+  }
+  .personal-info-image{
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .personal-info-image .model-visual--about{
+    width: 100%;
+    max-width: none;
+    max-height: min(52vh, 420px);
+    object-fit: contain;
+    margin: 0;
+  }
+  .personal-collage{
+    display: none;
+  }
+  .personal-info-text{
+    gap: 12px;
+  }
+  .personal-stats{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .personal-stat-item{
+    padding: 12px 14px;
+    min-width: 0;
+  }
+  .personal-bio p{
+    font-size: 0.95rem;
+    line-height: 1.68;
+    max-width: 100%;
+  }
+}
+
 /* Disable sweep effect for clients logo frame */
 .logo-frame::after {
   content: none !important;
@@ -1637,7 +1686,7 @@ body {
 /* text block gọn */
 #thankyou .thankyou-copy{
   max-width: 340px;
-  padding: 0 0 0 14px;
+  padding: 16px 0;
   border-radius: 0;
   background: transparent;
   border: 0;
@@ -1656,6 +1705,10 @@ body {
 #thankyou .thankyou-text{
   margin: 0;
   line-height: 1.55;
+  color: var(--gold);
+  max-width: 90vw;
+  text-align: center;
+  padding: 0 14px;
 }
 
 /* model nằm phải, không quá to */
@@ -1675,14 +1728,6 @@ body {
 
 /* MOBILE override: giữ layout ngang + giảm khoảng trống */
 @media (max-width: 768px){
-  html, body {
-    overflow-x: hidden;
-    max-width: 100vw;
-    height: 100%;
-    overscroll-behavior: none;
-    touch-action: pan-y;
-  }
-
   #thankyou .thankyou-poster{
     grid-template-columns: 1.25fr 0.75fr;
     gap: 10px;
@@ -1692,18 +1737,25 @@ body {
   #thankyou .thankyou-copy{
     max-width: none;
     width: 100%;
-    padding: 0 0 0 12px;
+    padding: 14px 0;
+    text-align: center;
+    align-items: center;
   }
 
   #thankyou .thankyou-title{
     margin-bottom: 6px;
     font-size: clamp(1.7rem, 7.2vw, 2.15rem);
+    letter-spacing: 0.02em;
   }
 
   #thankyou .thankyou-text{
     margin: 0;
     line-height: 1.55;
     font-size: clamp(0.95rem, 3.7vw, 1.05rem);
+    color: var(--gold);
+    max-width: 90vw;
+    padding: 0 14px;
+    text-align: center;
   }
 
   #thankyou .model-visual--thankyou{
@@ -1730,55 +1782,49 @@ body {
   }
 }
 
+/* Desktop balancing for Thank You */
 @media (min-width: 1024px){
-  #contact .contact-card{
-    max-width: 980px;
-    padding: clamp(2.25rem, 3vw, 2.8rem);
-    gap: clamp(1.5rem, 2vw, 2rem);
+  #thankyou .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
   }
-
-  #contact .contact-item{
-    padding: clamp(1.1rem, 2vw, 1.35rem);
+  #thankyou .thankyou-poster{
+    max-width: 1180px;
+    margin: 0 auto;
+    grid-template-columns: 0.55fr 0.45fr;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 28px;
   }
-}
-
-/* Subtle interaction effects (not too flashy) */
-#contact .contact-card{
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
-}
-
-#contact .contact-card:hover,
-#contact .contact-card:focus-within{
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.38),
-    0 0 32px rgba(216, 181, 106, 0.16),
-    inset 0 0 0 1px rgba(216, 181, 106, 0.2);
-  transform: translateY(-2px);
-}
-
-#contact .contact-item{
-  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
-}
-
-#contact .contact-item:hover,
-#contact .contact-item:focus-within{
-  background: rgba(216, 181, 106, 0.12);
-  box-shadow:
-    0 10px 28px rgba(0, 0, 0, 0.28),
-    inset 0 0 0 1px rgba(216, 181, 106, 0.22);
-  transform: translateY(-1px);
-}
-
-#contact .contact-link,
-#contact .contact-text{
-  transition: color 0.2s ease;
-}
-
-#contact .contact-item:hover .contact-link,
-#contact .contact-item:hover .contact-text,
-#contact .contact-item:focus-within .contact-link,
-#contact .contact-item:focus-within .contact-text{
-  color: var(--gold);
+  #thankyou .thankyou-copy{
+    max-width: 520px;
+    align-items: flex-start;
+    text-align: left;
+  }
+  #thankyou .thankyou-title{
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+    font-size: clamp(2.6rem, 3.2vw, 3.4rem);
+  }
+  #thankyou .thankyou-text{
+    padding: 0;
+    max-width: 520px;
+    text-align: left;
+    font-size: clamp(1.05rem, 1.15vw, 1.2rem);
+    line-height: 1.7;
+  }
+  #thankyou .thankyou-visual{
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  #thankyou .model-visual--thankyou{
+    width: min(360px, 40vw);
+    max-height: min(72vh, 760px);
+    object-fit: contain;
+    margin: 0;
+  }
 }
 
 /* ============================================
