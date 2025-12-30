@@ -3,7 +3,7 @@
    ============================================ */
 .contact-section,
 .thankyou-section {
-  padding: clamp(1rem, 2vw, 2rem) 0;
+  padding: 0.5rem 0; /* Giảm mạnh padding */
 }
 
 .contact-card {
@@ -36,6 +36,21 @@
   font-family: var(--font-heading);
   font-size: 1.8rem;
   color: var(--gold);
+
+  /* Hiệu ứng lấp lánh vàng kim giống footer */
+  background: linear-gradient(
+    90deg, 
+    var(--gold-dark) 0%, 
+    var(--gold-light) 25%, 
+    #fff 50%, 
+    var(--gold-light) 75%, 
+    var(--gold-dark) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: footerShimmer 4s linear infinite;
 }
 
 .contact-list {
@@ -106,7 +121,7 @@
 
 /* Thank You Section */
 .thankyou-section {
-  padding: 2rem 0;
+  padding: 1rem 0; /* Giảm từ 2rem xuống 1rem */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -188,7 +203,7 @@
 
 @media (max-width: 768px) {
   .thankyou-section {
-    padding: 1.5rem 0.75rem;
+    padding: 0.5rem 0.75rem;
   }
   .thankyou-banner-frame {
     aspect-ratio: 16 / 10;

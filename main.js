@@ -111,6 +111,33 @@
     }
 
     // ============================================
+    // HIỆU ỨNG HẠT LẤP LÁNH (SPARKLES) CHO TẤT CẢ SECTION
+    // ============================================
+    function injectSparkles() {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+            // Không thêm nếu đã có container sparkles
+            if (section.querySelector('.sparkles-container')) return;
+
+            const container = document.createElement('div');
+            container.className = 'sparkles-container';
+            container.setAttribute('aria-hidden', 'true');
+
+            // Tạo ngẫu nhiên 10-15 hạt cho mỗi section
+            const count = 12;
+            for (let i = 0; i < count; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.top = `${Math.random() * 90 + 5}%`;
+                sparkle.style.left = `${Math.random() * 90 + 5}%`;
+                sparkle.style.animationDelay = `${Math.random() * 4}s`;
+                container.appendChild(sparkle);
+            }
+            section.appendChild(container);
+        });
+    }
+
+    // ============================================
     // HIỂN THỊ COLLAGE CHO TỪNG SỰ KIỆN
     // ============================================
     function mountEventCollage(eventKey, config) {
@@ -195,6 +222,9 @@
     // KHỞI TẠO TẤT CẢ
     // ============================================
     function init() {
+        // Thêm hạt lấp lánh cho tất cả các section
+        injectSparkles();
+
         // Tải collage cho các section
         Object.keys(imageConfig).forEach(key => mountEventCollage(key, imageConfig[key]));
         

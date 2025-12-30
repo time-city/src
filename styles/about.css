@@ -2,10 +2,10 @@
    ABOUT / PERSONAL INFO SECTION STYLES (POSTER STYLE)
    ============================================ */
 .personal-info-section {
-  min-height: auto; /* Xoá chiều cao tối thiểu 100vh */
+  min-height: auto; 
   display: flex;
   align-items: center;
-  padding: 1rem 0; /* Thu nhỏ khoảng cách trên dưới */
+  padding: 0.5rem 0; /* Giảm từ 1rem xuống 0.5rem */
 }
 
 .about-poster {
@@ -36,6 +36,21 @@
   color: var(--gold);
   letter-spacing: 0.05em;
   line-height: 1;
+
+  /* Hiệu ứng lấp lánh vàng kim giống footer */
+  background: linear-gradient(
+    90deg, 
+    var(--gold-dark) 0%, 
+    var(--gold-light) 25%, 
+    #fff 50%, 
+    var(--gold-light) 75%, 
+    var(--gold-dark) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: footerShimmer 4s linear infinite;
 }
 
 .about-content {

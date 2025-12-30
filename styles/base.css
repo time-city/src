@@ -62,10 +62,10 @@ body {
 /* Common Section Styles */
 .section {
   position: relative;
-  min-height: 100vh;
+  min-height: auto; /* Thay vì 100vh, cho phép co dãn theo content */
   display: flex;
   align-items: center;
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-lg) 0; /* Giảm từ xl xuống lg */
   overflow: visible;
 }
 
@@ -115,6 +115,21 @@ body {
   margin-bottom: var(--spacing-xl);
   letter-spacing: -0.02em;
   text-shadow: 0 2px 15px rgba(216, 181, 106, 0.3);
+  
+  /* Hiệu ứng lấp lánh vàng kim giống footer */
+  background: linear-gradient(
+    90deg, 
+    var(--gold-dark) 0%, 
+    var(--gold-light) 25%, 
+    #fff 50%, 
+    var(--gold-light) 75%, 
+    var(--gold-dark) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: footerShimmer 4s linear infinite;
 }
 
 .reveal {
@@ -132,7 +147,7 @@ body {
   }
   .section {
     min-height: auto;
-    padding: 1rem 0; /* Giảm từ 3rem xuống 1rem để thu hẹp khoảng cách */
+    padding: 0.5rem 0; /* Giảm từ 1rem xuống 0.5rem */
   }
   .bg-layer {
     display: block; /* Hiển thị lại lớp nền riêng cho từng section */

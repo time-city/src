@@ -2,7 +2,7 @@
    CLIENTS SECTION STYLES
    ============================================ */
 .clients-section {
-  padding: clamp(2.5rem, 4vw, 3.25rem) 0;
+  padding: clamp(1rem, 2vw, 1.5rem) 0;
 }
 
 .clients-section .section-title {
@@ -28,7 +28,7 @@
 
 @media (max-width: 768px) {
   .clients-section {
-    padding: 1.5rem 0;
+    padding: 0.5rem 0;
   }
   .logo-frame {
     padding: 0.5rem;

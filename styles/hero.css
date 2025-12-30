@@ -2,9 +2,9 @@
    HERO SECTION STYLES
    ============================================ */
 .hero-section {
-  min-height: 100vh;
-  padding-top: 0 !important;
-  margin-top: -4rem;
+  min-height: auto; 
+  padding-top: 10rem !important; /* Tăng thêm padding để dịch xuống nhiều hơn */
+  margin-top: 0; 
   padding-bottom: 2rem;
   overflow: hidden;
 }
@@ -115,7 +115,7 @@
 }
 
 .hero-frame {
-  width: min(420px, 35vw); /* Thu nhỏ khung ảnh nhân vật trên Desktop */
+  width: min(550px, 45vw); /* Phóng to khung ảnh nhân vật trên Desktop */
   margin-left: auto;
   position: relative;
 }
@@ -142,7 +142,7 @@
   height: auto;
   display: block;
   object-fit: contain;
-  max-height: min(600px, 75vh); /* Giảm chiều cao tối đa */
+  max-height: min(750px, 85vh); /* Tăng chiều cao tối đa */
   filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
   animation: goldGlow 4s ease-in-out infinite; /* Hiệu ứng hào quang vàng lấp lánh */
 }
@@ -154,7 +154,9 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    min-height: 80vh; /* Giảm chiều cao hero trên mobile */
+    min-height: auto; 
+    padding-top: 8rem !important; /* Dịch nội dung xuống thấp hơn nữa trên mobile */
+    padding-bottom: 1rem;
     display: flex;
     align-items: center;
     overflow: hidden; /* Chặn phần backtitle tràn ra ngoài gây trượt ngang */
@@ -162,17 +164,19 @@
   .hero-content {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 1rem;
+    gap: 0;
   }
   .hero-visual {
     order: 1;
-    margin-bottom: 0.5rem;
   }
   .hero-text {
     order: 2;
+    position: relative;
+    z-index: 2;
   }
   .hero-title {
     font-size: clamp(3rem, 12vw, 4.5rem);
+    margin-top: 0;
     margin-bottom: 0.1rem;
   }
   .hero-tagline {
@@ -193,7 +197,7 @@
     gap: 1rem;
   }
   .hero-frame {
-    width: min(300px, 75vw); /* Thu nhỏ nhân vật trên mobile */
+    width: min(380px, 90vw); /* Phóng to nhân vật trên mobile */
     margin: 0 auto;
   }
   .hero-backtitle {
@@ -216,10 +220,10 @@
 
 @media (min-width: 1024px) {
   .hero-frame {
-    width: min(500px, 38vw); /* Thu nhỏ nhân vật trên màn hình lớn */
+    width: min(650px, 45vw); /* Phóng to nhân vật trên màn hình lớn */
   }
   .hero-photo {
-    height: min(70vh, 650px);
+    height: min(85vh, 800px);
     max-height: none;
   }
 }

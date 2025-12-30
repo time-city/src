@@ -3,7 +3,7 @@
    ============================================ */
 .event-section {
   min-height: auto;
-  padding: clamp(2.25rem, 3.5vw, 3.25rem) 0;
+  padding: clamp(1rem, 2vw, 1.5rem) 0; /* Giảm mạnh padding giữa các sự kiện */
 }
 
 .event-block {
@@ -168,7 +168,7 @@
 
 @media (max-width: 768px) {
   .event-section {
-    padding: 1.5rem 0; /* Giảm padding section sự kiện */
+    padding: 0.5rem 0; /* Giảm mạnh xuống còn 0.5rem trên mobile */
   }
   .event-header {
     margin-bottom: 0.75rem;
