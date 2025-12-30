@@ -1,0 +1,37 @@
+/* ============================================
+   CLIENTS SECTION STYLES
+   ============================================ */
+.clients-section {
+  padding: clamp(2.5rem, 4vw, 3.25rem) 0;
+}
+
+.clients-section .section-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem); /* Thu nhỏ tiêu đề khách hàng */
+  margin-bottom: var(--spacing-md);
+}
+
+.logo-frame {
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.55), rgba(243, 237, 220, 0.95)),
+              linear-gradient(135deg, #f3eddc 0%, #e8dfc5 100%);
+  border: 1px solid rgba(216, 181, 106, 0.7);
+  border-radius: 18px;
+  padding: clamp(1.4rem, 2.2vw, 1.75rem);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+}
+
+.clients-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .clients-section {
+    padding: 1.5rem 0;
+  }
+  .logo-frame {
+    padding: 0.5rem;
+  }
+}
+

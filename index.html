@@ -1,306 +1,72 @@
-  <!DOCTYPE html>
-  <html lang="vi">
-  <head>
-    <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="MC Thanh Tiến - Professional Master of Ceremonies">
-    <title>MC Thanh Tiến - Professional MC</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div id="global-bg" class="global-bg" aria-hidden="true"></div>
+  <meta name="description" content="MC Thanh Tiến - Professional Master of Ceremonies">
+  <title>MC Thanh Tiến - Professional MC</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=MonteCarlo&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS Split Files -->
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/hero.css">
+  <link rel="stylesheet" href="styles/about.css">
+  <link rel="stylesheet" href="styles/events.css">
+  <link rel="stylesheet" href="styles/clients.css">
+  <link rel="stylesheet" href="styles/contact.css">
+  <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+  <main id="main-content">
+    <!-- Các section sẽ được đặt trực tiếp ở đây hoặc load qua JS -->
+    <!-- Hiện tại tôi giữ cấu trúc phẳng để đảm bảo SEO và tốc độ load -->
+    
     <!-- Hero Section -->
-    <section id="hero" class="section hero-section">
-      <div class="bg-layer" style="background-image: url('asset/image/background/bg_1.png');"></div>
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-text">
-            <h1 class="hero-title">MC Thanh Tiến</h1>
-            <p class="hero-tagline">MC Event • Gala • Year End Party</p>
-            <p class="hero-bio">Với phong thái tự tin, khả năng xử lý tình huống linh hoạt cùng chất giọng truyền cảm, MC Thanh Tiến luôn là lựa chọn hàng đầu cho các chương trình sự kiện doanh nghiệp, lễ khai trương, hội nghị, tiệc tất niên và các hoạt động team-building.</p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="tel:+840902174751">Liên hệ ngay</a>
-            </div>
-            <div class="hero-stats">
-              <div class="stat-item">
-                <span class="stat-number" data-count-to="700" data-suffix="+">700+</span>
-                <span class="stat-label">Chương trình</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number" data-count-to="4" data-suffix="+">4+</span>
-                <span class="stat-label">Năm kinh nghiệm</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number" data-count-to="200" data-suffix="+">200+</span>
-                <span class="stat-label">Đối tác</span>
-              </div>
-            </div>
-          </div>
-          <div class="hero-visual" aria-hidden="true">
-            <div class="hero-backtitle" aria-hidden="true"></div>
-            <div class="hero-frame">
-              <img class="hero-photo" src="asset/image/Model/hero.JPG" alt="MC Thanh Tiến" loading="eager" decoding="async">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Personal Info Section -->
-    <section id="about" class="section personal-info-section">
-      <div class="bg-layer" style="background-image: url('asset/image/background/bg_2.png');"></div>
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="personal-info-card reveal">
-          <div class="personal-info-header">
-            <h2 class="personal-info-title">Thông tin cá nhân</h2>
-          </div>
-          <div class="personal-info-content">
-            <div class="personal-info-image">
-              <img class="model-visual model-visual--about" src="asset/image/Model/main.png" alt="MC Thanh Tiến" loading="lazy" decoding="async">
-              <div>
-                </div>
-            </div>
-            <div class="personal-info-text">
-              <div class="personal-stats">
-                <div class="personal-stat-item">
-                  <span class="personal-stat-label">Chiều cao</span>
-                  <span class="personal-stat-value">1m79</span>
-                </div>
-                <div class="personal-stat-item">
-                  <span class="personal-stat-label">Cân nặng</span>
-                  <span class="personal-stat-value">75kg</span>
-                </div>
-              </div>
-              <div class="personal-bio">
-                <p>Không chỉ đơn thuần là người dẫn dắt, Thanh Tiến còn là "người kể chuyện" đưa cảm xúc và thông điệp của chương trình đến gần hơn với khán giả. Kinh nghiệm nhiều năm trong nghề cùng sự tâm huyết, chỉn chu trong từng sự kiện giúp MC Thanh Tiến luôn ghi dấu ấn mạnh mẽ và nhận được sự tin tưởng từ các đối tác, doanh nghiệp trong và ngoài khu vực.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Activation Event Section -->
-    <section id="activation" class="section event-section">
-      <div class="bg-layer" style="background-image: url('asset/image/background/activation event.png');"></div>
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="event-block reveal">
-          <div class="event-header">
-            <h2 class="event-title">Activation Event</h2>
-            <p class="event-subtitle">Sự kiện kích hoạt thương hiệu</p>
-          </div>
-
-          <div class="event-stage">
-
-            <div class="event-collage-frame">
-              <div class="event-collage" data-event="activation" aria-label="Activation Event collage">
-                <div class="event-collage-item event-collage-item--1"><img data-slot="1" alt="Activation photo 1" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--2"><img data-slot="2" alt="Activation photo 2" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--3"><img data-slot="3" alt="Activation photo 3" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--4"><img data-slot="4" alt="Activation photo 4" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--5"><img data-slot="5" alt="Activation photo 5" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--6"><img data-slot="6" alt="Activation photo 6" loading="lazy" decoding="async"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  <!-- Activation Event (Extra) -->
-  <section id="activation-2" class="section event-section">
-    <div class="bg-layer" style="background-image: url('asset/image/background/activation event.png');"></div>
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="event-block reveal">
-        <div class="event-header">
-          <h2 class="event-title">Activation Event </h2>
-          <p class="event-subtitle">Trải nghiệm thương hiệu ấn tượng, kết nối khách hàng mục tiêu</p>
-        </div>
-
-        <div class="event-stage">
-
-          <div class="event-collage-frame">
-            <div class="event-collage" data-event="activation2" aria-label="Activation Event Extra collage">
-              <div class="event-collage-item event-collage-item--1"><img data-slot="1" alt="Activation extra photo 1" loading="lazy" decoding="async"></div>
-              <div class="event-collage-item event-collage-item--2"><img data-slot="2" alt="Activation extra photo 2" loading="lazy" decoding="async"></div>
-              <div class="event-collage-item event-collage-item--3"><img data-slot="3" alt="Activation extra photo 3" loading="lazy" decoding="async"></div>
-              <div class="event-collage-item event-collage-item--4"><img data-slot="4" alt="Activation extra photo 4" loading="lazy" decoding="async"></div>
-              <div class="event-collage-item event-collage-item--5"><img data-slot="5" alt="Activation extra photo 5" loading="lazy" decoding="async"></div>
-              <div class="event-collage-item event-collage-item--6"><img data-slot="6" alt="Activation extra photo 6" loading="lazy" decoding="async"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-    <!-- Gala Dinner Section -->
-    <section id="gala" class="section event-section">
-      <div class="bg-layer" style="background-image: url('asset/image/background/gala.png');"></div>
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="event-block reveal">
-          <div class="event-header">
-            <h2 class="event-title">Gala Dinner</h2>
-            <p class="event-subtitle">Sự kiện gala sang trọng, đẳng cấp</p>
-          </div>
-
-          <div class="event-stage">
-
-            <div class="event-collage-frame">
-              <div class="event-collage" data-event="gala" aria-label="Gala Dinner collage">
-                <div class="event-collage-item event-collage-item--1"><img data-slot="1" alt="Gala photo 1" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--2"><img data-slot="2" alt="Gala photo 2" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--3"><img data-slot="3" alt="Gala photo 3" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--4"><img data-slot="4" alt="Gala photo 4" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--5"><img data-slot="5" alt="Gala photo 5" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--6"><img data-slot="6" alt="Gala photo 6" loading="lazy" decoding="async"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Gala Dinner (Extra) -->
-    <section id="gala-plus" class="section event-section">
-      <div class="bg-layer" style="background-image: url('asset/image/background/gala.png');"></div>
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="event-block reveal">
-          <div class="event-header">
-            <h2 class="event-title">Gala Dinner Plus</h2>
-            <p class="event-subtitle">Khoảnh khắc rực rỡ, bùng nổ cảm xúc cùng những trải nghiệm đáng nhớ</p>
-          </div>
-
-          <div class="event-stage">
-
-            <div class="event-collage-frame">
-              <div class="event-collage" data-event="galaPlus" aria-label="Gala Dinner Extra collage">
-                <div class="event-collage-item event-collage-item--1"><img data-slot="1" alt="Gala extra photo 1" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--2"><img data-slot="2" alt="Gala extra photo 2" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--3"><img data-slot="3" alt="Gala extra photo 3" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--4"><img data-slot="4" alt="Gala extra photo 4" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--5"><img data-slot="5" alt="Gala extra photo 5" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--6"><img data-slot="6" alt="Gala extra photo 6" loading="lazy" decoding="async"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Year End Party -->
-    <section id="yearend" class="section event-section">
-      <div class="bg-layer" style="background-image: url('asset/image/background/yearend.png');"></div>
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="event-block reveal">
-          <div class="event-header">
-            <h2 class="event-title">Year End Party</h2>
-            <p class="event-subtitle">Tiệc cuối năm ấm áp, đầy cảm xúc</p>
-          </div>
-
-          <div class="event-stage">
-
-            <div class="event-collage-frame">
-              <div class="event-collage" data-event="yearend" aria-label="Year End Party collage">
-                <div class="event-collage-item event-collage-item--1"><img data-slot="1" alt="Year End photo 1" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--2"><img data-slot="2" alt="Year End photo 2" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--3"><img data-slot="3" alt="Year End photo 3" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--4"><img data-slot="4" alt="Year End photo 4" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--5"><img data-slot="5" alt="Year End photo 5" loading="lazy" decoding="async"></div>
-                <div class="event-collage-item event-collage-item--6"><img data-slot="6" alt="Year End photo 6" loading="lazy" decoding="async"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="clients" class="section clients-section">
-      <div class="bg-layer" style="background-image: url('asset/image/background/bg_1.png');"></div>
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="clients-content reveal">
-          <h2 class="section-title">Đơn vị khách hàng từng hợp tác</h2>
-          <div class="logo-frame">
-            <div class="clients-grid">
-            
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div id="hero-placeholder"></div>
+    
+    <!-- About Section -->
+    <div id="about-placeholder"></div>
+    
+    <!-- Event Sections -->
+    <div id="activation-1-placeholder"></div>
+    <div id="activation-2-placeholder"></div>
+    <div id="activation-3-placeholder"></div>
+    
+    <div id="gala-1-placeholder"></div>
+    <div id="gala-2-placeholder"></div>
+    
+    <div id="teambuilding-1-placeholder"></div>
+    <div id="teambuilding-2-placeholder"></div>
+    
+    <div id="client-meeting-1-placeholder"></div>
+    
+    <div id="yearend-1-placeholder"></div>
+    <div id="yearend-2-placeholder"></div>
+    
+    <!-- Clients Section -->
+    <div id="clients-placeholder"></div>
+    
     <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
-      <div class="bg-layer" style="background-image: url('asset/image/background/bg_2.png');"></div>
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="contact-card reveal">
-          <div class="contact-header">
-            <p class="contact-subtitle">Kết nối & hợp tác</p>
-            <h2 class="contact-title">Liên hệ</h2>
-          </div>
-          <div class="contact-list">
-            <div class="contact-item">
-              <span class="contact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" class="contact-icon-svg" role="presentation">
-                  <path d="M4 6.75A2.75 2.75 0 0 1 6.75 4h10.5A2.75 2.75 0 0 1 20 6.75v10.5A2.75 2.75 0 0 1 17.25 20H6.75A2.75 2.75 0 0 1 4 17.25V6.75Zm2.75-.25a.75.75 0 0 0-.75.75v.33l5.66 3.78a.75.75 0 0 0 .68 0L18 7.58v-.33a.75.75 0 0 0-.75-.75H6.75Zm11.25 3.41-4.87 3.25a2.25 2.25 0 0 1-2.36 0L5.9 9.91v7.34c0 .41.34.75.75.75h10.7c.41 0 .75-.34.75-.75V9.91Z" />
-                </svg>
-              </span>
-              <span class="contact-text">Truongthanhtien28022002@gmail.com</span>
-            </div>
-            <div class="contact-item">
-              <span class="contact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" class="contact-icon-svg" role="presentation">
-                  <path d="M8.83 3.5c.52 0 .97.37 1.07.88l.64 3.17c.08.4-.1.81-.45 1.02l-1.26.78a11.5 11.5 0 0 0 5.12 5.12l.78-1.26c.21-.35.62-.53 1.02-.45l3.17.64c.5.1.88.55.88 1.07v2.23a1.25 1.25 0 0 1-1.25 1.25h-.5c-7.18 0-13-5.82-13-13v-.5C5.25 4.12 5.87 3.5 6.6 3.5h2.23Z" />
-                </svg>
-              </span>
-              <span class="contact-text">0902174751</span>
-            </div>
-            <div class="contact-item">
-              <span class="contact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" class="contact-icon-svg" role="presentation">
-                  <path d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75S6.615 21.75 12 21.75s9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm1.91 6.03c-.322-.046-.656-.08-1.01-.08-.86 0-.9.15-.9.87v1.08h1.76l-.24 1.9h-1.52v5.28h-2.04v-5.28H8.97v-1.9h1.99v-1.26c0-1.6.93-2.5 2.56-2.5.67 0 1.17.07 1.4.12l-0.02 1.78Z" />
-                </svg>
-              </span>
-              <a class="contact-link" href="https://www.facebook.com/thanhtien.truong.77770" target="_blank" rel="noopener">Facebook</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div id="contact-placeholder"></div>
+    
+    <!-- Thank You Section -->
+    <div id="thankyou-placeholder"></div>
+  </main>
 
-    <section id="thankyou" class="section thankyou-section">
-      <div class="bg-layer" style="background-image: url('asset/image/background/bg_2.png');"></div>
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="thankyou-poster reveal">
-          <div class="thankyou-copy">
-            <h2 class="thankyou-title">Thank You</h2>
-            <p class="thankyou-message">Rất mong được đồng hành cùng bạn trong những sự kiện sắp tới.</p>
-          </div>
-
-        <div class="thankyou-visual" aria-hidden="true">
-          <img class="model-visual model-visual--thankyou" src="asset/image/Model/thankyou.png" alt="MC Thanh Tiến" loading="lazy" decoding="async">
-        </div>
-      </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 MC Thanh Tiến. All rights reserved.</p>
     </div>
-  </section>
+  </footer>
 
+  <!-- UI Components -->
+  <button id="scroll-top" class="scroll-top" aria-label="Scroll to top">↑</button>
 
-  
-
-  
-
-
-  <!-- Loading Overlay -->
   <div id="page-loader" class="page-loader">
     <div class="loader-content">
       <div class="loader-spinner"></div>
@@ -309,7 +75,53 @@
   </div>
 
   <script src="main.js"></script>
+  <script>
+    // Simple loader to inject sections if they are separated
+    // For production, it's better to keep them in index.html for SEO
+    async function loadSection(id, path) {
+      const placeholder = document.getElementById(id + '-placeholder');
+      if (placeholder) {
+        try {
+          // Thêm query string thời gian để tránh cache trình duyệt
+          const response = await fetch('sections/' + path + '?v=' + Date.now());
+          const html = await response.text();
+          placeholder.innerHTML = html;
+        } catch (e) {
+          console.error('Error loading section:', path, e);
+        }
+      }
+    }
+
+    // Load sections
+    Promise.all([
+      loadSection('hero', 'hero.html'),
+      loadSection('about', 'about.html'),
+      loadSection('activation-1', 'activation-1.html'),
+      loadSection('activation-2', 'activation-2.html'),
+      loadSection('activation-3', 'activation-3.html'),
+      loadSection('gala-1', 'gala-1.html'),
+      loadSection('gala-2', 'gala-2.html'),
+      loadSection('teambuilding-1', 'teambuilding-1.html'),
+      loadSection('teambuilding-2', 'teambuilding-2.html'),
+      loadSection('client-meeting-1', 'client-meeting-1.html'),
+      loadSection('yearend-1', 'yearend-1.html'),
+      loadSection('yearend-2', 'yearend-2.html'),
+      loadSection('clients', 'clients.html'),
+      loadSection('contact', 'contact1.html'),
+      loadSection('thankyou', 'thankyou.html')
+    ]).then(() => {
+        console.log('Tất cả section đã được tải');
+        // Khởi tạo các hiệu ứng sau khi các section đã được tải xong
+        if (window.initMCProfile) {
+            window.initMCProfile();
+        }
+    }).catch(err => {
+        console.error('Lỗi khi tải các section:', err);
+        // Vẫn cố gắng ẩn loader nếu có lỗi để người dùng không bị kẹt
+        if (window.initMCProfile) {
+            window.initMCProfile();
+        }
+    });
+  </script>
 </body>
 </html>
-
-

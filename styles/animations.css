@@ -1,0 +1,132 @@
+/* ============================================
+   ANIMATIONS & EFFECTS
+   ============================================ */
+
+/* Animations */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes heroFloat {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.02); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes heroShine {
+  0% { text-shadow: 0 0 10px rgba(216, 181, 106, 0.3); }
+  50% { text-shadow: 0 0 25px rgba(216, 181, 106, 0.6), 0 0 40px rgba(216, 181, 106, 0.2); }
+  100% { text-shadow: 0 0 10px rgba(216, 181, 106, 0.3); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes goldGlow {
+  0% { filter: drop-shadow(0 0 10px rgba(216, 181, 106, 0.4)) drop-shadow(0 0 20px rgba(216, 181, 106, 0.2)); }
+  50% { filter: drop-shadow(0 0 25px rgba(216, 181, 106, 0.7)) drop-shadow(0 0 45px rgba(216, 181, 106, 0.4)); }
+  100% { filter: drop-shadow(0 0 10px rgba(216, 181, 106, 0.4)) drop-shadow(0 0 20px rgba(216, 181, 106, 0.2)); }
+}
+
+@keyframes sparkleFloat {
+  0% { transform: translateY(0) scale(0); opacity: 0; }
+  20% { opacity: 0.7; }
+  50% { transform: translateY(-30px) scale(1.1); opacity: 0.8; }
+  80% { opacity: 0.7; }
+  100% { transform: translateY(-60px) scale(0); opacity: 0; }
+}
+
+.sparkles-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px; /* Giảm lại kích thước hạt */
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 5px #fff, 
+    0 0 12px var(--gold); /* Giảm độ tỏa sáng */
+  animation: sparkleFloat 6s infinite ease-in-out; /* Chạy chậm lại cho nhẹ nhàng */
+  opacity: 0;
+}
+
+.animate-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes btnPulse {
+  0% { transform: scale(1); box-shadow: 0 10px 26px rgba(0,0,0,0.38), 0 0 18px rgba(216, 181, 106, 0.42); }
+  50% { transform: scale(1.05); box-shadow: 0 12px 35px rgba(0,0,0,0.44), 0 0 28px rgba(232, 201, 122, 0.6); }
+  100% { transform: scale(1); box-shadow: 0 10px 26px rgba(0,0,0,0.38), 0 0 18px rgba(216, 181, 106, 0.42); }
+}
+
+@keyframes backgroundZoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes textPulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.02); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+@keyframes footerShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes goldSweep {
+  0% { transform: translateX(-120%); opacity: 0; }
+  10% { opacity: 1; }
+  50% { opacity: 1; }
+  90% { opacity: 0; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+
+/* Apply Sweep Effect */
+.event-collage-frame,
+.thankyou-poster,
+.contact-card,
+.logo-frame {
+  overflow: hidden; /* Đảm bảo hiệu ứng ánh kim không tràn ra ngoài */
+}
+
+.event-collage-frame::after,
+.thankyou-poster::after,
+.contact-card::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 215, 120, 0.15) 45%, rgba(255, 215, 120, 0.45) 50%, rgba(255, 215, 120, 0.15) 55%, transparent 65%);
+  transform: translateX(-120%);
+  animation: goldSweep 4.5s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+

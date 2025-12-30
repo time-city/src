@@ -1,0 +1,142 @@
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Color Palette - Luxury Dark + Gold */
+  --bg-dark: #0b0f14;
+  --bg-overlay: rgba(11, 15, 26, 0.75);
+  --gold: #d8b56a;
+  --gold-light: #e8c97a;
+  --gold-dark: #b8944a;
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', 'Playfair Display', serif;
+  --font-script: 'MonteCarlo', cursive;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+  
+  /* Border & Radius */
+  --border-gold: 1px solid rgba(216, 181, 106, 0.4);
+  --border-gold-glow: 0 0 20px rgba(216, 181, 106, 0.3);
+  --radius: 8px;
+  --radius-lg: 12px;
+  
+  /* Transitions */
+  --transition: all 0.2s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+  overscroll-behavior-y: none; /* Giới hạn không cho kéo quá đầu/cuối trang trên mobile */
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Chặn hoàn toàn trượt ngang */
+  width: 100%;
+  position: relative;
+}
+
+/* Common Section Styles */
+.section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xl) 0;
+  overflow: visible;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  width: 100%;
+}
+
+.bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 15, 26, 0.6) 0%,
+    rgba(11, 15, 26, 0.4) 50%,
+    rgba(11, 15, 26, 0.6) 100%
+  );
+  z-index: 1;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 15px rgba(216, 181, 106, 0.3);
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  .section {
+    min-height: auto;
+    padding: 1rem 0; /* Giảm từ 3rem xuống 1rem để thu hẹp khoảng cách */
+  }
+  .bg-layer {
+    display: block; /* Hiển thị lại lớp nền riêng cho từng section */
+    background-attachment: scroll; /* Trên mobile thường không hỗ trợ fixed background tốt, dùng scroll để mượt hơn */
+  }
+}
+

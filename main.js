@@ -1,317 +1,221 @@
 /**
- * MC Thanh Tiến - Profile Website
- * Main JavaScript - Load images, reveal animations
+ * MC THANH TIẾN - PROFILE WEBSITE
+ * JavaScript Chính - Quản lý tải ảnh, hiệu ứng cuộn và đếm số
  */
 
 (function() {
-  'use strict';
+    'use strict';
 
-  // ============================================
-  // Image Paths Configuration
-  // ============================================
-  const imageConfig = {
-    activation: {
-      folder: 'asset/image/Activation Event/',
-      images: [
-        'image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-5.jpg', 'image-9.jpg', 'image-10.jpg'
-      ]
-    },
-    activation2: {
-      folder: 'asset/image/ActivationEvent2/',
-      images: [
-        'LQT07986.jpeg', 'LQT08001.jpeg', 'LQT08032.jpeg', 'IMG_4499.WEBP', 'IMG_4498.WEBP', 'IMG_4497.WEBP'
-      ]
-    },
-    gala: {
-      folder: 'asset/image/Gala Dinner/',
-      images: [
-        'image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg', 'image-6.jpg'
-      ]
-    },
-    galaPlus: {
-      folder: 'asset/image/Gala Dinner/',
-      images: [
-        'image-9.jpg', 'image-13.png', 'image-7.jpg', 'image-10.jpg', 'image-11.jpg', 'image-12.jpg'
-      ]
-    },
-    yearend: {
-      folder: 'asset/image/Year End Party/',
-      images: [
-        'image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg', 'image-10.jpg'
-      ]
-    }
-  };
-
-  const logos = [
-    'asset/image/Logo/logo-1.png',
-    'asset/image/Logo/logo-2.png',
-    'asset/image/Logo/logo-3.png',
-    'asset/image/Logo/logo-4.jpg',
-    'asset/image/Logo/logo-5.png',
-    'asset/image/Logo/logo-6.jpg',
-    'asset/image/Logo/logo-7.avif',
-    'asset/image/Logo/logo-8.jpg',
-    'asset/image/Logo/logo-9.webp',
-    'asset/image/Logo/logo-10.jpg',
-    'asset/image/Logo/logo-11.png',
-    'asset/image/Logo/logo-12.png',
-    'asset/image/Logo/logo-13.png',
-    'asset/image/Logo/logo-14.png',
-    'asset/image/Logo/logo-15.png',
-    'asset/image/Logo/logo-16.png',
-    'asset/image/Logo/logo-17.png'
-  ];
-
-  // ============================================
-  // Load Image with Skeleton - Simplified
-  // ============================================
-  function safeSetImage(img, imagePath) {
-    if (!img) return;
-    img.src = imagePath;
-
-    img.onload = function() {
-      img.classList.add('loaded');
-    };
-
-    img.onerror = function() {
-      const lastDot = imagePath.lastIndexOf('.');
-      if (lastDot > 0) {
-        const basePath = imagePath.substring(0, lastDot);
-        const extensions = ['jpg', 'JPG', 'png', 'PNG', 'webp', 'WEBP'];
-        const currentExt = imagePath.substring(lastDot + 1);
-        const nextExt = extensions.find(ext => ext !== currentExt && ext.toLowerCase() !== currentExt.toLowerCase());
-        if (nextExt) img.src = `${basePath}.${nextExt}`;
-      }
-    };
-  }
-
-  // ============================================
-  // Load Collage Images
-  // ============================================
-  function mountEventCollage(eventKey, config) {
-    const collage = document.querySelector(`.event-collage[data-event="${eventKey}"]`);
-    if (!collage) return;
-
-    // Fixed 6-slot template; do NOT reorder DOM
-    const slots = collage.querySelectorAll('img[data-slot]');
-    const images = config.images.slice(0, 6);
-
-    slots.forEach((img, idx) => {
-      const imageFile = images[idx];
-      if (!imageFile) return;
-      const imagePath = `${config.folder}${imageFile}`;
-      safeSetImage(img, imagePath);
-    });
-  }
-
-  // ============================================
-  // Reveal Animation on Scroll - Simplified
-  // ============================================
-  function initRevealAnimation() {
-    // Show all elements immediately - no animation for better performance
-    const revealElements = document.querySelectorAll('.reveal');
-    revealElements.forEach(element => {
-      element.classList.add('visible');
-    });
-  }
-
-  // ============================================
-  // Count Up Numbers (Hero Stats)
-  // ============================================
-  function initCountUp() {
-    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return;
-
-    const statsRoot = document.querySelector('.hero-stats');
-    if (!statsRoot) return;
-
-    const numbers = Array.from(statsRoot.querySelectorAll('.stat-number[data-count-to]'));
-    if (numbers.length === 0) return;
-
-    function formatNumber(n) {
-      try {
-        return new Intl.NumberFormat('vi-VN').format(n);
-      } catch (_) {
-        return String(n);
-      }
-    }
-
-    function animateOne(el) {
-      if (el.dataset.animated === 'true') return;
-      el.dataset.animated = 'true';
-
-      const target = Number(el.dataset.countTo || el.getAttribute('data-count-to') || 0);
-      const suffix = el.dataset.suffix || '';
-      const duration = Number(el.dataset.duration || 1100);
-
-      const startValue = 0;
-      const startTime = performance.now();
-
-      function easeOutCubic(t) {
-        return 1 - Math.pow(1 - t, 3);
-      }
-
-      function tick(now) {
-        const t = Math.min(1, (now - startTime) / duration);
-        const eased = easeOutCubic(t);
-        const value = Math.round(startValue + (target - startValue) * eased);
-        el.textContent = `${formatNumber(value)}${suffix}`;
-        if (t < 1) requestAnimationFrame(tick);
-      }
-
-      // start from 0 immediately for visual pop
-      el.textContent = `${formatNumber(0)}${suffix}`;
-      requestAnimationFrame(tick);
-    }
-
-    // Run when visible (fallback: run immediately)
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            numbers.forEach(animateOne);
-            io.disconnect();
-          }
-        });
-      }, { threshold: 0.35 });
-
-      io.observe(statsRoot);
-    } else {
-      numbers.forEach(animateOne);
-    }
-  }
-
-  // ============================================
-  // Page Loader Management
-  // ============================================
-  function hidePageLoader() {
-    const loader = document.getElementById('page-loader');
-    if (loader) {
-      loader.classList.add('hidden');
-      setTimeout(() => {
-        loader.style.display = 'none';
-      }, 300);
-    }
-  }
-
-  function renderClientLogos() {
-    const grid = document.querySelector('.clients-grid');
-    if (!grid) return;
-
-    const isMobile = window.innerWidth <= 768;
-    const list = logos;
-
-    grid.innerHTML = list.map((src, idx) => {
-      const alt = `Logo đối tác ${idx + 1}`;
-      return `<img src="${src}" alt="${alt}" loading="lazy" decoding="async">`;
-    }).join('');
-  }
-
-  function syncHeroBacktitle() {
-    const back = document.querySelector('.hero-backtitle');
-    const title = document.querySelector('.hero-title');
-    if (!back || !title) return;
-    back.textContent = title.textContent || '';
-  }
-
-  function initMobileGlobalBackground() {
-    const globalBg = document.getElementById('global-bg');
-    if (!globalBg) return;
-
-    const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
-    if (!isMobile) {
-      globalBg.style.display = 'none';
-      return;
-    }
-
-    globalBg.style.display = 'block';
-
-    const sections = Array.from(document.querySelectorAll('.section'));
-    if (!sections.length) return;
-
-    const getBg = (section) => {
-      const layer = section.querySelector('.bg-layer');
-      if (!layer) return '';
-      return layer.style.backgroundImage || window.getComputedStyle(layer).backgroundImage || '';
-    };
-
-    let currentBg = getBg(sections[0]) || '';
-    if (currentBg) {
-      globalBg.style.backgroundImage = currentBg;
-    }
-
-    let lastChange = performance.now();
-    const MIN_DELAY = 700; // avoid rapid swaps that feel laggy
-
-    const io = new IntersectionObserver((entries) => {
-      let best = null;
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (!best || entry.intersectionRatio > best.intersectionRatio) {
-            best = entry;
-          }
+    // ============================================
+    // CẤU HÌNH ĐƯỜNG DẪN ẢNH
+    // ============================================
+    const imageConfig = {
+        activation1: {
+            folder: 'asset/image/Activation Event/',
+            images: [
+                'image-1.jpg', '4.jpg', 'image-4.jpg', 'image-5.jpg', 
+                'photo-5-16848156045491461276672.png', 'Viettel-21.5.2023-16-of-41.jpg'
+            ]
+        },
+        activation2: {
+            folder: 'asset/image/ActivationEvent2/',
+            images: [
+                'IMG_1566.JPG', 
+                'Huda-Carnival-la-dip-e-moi-nguoi-co-them-khong-gian-vui-choi---giai-tri-ben-ban-be.jpeg', 
+                'to_chuc_su_kien_tai_nghe_an_10.jpg', 
+                'IMG_4496.JPG', 
+                'IMG_4497.WEBP', 
+                'IMG_4498.WEBP'
+            ]
+        },
+        activation3: {
+            folder: 'asset/image/ActivationEvent3/',
+            images: [
+                'IMG_7069.JPG', 'IMG_7241.JPG', 'IMG_4501.JPG', 
+                'IMG_4504.JPG', 'IMG_7116.JPG', 'IMG_4503.JPG'
+            ]
+        },
+        gala1: {
+            folder: 'asset/image/Gala Dinner/',
+            images: ['image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg', 'image-6.jpg']
+        },
+        gala2: {
+            folder: 'asset/image/Gala Dinner/',
+            images: ['image-9.jpg', 'image-13.png', 'image-7.jpg', 'image-10.jpg', 'image-11.jpg', 'image-12.jpg']
+        },
+        teambuilding1: {
+            folder: 'asset/image/TeamBuilding/',
+            images: [
+                'IMG_2514.JPG', 'IMG_9282.JPG', 'IMG_9284.JPG', 
+                'IMG_9286.JPG', 'IMG_9287.JPG', 'IMG_9289.JPG'
+            ]
+        },
+        teambuilding2: {
+            folder: 'asset/image/TeamBuilding2/',
+            images: [
+                'LQT03850.jpeg', 'LQT08547.jpeg', 'LQT08080.jpeg', 
+                'LQT08001.jpeg', 'LQT07986.jpeg', 'LQT07910.jpeg'
+            ]
+        },
+        clientMeeting1: {
+            folder: 'asset/image/client_meeting/',
+            images: [
+                'LQT01548.jpeg', 'LQT01122.jpeg', 'LQT01058.jpeg', 'IMG_2987.JPG', 
+                'IMG_2984.JPG', 'LQT00932.jpeg'
+            ]
+        },
+        yearend1: {
+            folder: 'asset/image/Year End Party/',
+            images: [
+               'IMG_4426.JPG','SHINHAN (352).jpeg', 'SHINHAN (334).jpeg', 'SHINHAN (531).jpeg',  
+                'SHINHAN (235).jpeg', 'SHINHAN (168).jpeg', 
+            ]
+        },
+        yearend2: {
+            folder: 'asset/image/Year End Party2/',
+            images: [
+               'IMG_3347.JPG',  'IMG_0162.JPG', 'IMG_0051.JPG', 'SHINHAN (403).jpeg', 
+                'SHINHAN (398).jpeg', 'IMG_3348.JPG'
+            ]
         }
-      });
-      if (!best) return;
+    };
 
-      const nextBg = getBg(best.target);
-      if (!nextBg || nextBg === currentBg) return;
+    const logos = [
+        'asset/image/Logo/logo-1.png', 'asset/image/Logo/logo-2.png', 'asset/image/Logo/logo-3.png',
+        'asset/image/Logo/logo-4.jpg', 'asset/image/Logo/logo-5.png', 'asset/image/Logo/logo-6.jpg',
+        'asset/image/Logo/logo-7.avif', 'asset/image/Logo/logo-8.jpg', 'asset/image/Logo/logo-9.webp',
+        'asset/image/Logo/logo-10.jpg', 'asset/image/Logo/logo-11.png', 'asset/image/Logo/logo-12.png',
+        'asset/image/Logo/logo-13.png', 'asset/image/Logo/logo-14.png', 'asset/image/Logo/logo-15.png',
+        'asset/image/Logo/logo-16.png', 'asset/image/Logo/logo-17.png'
+    ];
 
-       // throttle changes to reduce jank on mobile
-      const now = performance.now();
-      if (now - lastChange < MIN_DELAY) return;
-      lastChange = now;
+    // ============================================
+    // TẢI ẢNH AN TOÀN VÀ XỬ LÝ LỖI
+    // ============================================
+    function safeSetImage(img, imagePath) {
+        if (!img) return;
+        img.src = imagePath;
 
-      globalBg.style.opacity = '0';
-      setTimeout(() => {
-        globalBg.style.backgroundImage = nextBg;
-        globalBg.style.opacity = '1';
-        currentBg = nextBg;
-      }, 220);
-    }, { threshold: [0.25, 0.4, 0.6] });
+        img.onload = () => img.classList.add('loaded');
 
-    sections.forEach((section) => io.observe(section));
-  }
+        img.onerror = () => {
+            const lastDot = imagePath.lastIndexOf('.');
+            if (lastDot > 0) {
+                const basePath = imagePath.substring(0, lastDot);
+                const extensions = ['jpg', 'png', 'webp', 'JPG', 'PNG', 'WEBP'];
+                const currentExt = imagePath.substring(lastDot + 1);
+                const nextExt = extensions.find(ext => ext.toLowerCase() !== currentExt.toLowerCase());
+                if (nextExt) img.src = `${basePath}.${nextExt}`;
+            }
+        };
+    }
 
-  // Model PNGs are rendered as floating visuals (no frame/skeleton needed)
+    // ============================================
+    // HIỂN THỊ COLLAGE CHO TỪNG SỰ KIỆN
+    // ============================================
+    function mountEventCollage(eventKey, config) {
+        const collage = document.querySelector(`.event-collage[data-event="${eventKey}"]`);
+        if (!collage) return;
 
-  // ============================================
-  // Initialize on DOM Ready
-  // ============================================
-  function init() {
-    // Collage: master 6-slot template per section
-    mountEventCollage('activation', imageConfig.activation);
-    mountEventCollage('activation2', imageConfig.activation2);
-    mountEventCollage('gala', imageConfig.gala);
-    mountEventCollage('galaPlus', imageConfig.galaPlus);
-    mountEventCollage('yearend', imageConfig.yearend);
+        const slots = collage.querySelectorAll('img[data-slot]');
+        const images = config.images.slice(0, 6);
 
-    // Initialize reveal animation
-    initRevealAnimation();
+        slots.forEach((img, idx) => {
+            if (images[idx]) {
+                safeSetImage(img, `${config.folder}${images[idx]}`);
+            }
+        });
+    }
 
-    // Hero count up
-    initCountUp();
+    // ============================================
+    // HIỆU ỨNG ĐẾM SỐ (STATISTICS)
+    // ============================================
+    function initCountUp() {
+        const statsRoot = document.querySelector('.hero-stats');
+        if (!statsRoot) return;
 
-    // Sync hero back-title text for mobile poster effect
-    syncHeroBacktitle();
+        const numbers = statsRoot.querySelectorAll('.stat-number[data-count-to]');
+        
+        const animateOne = (el) => {
+            if (el.dataset.animated === 'true') return;
+            el.dataset.animated = 'true';
 
-    // Mobile global background swap (parallax-like)
-    initMobileGlobalBackground();
+            const target = parseInt(el.dataset.countTo);
+            const suffix = el.dataset.suffix || '';
+            const duration = 1500;
+            const startTime = performance.now();
 
-    // Render client logos
-    renderClientLogos();
+            const tick = (now) => {
+                const progress = Math.min(1, (now - startTime) / duration);
+                const value = Math.floor(progress * target);
+                el.textContent = value.toLocaleString('vi-VN') + suffix;
+                if (progress < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        };
 
-    // Simplified loader - hide after short delay
-    setTimeout(() => {
-      hidePageLoader();
-    }, 1500);
-  }
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0] && entries[0].isIntersecting) {
+                numbers.forEach(animateOne);
+                observer.disconnect();
+            }
+        }, { threshold: 0.5 });
 
-  // Run when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+        observer.observe(statsRoot);
+    }
 
+    // ============================================
+    // NÚT CUỘN LÊN ĐẦU TRANG
+    // ============================================
+    function initScrollTop() {
+        const btn = document.getElementById('scroll-top');
+        if (!btn) return;
+
+        window.addEventListener('scroll', () => {
+            btn.classList.toggle('show', window.scrollY > 300);
+        }, { passive: true });
+
+        btn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ============================================
+    // QUẢN LÝ LOADER TRANG
+    // ============================================
+    function hidePageLoader() {
+        const loader = document.getElementById('page-loader');
+        if (loader) {
+            loader.classList.add('hidden');
+            setTimeout(() => loader.style.display = 'none', 500);
+        }
+    }
+
+    // ============================================
+    // KHỞI TẠO TẤT CẢ
+    // ============================================
+    function init() {
+        // Tải collage cho các section
+        Object.keys(imageConfig).forEach(key => mountEventCollage(key, imageConfig[key]));
+        
+        // Khởi tạo các tính năng khác
+        initCountUp();
+        initScrollTop();
+        
+        // Hiển thị các phần tử reveal
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+
+        // Ẩn loader
+        hidePageLoader();
+    }
+
+    // Xuất hàm khởi tạo ra window để index.html có thể gọi
+    window.initMCProfile = init;
+
+    // Tự động khởi chạy nếu các phần tử đã có sẵn trong DOM (không dùng loader)
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!document.getElementById('hero-placeholder')) {
+            init();
+        }
+    });
 })();
