@@ -132,10 +132,14 @@
     "img5 img6 img1";
 }
 
-@media (max-width: 768px) {
-  .event-collage--reverse {
-    grid-template-columns: 0.28fr 0.28fr 0.44fr !important;
-  }
+/* Collage 5 ảnh cho Other Events */
+.event-collage--5-imgs {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1.2fr 1fr;
+  grid-template-areas:
+    "img1 img1 img2"
+    "img3 img4 img5";
+  height: clamp(300px, 45vw, 550px);
 }
 
 .event-collage-item {

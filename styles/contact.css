@@ -203,7 +203,7 @@
 
 @media (max-width: 768px) {
   .thankyou-section {
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem var(--spacing-xs);
   }
   .thankyou-banner-frame {
     aspect-ratio: 16 / 10;

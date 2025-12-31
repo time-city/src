@@ -143,7 +143,7 @@ body {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 var(--spacing-sm);
+    padding: 0 var(--spacing-xs);
   }
   .section {
     min-height: auto;
