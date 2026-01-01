@@ -41,11 +41,11 @@
         },
         gala2: {
       folder: 'asset/image/Gala Dinner/',
-            images: ['image-9.jpg', 'image-13.png', 'image-7.jpg', 'image-10.jpg', 'image-11.jpg', 'image-12.jpg']
+            images: ['image-9.jpg', 'image-13.png', 'image-7.jpg', 'new1.jpeg', 'new2.jpeg', 'image-12.jpg']
         },
         gala3: {
             folder: 'asset/image/Gala3/',
-            images: [ 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg','image-1.jpg', 'image-6.jpg']
+            images: [ 'image-2.jpg', 'new3.jpeg', 'new4.jpeg', 'new5.jpeg','image-1.jpg', 'image-6.jpg']
         },
         teambuilding1: {
             folder: 'asset/image/TeamBuilding/',
@@ -61,6 +61,10 @@
                 'LQT08001.jpeg', 'LQT07986.jpeg', 'LQT07910.jpeg'
       ]
     },
+        teambuilding3: {
+            folder: 'asset/image/TeamBuilding3/',
+            images: ['image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg', 'image-6.jpg']
+        },
         clientMeeting1: {
             folder: 'asset/image/client_meeting/',
       images: [
@@ -166,19 +170,21 @@
     // HIỆU ỨNG ĐẾM SỐ (STATISTICS)
   // ============================================
   function initCountUp() {
-    const statsRoot = document.querySelector('.hero-stats');
-    if (!statsRoot) return;
+    // Tìm cả ở hero (nếu còn) và about
+    const statsRoots = document.querySelectorAll('.hero-stats, .about-stats-grid');
+    if (statsRoots.length === 0) return;
 
+    statsRoots.forEach(statsRoot => {
         const numbers = statsRoot.querySelectorAll('.stat-number[data-count-to]');
         
         const animateOne = (el) => {
-      if (el.dataset.animated === 'true') return;
-      el.dataset.animated = 'true';
+            if (el.dataset.animated === 'true') return;
+            el.dataset.animated = 'true';
 
             const target = parseInt(el.dataset.countTo);
-      const suffix = el.dataset.suffix || '';
-            const duration = 1500;
-      const startTime = performance.now();
+            const suffix = el.dataset.suffix || '';
+            const duration = 2000; // Tăng thời gian đếm lên 2s cho mượt
+            const startTime = performance.now();
 
             const tick = (now) => {
                 const progress = Math.min(1, (now - startTime) / duration);
@@ -186,18 +192,19 @@
                 el.textContent = value.toLocaleString('vi-VN') + suffix;
                 if (progress < 1) requestAnimationFrame(tick);
             };
-      requestAnimationFrame(tick);
+            requestAnimationFrame(tick);
         };
 
         const observer = new IntersectionObserver((entries) => {
             if (entries[0] && entries[0].isIntersecting) {
-            numbers.forEach(animateOne);
+                numbers.forEach(animateOne);
                 observer.disconnect();
-          }
-        }, { threshold: 0.5 });
+            }
+        }, { threshold: 0.2 }); // Giảm threshold để kích hoạt sớm hơn
 
         observer.observe(statsRoot);
-    }
+    });
+  }
 
     // ============================================
     // NÚT CUỘN LÊN ĐẦU TRANG
@@ -226,10 +233,140 @@
           }
   }
 
+    // ============================================
+    // TRANG TRÍ GALLERY (VỆT SÁNG & BOKEH)
+    // ============================================
+    function decorateGalleries() {
+        const galleries = document.querySelectorAll('.event-section--gallery');
+        galleries.forEach(section => {
+            // Thêm vệt sáng (Light Streak)
+            if (!section.querySelector('.light-streak')) {
+                const streak = document.createElement('div');
+                streak.className = 'light-streak';
+                section.appendChild(streak);
+            }
+
+            // Thêm vài hạt Bokeh nổi mờ
+            for (let i = 0; i < 2; i++) {
+                const bokeh = document.createElement('div');
+                bokeh.className = 'bokeh-circle';
+                bokeh.style.top = `${Math.random() * 80}%`;
+                bokeh.style.left = `${Math.random() * 80}%`;
+                bokeh.style.animationDelay = `${Math.random() * 5}s`;
+                section.appendChild(bokeh);
+            }
+        });
+    }
+
   // ============================================
+    // HIỆU ỨNG HẠT LẤP LÁNH (SPARKLES) CHO TẤT CẢ SECTION
+    // ============================================
+    function injectSparkles() {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+            if (section.querySelector('.sparkles-container')) return;
+
+            const container = document.createElement('div');
+            container.className = 'sparkles-container';
+            container.setAttribute('aria-hidden', 'true');
+
+            const count = 10;
+            for (let i = 0; i < count; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.top = `${Math.random() * 90 + 5}%`;
+                sparkle.style.left = `${Math.random() * 90 + 5}%`;
+                sparkle.style.animationDelay = `${Math.random() * 4}s`;
+                container.appendChild(sparkle);
+            }
+            section.appendChild(container);
+        });
+    }
+
+    // ============================================
+    // TỰ ĐỘNG PHÁT VIDEO CÓ ÂM THANH KHI CUỘN TỚI
+    // ============================================
+    function initAutoPlayVideos() {
+        const videos = document.querySelectorAll('.profile-video');
+        if (videos.length === 0) return;
+
+        // Theo dõi xem người dùng đã tương tác chưa để mở khóa âm thanh toàn trang
+        let audioUnlocked = false;
+
+        const unlockAndUnmuteAll = () => {
+            if (audioUnlocked) return;
+            audioUnlocked = true;
+            
+            // Unmute tất cả video đang chạy
+            videos.forEach(v => {
+                if (!v.paused) {
+                    v.muted = false;
+                    updateMuteUI(v);
+                }
+            });
+            
+            document.removeEventListener('click', unlockAndUnmuteAll);
+            document.removeEventListener('touchstart', unlockAndUnmuteAll);
+        };
+
+        document.addEventListener('click', unlockAndUnmuteAll);
+        document.addEventListener('touchstart', unlockAndUnmuteAll);
+
+        const updateMuteUI = (video) => {
+            const container = video.closest('.video-container');
+            if (!container) return;
+            const unmuteIcon = container.querySelector('.unmute-icon');
+            const muteIcon = container.querySelector('.mute-icon');
+            if (unmuteIcon && muteIcon) {
+                unmuteIcon.style.display = video.muted ? 'none' : 'block';
+                muteIcon.style.display = video.muted ? 'block' : 'none';
+            }
+        };
+
+        // Gán sự kiện cho nút mute thủ công
+        document.querySelectorAll('.mute-toggle').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const video = btn.closest('.video-container').querySelector('video');
+                if (video) {
+                    video.muted = !video.muted;
+                    audioUnlocked = true; // Coi như đã tương tác
+                    updateMuteUI(video);
+                }
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+                
+                if (entry.isIntersecting) {
+                    // Khi lướt tới: Phát video
+                    video.muted = !audioUnlocked;
+                    updateMuteUI(video);
+                    
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(() => {
+                            video.muted = true;
+                            video.play();
+                            updateMuteUI(video);
+                        });
+                    }
+                } else {
+                    // Khi lướt qua: Dừng video
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        videos.forEach(video => observer.observe(video));
+    }
+
+    // ============================================
     // KHỞI TẠO TẤT CẢ
-  // ============================================
-  function init() {
+    // ============================================
+    function init() {
         // Thêm hạt lấp lánh cho tất cả các section
         injectSparkles();
 
@@ -237,8 +374,9 @@
         Object.keys(imageConfig).forEach(key => mountEventCollage(key, imageConfig[key]));
 
         // Khởi tạo các tính năng khác
-    initCountUp();
-    initScrollTop();
+        initCountUp();
+        initScrollTop();
+        initAutoPlayVideos();
 
         // Hiển thị các phần tử reveal
         document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));

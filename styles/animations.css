@@ -36,6 +36,16 @@
   100% { filter: drop-shadow(0 0 10px rgba(216, 181, 106, 0.4)) drop-shadow(0 0 20px rgba(216, 181, 106, 0.2)); }
 }
 
+@keyframes borderRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes borderGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
 @keyframes sparkleFloat {
   0% { transform: translateY(0) scale(0); opacity: 0; }
   20% { opacity: 0.7; }
@@ -54,14 +64,12 @@
 
 .sparkle {
   position: absolute;
-  width: 4px; /* Giảm lại kích thước hạt */
-  height: 4px;
+  width: 3px;
+  height: 3px;
   background: #fff;
   border-radius: 50%;
-  box-shadow: 
-    0 0 5px #fff, 
-    0 0 12px var(--gold); /* Giảm độ tỏa sáng */
-  animation: sparkleFloat 6s infinite ease-in-out; /* Chạy chậm lại cho nhẹ nhàng */
+  box-shadow: 0 0 5px #fff, 0 0 10px var(--gold);
+  animation: sparkleFloat 5s infinite ease-in-out;
   opacity: 0;
 }
 

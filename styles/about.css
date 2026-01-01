@@ -5,7 +5,75 @@
   min-height: auto; 
   display: flex;
   align-items: center;
-  padding: 0 0; /* Xoá hẳn padding để giảm chiều cao tối đa */
+  padding: 2rem 0; /* Tăng lại padding để ngăn cách với Hero */
+}
+
+/* Stats Row at the top of About */
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  margin-top: 0rem; /* Thêm margin top để đẩy khối này xuống */
+  margin-bottom: clamp(1rem, 5vw, 4rem);
+  padding: 1rem 0; /* Tăng padding để thoáng hơn */
+  background: none; 
+  border: none; 
+  backdrop-filter: none; 
+}
+
+.about-stat-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.about-stat-card .stat-number {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 7vw, 5rem); /* Tăng mạnh font size số */
+  font-weight: 700;
+  line-height: 1;
+  
+  /* Hiệu ứng chữ sáng liên tục */
+  background: linear-gradient(
+    90deg, 
+    var(--gold-dark) 0%, 
+    var(--gold-light) 25%, 
+    #fff 50%, 
+    var(--gold-light) 75%, 
+    var(--gold-dark) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: footerShimmer 3s linear infinite;
+}
+
+.about-stat-card .stat-label {
+  font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .about-stats-grid {
+    grid-template-columns: repeat(3, 1fr); /* Giữ nằm ngang trên mobile */
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
+  
+  .about-stat-card .stat-number {
+    font-size: 2rem; /* Tăng font size số trên mobile */
+  }
+  
+  .about-stat-card .stat-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.05em;
+  }
 }
 
 .about-poster {
