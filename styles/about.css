@@ -214,20 +214,24 @@
   }
 
   .about-image-box {
-    margin-left: -15%; /* Đưa hình model dịch sát vào khung chữ hơn */
-    margin-top: -3rem; 
-    margin-bottom: -6rem; /* Khống chế phần thừa trên mobile */
-    z-index: 1;
+    margin-left: -30%; /* Đưa hình model dịch sát hơn nữa */
+    margin-top: -10rem; 
+    margin-bottom: -4rem; 
+    z-index: 2;
   }
 
   .about-image-box .model-visual--about {
-    max-height: 340px; /* Tăng nhẹ kích thước ảnh */
-    transform: scale(1.3); /* Phóng to ảnh thêm để không bị giảm kích cỡ */
+    max-height: 450px; 
+    transform: scale(2.4); 
+    transform-origin: center;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   .about-image-box .model-visual--about {
-    max-height: 240px;
+    max-height: 380px;
+    transform: scale(2.1);
+    margin-right: -15%;
   }
 }

@@ -89,10 +89,10 @@
         otherEvents: {
             folder: 'asset/image/other/',
             images: [
-                'IMG_0161.JPG', 'IMG_1564.JPG', 'IMG_4501.JPG', 'IMG_7116.JPG', 'IMG_9087.JPG',
-                'IMG_9088.JPG', 'IMG_9099.JPG', 'IMG_9284 (1).JPG', 'LQT01122.jpeg', 'LQT01470.jpeg',
-                'LQT03850 (1).jpeg', 'LQT07888.jpeg', 'LQT08547.jpeg', 'SHINHAN (168).jpeg', 'SHINHAN (403).jpeg',
-                'SHINHAN (531).jpeg', 'TTD03357.jpeg', 'TTD03828.jpeg', 'TTD04105.jpeg'
+                'SHINHAN (168).jpeg', 'IMG_4501.JPG', 'IMG_7116.JPG', 'IMG_9087.JPG', 'TTD04105.jpeg',
+                'TTD03357.jpeg', 'SHINHAN (403).jpeg', 'TTD03828.jpeg', 'SHINHAN (531).jpeg', 'LQT01122.jpeg',
+                'IMG_9088.JPG', 'IMG_9099.JPG', 'LQT01470.jpeg', 'IMG_0161.JPG', 'LQT03850 (1).jpeg', 
+                'IMG_1564.JPG', 'IMG_9284 (1).JPG', 'LQT07888.jpeg', 'LQT08547.jpeg'
             ]
     }
   };
@@ -322,7 +322,8 @@
             audioUnlocked = true;
             
             videos.forEach(v => {
-                if (!v.paused) {
+                // Chỉ tự động mở tiếng nếu không có thuộc tính data-keep-muted
+                if (!v.paused && !v.hasAttribute('data-keep-muted')) {
                     v.muted = false;
                     updateMuteUI(v);
                 }
@@ -363,7 +364,12 @@
                 const video = entry.target;
                 
                 if (entry.isIntersecting) {
-                    video.muted = !audioUnlocked;
+                    // Chỉ tự động mở tiếng nếu đã tương tác và video không được yêu cầu giữ im lặng
+                    if (audioUnlocked && !video.hasAttribute('data-keep-muted')) {
+                        video.muted = false;
+                    } else {
+                        video.muted = true;
+                    }
                     updateMuteUI(video);
                     
                     const playPromise = video.play();
