@@ -82,13 +82,18 @@
         yearend2: {
             folder: 'asset/image/Year End Party2/',
             images: [
-               'IMG_3347.JPG',  'IMG_0162.JPG', 'IMG_0051.JPG', 'SHINHAN (403).jpeg', 
+               'IMG_3347.JPG',  'IMG_0162.JPG', 'IMG_9087.JPG', 'SHINHAN (403).jpeg', 
                 'SHINHAN (398).jpeg', 'IMG_3348.JPG'
             ]
         },
         otherEvents: {
-            folder: 'asset/image/other_events/',
-            images: ['image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg']
+            folder: 'asset/image/other/',
+            images: [
+                'IMG_0161.JPG', 'IMG_1564.JPG', 'IMG_4501.JPG', 'IMG_7116.JPG', 'IMG_9087.JPG',
+                'IMG_9088.JPG', 'IMG_9099.JPG', 'IMG_9284 (1).JPG', 'LQT01122.jpeg', 'LQT01470.jpeg',
+                'LQT03850 (1).jpeg', 'LQT07888.jpeg', 'LQT08547.jpeg', 'SHINHAN (168).jpeg', 'SHINHAN (403).jpeg',
+                'SHINHAN (531).jpeg', 'TTD03357.jpeg', 'TTD03828.jpeg', 'TTD04105.jpeg'
+            ]
     }
   };
 
@@ -149,22 +154,42 @@
         });
     }
 
-    // ============================================
+      // ============================================
     // HIỂN THỊ COLLAGE CHO TỪNG SỰ KIỆN
-  // ============================================
-  function mountEventCollage(eventKey, config) {
-    const collage = document.querySelector(`.event-collage[data-event="${eventKey}"]`);
-    if (!collage) return;
+    // ============================================
+    function mountEventCollage(eventKey, config) {
+        // Xử lý Collage mặc định (6 ảnh)
+        const collage = document.querySelector(`.event-collage[data-event="${eventKey}"]`);
+        if (collage) {
+            const slots = collage.querySelectorAll('img[data-slot]');
+            const images = config.images.slice(0, 6);
+            slots.forEach((img, idx) => {
+                if (images[idx]) {
+                    safeSetImage(img, `${config.folder}${images[idx]}`);
+                }
+            });
+        }
 
-    const slots = collage.querySelectorAll('img[data-slot]');
-    const images = config.images.slice(0, 6);
-
-    slots.forEach((img, idx) => {
-            if (images[idx]) {
-                safeSetImage(img, `${config.folder}${images[idx]}`);
-            }
-    });
-  }
+        // Xử lý Dynamic Grid (Tất cả ảnh trong folder) - Dành riêng cho Other Events
+        const dynamicGrid = document.querySelector(`.event-dynamic-grid[data-event="${eventKey}"]`);
+        if (dynamicGrid) {
+            dynamicGrid.innerHTML = ''; // Clear existing
+            config.images.forEach((imgName, idx) => {
+                const item = document.createElement('div');
+                item.className = 'event-collage-item';
+                
+                const img = document.createElement('img');
+                img.alt = `Other event photo ${idx + 1}`;
+                img.loading = 'lazy';
+                img.decoding = 'async';
+                
+                item.appendChild(img);
+                dynamicGrid.appendChild(item);
+                
+                safeSetImage(img, `${config.folder}${imgName}`);
+            });
+        }
+    }
 
   // ============================================
     // HIỆU ỨNG ĐẾM SỐ (STATISTICS)
@@ -287,17 +312,15 @@
     // TỰ ĐỘNG PHÁT VIDEO CÓ ÂM THANH KHI CUỘN TỚI
     // ============================================
     function initAutoPlayVideos() {
-        const videos = document.querySelectorAll('.profile-video');
+        const videos = document.querySelectorAll('.profile-video, .hero-video');
         if (videos.length === 0) return;
 
-        // Theo dõi xem người dùng đã tương tác chưa để mở khóa âm thanh toàn trang
         let audioUnlocked = false;
 
         const unlockAndUnmuteAll = () => {
             if (audioUnlocked) return;
             audioUnlocked = true;
             
-            // Unmute tất cả video đang chạy
             videos.forEach(v => {
                 if (!v.paused) {
                     v.muted = false;
@@ -323,14 +346,13 @@
             }
         };
 
-        // Gán sự kiện cho nút mute thủ công
         document.querySelectorAll('.mute-toggle').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const video = btn.closest('.video-container').querySelector('video');
                 if (video) {
                     video.muted = !video.muted;
-                    audioUnlocked = true; // Coi như đã tương tác
+                    audioUnlocked = true;
                     updateMuteUI(video);
                 }
             });
@@ -341,7 +363,6 @@
                 const video = entry.target;
                 
                 if (entry.isIntersecting) {
-                    // Khi lướt tới: Phát video
                     video.muted = !audioUnlocked;
                     updateMuteUI(video);
                     
@@ -354,11 +375,10 @@
                         });
                     }
                 } else {
-                    // Khi lướt qua: Dừng video
                     video.pause();
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.2 });
 
         videos.forEach(video => observer.observe(video));
     }

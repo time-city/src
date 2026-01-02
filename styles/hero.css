@@ -94,8 +94,7 @@
 
 /* Visual / Model Image */
 .hero-frame {
-  width: 70%; /* Đổi lại thành 70% theo yêu cầu */
-  margin-left: auto;
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: flex-end;
@@ -112,7 +111,7 @@
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .hero-section .container {
-    padding: 0 1rem !important; /* Giảm padding để không bị đẩy */
+    padding: 0 0rem !important; /* Giảm padding để không bị đẩy */
     margin: 0 auto;
   }
   .hero-content {
@@ -131,7 +130,7 @@
 
   .hero-visual {
     order: 2;
-    margin-top: 2rem;
+    margin-top: -1.5rem; /* Kéo model lên gần nút bấm hơn */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -162,8 +161,10 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    min-height: 100vh;
-    padding-top: 2rem;
+    min-height: auto;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    align-items: flex-start !important;
   }
 
   .hero-content {
@@ -171,6 +172,8 @@
     justify-items: center;
     align-items: center;
     text-align: center;
+    gap: 0 !important;
+    padding-top: 2rem;
   }
 
   .hero-text {
@@ -201,32 +204,36 @@
   .hero-subtitle {
     font-size: 1rem;
     letter-spacing: 0.2em;
-    margin-bottom: 1rem; /* Giảm margin bottom */
+    margin-bottom: 1rem;
     width: 100%;
     text-align: center;
   }
 
   .hero-quote {
     font-size: 0.95rem;
-    margin-bottom: 1.5rem; /* Giảm margin bottom */
-    max-width: 90%;
+    margin-bottom: 1.5rem;
+    max-width: 280px; /* Thu hẹp đường kẻ và khối chữ */
     border-left: none;
     border-top: 2px solid var(--gold);
     padding-left: 0;
     padding-top: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-actions {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 0; /* Đảm bảo không có margin bottom thừa */
   }
 
   .hero-visual {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 24px;
+    margin-top: -1rem;
+    margin-bottom: 0 !important;
     order: 2;
   }
 
@@ -234,13 +241,18 @@
     justify-content: center;
     width: 100%;
     margin: 0;
+    display: flex;
+    align-items: flex-end;
   }
 
   .hero-photo {
-    max-width: 92vw;
-    max-height: 55vh;
+    max-width: 100vw;
+    max-height: none;
+    width: 100%;
     height: auto;
     margin: 0 auto;
+    display: block;
+    vertical-align: bottom;
   }
   
   .hero-overlay {

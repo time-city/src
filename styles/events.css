@@ -118,7 +118,8 @@
 }
 
 /* Collage Frame với đường viền vàng kim rõ nét và tia sáng chạy quanh */
-.event-collage-frame {
+.event-collage-frame,
+.video-container {
   position: relative;
   border: 2px solid var(--gold); /* Viền vàng kim rõ ràng, dày dặn */
   border-radius: 20px;
@@ -130,17 +131,24 @@
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
 }
 
-/* Hiệu ứng tia sáng óng ánh lướt trên đường viền */
-.event-collage-frame::before {
+.video-container {
+  padding: 0; /* Video không cần padding bên trong khung */
+}
+
+/* Hiệu ứng tia sáng óng ánh lướt trên đường viền (Luxury Shimmer) */
+.event-collage-frame::before,
+.video-container::before {
   content: "";
   position: absolute;
-  inset: -2px; /* Bao phủ chính xác đường viền */
+  inset: -4px; /* Phóng nhẹ ra ngoài để bao phủ toàn bộ viền */
   background: conic-gradient(
     from 0deg,
     transparent 0%,
-    transparent 40%,
-    rgba(255, 255, 255, 0.8) 50%, /* Tia sáng trắng lấp lánh */
-    transparent 60%,
+    transparent 35%,
+    var(--gold-light) 45%,
+    #fff 50%, 
+    var(--gold-light) 55%,
+    transparent 65%,
     transparent 100%
   );
   -webkit-mask: 
@@ -149,15 +157,25 @@
   -webkit-mask-composite: xor;
           mask-composite: exclude;
   border-radius: inherit;
-  animation: borderRotate 4s linear infinite;
+  animation: borderRotate 3s linear infinite;
   z-index: 2;
   pointer-events: none;
-  filter: brightness(1.5);
+  filter: brightness(1.2) blur(1px);
 }
 
-/* Xoá lớp after cũ để không bị nhòe màu */
-.event-collage-frame::after {
-  display: none;
+/* Thêm lớp lấp lánh điểm (Glow Dots) trên viền */
+.event-collage-frame::after,
+.video-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid transparent;
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%) no-repeat;
+  background-size: 200% 100%;
+  animation: goldSweep 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 3;
 }
 
 .event-caption {
@@ -225,6 +243,29 @@
   height: clamp(300px, 45vw, 550px);
 }
 
+/* Dynamic Grid for Other Events */
+.event-dynamic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  min-height: 300px;
+}
+
+.event-dynamic-grid .event-collage-item {
+  aspect-ratio: 1 / 1;
+}
+
+@media (max-width: 768px) {
+  .event-dynamic-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 cột trên mobile */
+    gap: 4px; /* Giảm gap để ảnh trông khít và đẹp hơn kiểu recap */
+  }
+  
+  .event-dynamic-grid .event-collage-item {
+    border-radius: 4px; /* Bo góc nhỏ lại cho phù hợp với kích thước ảnh tí hon */
+  }
+}
+
 .event-collage-item {
   position: relative;
   overflow: hidden;
@@ -288,6 +329,7 @@
   border: 2px solid var(--gold);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
   transition: transform 0.4s ease;
+  display: block;
 }
 
 .video-container:hover {
@@ -299,6 +341,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  background: #000;
 }
 
 /* Custom Minimal Controls */

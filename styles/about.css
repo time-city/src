@@ -13,9 +13,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(1rem, 3vw, 2rem);
-  margin-top: 0rem; /* Thêm margin top để đẩy khối này xuống */
-  margin-bottom: clamp(1rem, 5vw, 4rem);
-  padding: 1rem 0; /* Tăng padding để thoáng hơn */
+  margin: 0 !important; /* Xoá toàn bộ margin top/bottom/left/right */
+  padding: 0.5rem 0; 
   background: none; 
   border: none; 
   backdrop-filter: none; 
@@ -81,11 +80,11 @@
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  padding: 0.5rem 0;
+  padding: 0; /* Xoá padding của poster */
 }
 
 .about-header {
-  margin-bottom: 0.8rem; /* Giảm margin */
+  margin-bottom: 0.5rem; /* Giảm margin của header */
   text-align: left;
 }
 
