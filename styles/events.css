@@ -508,11 +508,12 @@
 
 @media (max-width: 768px) {
   .event-section {
-    padding: 0.5rem 0; /* Giảm mạnh xuống còn 0.5rem trên mobile */
+    padding: 0 !important; /* Xóa triệt để padding trên/dưới trên mobile */
   }
   .event-header {
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
   }
   .event-collage-frame {
     padding: 8px; /* Giảm padding khung ảnh trên mobile */

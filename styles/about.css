@@ -214,15 +214,15 @@
   }
 
   .about-image-box {
-    margin-left: -30%; /* Đưa hình model dịch sát hơn nữa */
+    margin-left: -20%; /* Đưa hình model dịch sát hơn nữa */
     margin-top: -10rem; 
-    margin-bottom: -4rem; 
+    margin-bottom: -8rem; 
     z-index: 2;
   }
 
   .about-image-box .model-visual--about {
     max-height: 450px; 
-    transform: scale(2.4); 
+    transform: scale(3); 
     transform-origin: center;
     filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
   }
