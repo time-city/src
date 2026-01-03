@@ -173,7 +173,7 @@
     align-items: center;
     text-align: center;
     gap: 0 !important;
-    padding-top: 2rem;
+    padding-top: 1rem; /* Giảm nhẹ padding top để nhường chỗ cho quote dịch lên */
   }
 
   .hero-text {
@@ -186,6 +186,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    margin-bottom: -1rem; /* Kéo toàn bộ khối chữ dịch lên trên một chút */
   }
 
   .hero-title,
@@ -232,7 +233,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: -1rem;
+    margin-top: 1.5rem; /* Thay vì âm, dùng dương để đẩy ảnh model xuống, tránh che chữ */
     margin-bottom: 0 !important;
     order: 2;
   }
@@ -253,6 +254,9 @@
     margin: 0 auto;
     display: block;
     vertical-align: bottom;
+    transform: scale(1.2); /* Phóng to ảnh model */
+    transform-origin: bottom center; /* Giữ gốc ở chân để ảnh mọc lên trên */
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
   }
   
   .hero-overlay {

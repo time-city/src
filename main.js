@@ -64,7 +64,7 @@
         teambuilding3: {
             folder: 'asset/image/TeamBuilding3/',
             images: ['image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg', 'image-6.jpg']
-        },
+    },
         clientMeeting1: {
             folder: 'asset/image/client_meeting/',
       images: [
@@ -93,7 +93,7 @@
                 'TTD03357.jpeg', 'SHINHAN (403).jpeg', 'TTD03828.jpeg', 'SHINHAN (531).jpeg', 'LQT01122.jpeg',
                 'IMG_9088.JPG', 'IMG_9099.JPG', 'LQT01470.jpeg', 'IMG_0161.JPG', 'LQT03850 (1).jpeg', 
                 'IMG_1564.JPG', 'IMG_9284 (1).JPG', 'LQT07888.jpeg', 'LQT08547.jpeg'
-            ]
+      ]
     }
   };
 
@@ -129,7 +129,7 @@
 
   // ============================================
     // HIỆU ỨNG HẠT LẤP LÁNH (SPARKLES) CHO TẤT CẢ SECTION
-    // ============================================
+  // ============================================
     function injectSparkles() {
         const sections = document.querySelectorAll('.section');
         sections.forEach(section => {
@@ -151,12 +151,12 @@
                 container.appendChild(sparkle);
             }
             section.appendChild(container);
-        });
-    }
+    });
+  }
 
-      // ============================================
+  // ============================================
     // HIỂN THỊ COLLAGE CHO TỪNG SỰ KIỆN
-    // ============================================
+  // ============================================
     function mountEventCollage(eventKey, config) {
         // Xử lý Collage mặc định (6 ảnh)
         const collage = document.querySelector(`.event-collage[data-event="${eventKey}"]`);
@@ -189,7 +189,7 @@
                 safeSetImage(img, `${config.folder}${imgName}`);
             });
         }
-    }
+  }
 
   // ============================================
     // HIỆU ỨNG ĐẾM SỐ (STATISTICS)
@@ -203,13 +203,13 @@
         const numbers = statsRoot.querySelectorAll('.stat-number[data-count-to]');
         
         const animateOne = (el) => {
-            if (el.dataset.animated === 'true') return;
-            el.dataset.animated = 'true';
+      if (el.dataset.animated === 'true') return;
+      el.dataset.animated = 'true';
 
             const target = parseInt(el.dataset.countTo);
-            const suffix = el.dataset.suffix || '';
+      const suffix = el.dataset.suffix || '';
             const duration = 2000; // Tăng thời gian đếm lên 2s cho mượt
-            const startTime = performance.now();
+      const startTime = performance.now();
 
             const tick = (now) => {
                 const progress = Math.min(1, (now - startTime) / duration);
@@ -217,14 +217,14 @@
                 el.textContent = value.toLocaleString('vi-VN') + suffix;
                 if (progress < 1) requestAnimationFrame(tick);
             };
-            requestAnimationFrame(tick);
+      requestAnimationFrame(tick);
         };
 
         const observer = new IntersectionObserver((entries) => {
             if (entries[0] && entries[0].isIntersecting) {
-                numbers.forEach(animateOne);
+            numbers.forEach(animateOne);
                 observer.disconnect();
-            }
+          }
         }, { threshold: 0.2 }); // Giảm threshold để kích hoạt sớm hơn
 
         observer.observe(statsRoot);
@@ -255,7 +255,7 @@
     if (loader) {
       loader.classList.add('hidden');
             setTimeout(() => loader.style.display = 'none', 500);
-          }
+    }
   }
 
     // ============================================
@@ -269,7 +269,7 @@
                 const streak = document.createElement('div');
                 streak.className = 'light-streak';
                 section.appendChild(streak);
-            }
+  }
 
             // Thêm vài hạt Bokeh nổi mờ
             for (let i = 0; i < 2; i++) {
@@ -281,11 +281,11 @@
                 section.appendChild(bokeh);
             }
         });
-    }
+  }
 
   // ============================================
     // HIỆU ỨNG HẠT LẤP LÁNH (SPARKLES) CHO TẤT CẢ SECTION
-    // ============================================
+  // ============================================
     function injectSparkles() {
         const sections = document.querySelectorAll('.section');
         sections.forEach(section => {
@@ -306,7 +306,7 @@
             }
             section.appendChild(container);
         });
-    }
+  }
 
     // ============================================
     // TỰ ĐỘNG PHÁT VIDEO CÓ ÂM THANH KHI CUỘN TỚI
@@ -369,7 +369,7 @@
                         video.muted = false;
                     } else {
                         video.muted = true;
-                    }
+  }
                     updateMuteUI(video);
                     
                     const playPromise = video.play();
@@ -380,19 +380,19 @@
                             updateMuteUI(video);
                         });
                     }
-                } else {
+      } else {
                     video.pause();
-                }
-            });
+      }
+    });
         }, { threshold: 0.2 });
 
         videos.forEach(video => observer.observe(video));
-    }
+  }
 
-    // ============================================
+  // ============================================
     // KHỞI TẠO TẤT CẢ
-    // ============================================
-    function init() {
+  // ============================================
+  function init() {
         // Thêm hạt lấp lánh cho tất cả các section
         injectSparkles();
 
@@ -400,8 +400,8 @@
         Object.keys(imageConfig).forEach(key => mountEventCollage(key, imageConfig[key]));
 
         // Khởi tạo các tính năng khác
-        initCountUp();
-        initScrollTop();
+    initCountUp();
+    initScrollTop();
         initAutoPlayVideos();
 
         // Hiển thị các phần tử reveal
