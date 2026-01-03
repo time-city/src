@@ -388,13 +388,11 @@
 
 @media (max-width: 768px) {
   #other-events {
-    height: 100vh;
-    height: 100svh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px !important;
-    overflow: hidden;
+    height: auto !important;
+    min-height: auto !important;
+    display: block;
+    padding: 1.5rem 0 !important;
+    overflow: visible;
     background: var(--bg-dark);
   }
 
@@ -410,16 +408,21 @@
     margin: 0 !important;
     padding: 0 !important;
     border: none !important;
+    width: 100%;
   }
 
   #other-events .event-title {
     display: block !important;
-    font-size: 1.3rem !important;
+    font-size: 1.1rem !important; 
+    margin-top: 0 !important;
     margin-bottom: 12px !important;
     opacity: 1 !important;
     visibility: visible !important;
     text-align: center;
     width: 100%;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    text-transform: uppercase;
   }
 
   #other-events .event-stage {
@@ -430,7 +433,7 @@
   .event-dynamic-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 8.5vh; 
+    grid-auto-rows: 85px; 
     gap: 6px;
     width: 100%;
     grid-auto-flow: row;
@@ -462,10 +465,12 @@
   /* Bỏ phần ảnh cuối chiếm hết dòng để Grid tự khít theo 4 hàng */
   #other-events .event-subtitle {
     margin-top: 15px !important;
-    font-size: 0.75rem !important;
+    margin-bottom: 0 !important;
+    font-size: 0.8rem !important;
     text-align: center;
     display: block !important;
     width: 100%;
+    line-height: 1.4;
   }
 
   .event-dynamic-grid .event-collage-item::after {
