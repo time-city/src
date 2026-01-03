@@ -321,10 +321,15 @@
             if (audioUnlocked) return;
             audioUnlocked = true;
             
+            // Tìm video đầu tiên đang phát để bật tiếng, đảm bảo chỉ có 1 nguồn âm thanh
+            let unmutedAny = false;
             videos.forEach(v => {
-                // Chỉ tự động mở tiếng nếu không có thuộc tính data-keep-muted
-                if (!v.paused && !v.hasAttribute('data-keep-muted')) {
+                if (!v.paused && !unmutedAny) {
                     v.muted = false;
+                    unmutedAny = true;
+                    updateMuteUI(v);
+                } else {
+                    v.muted = true;
                     updateMuteUI(v);
                 }
             });
@@ -352,7 +357,19 @@
                 e.stopPropagation();
                 const video = btn.closest('.video-container').querySelector('video');
                 if (video) {
-                    video.muted = !video.muted;
+                    const willBeMuted = !video.muted;
+                    
+                    if (!willBeMuted) {
+                        // Nếu đang bật tiếng video này, tắt tiếng tất cả các video khác
+                        videos.forEach(v => {
+                            if (v !== video) {
+                                v.muted = true;
+                                updateMuteUI(v);
+                            }
+                        });
+                    }
+                    
+                    video.muted = willBeMuted;
                     audioUnlocked = true;
                     updateMuteUI(video);
                 }
@@ -364,12 +381,20 @@
                 const video = entry.target;
                 
                 if (entry.isIntersecting) {
-                    // Chỉ tự động mở tiếng nếu đã tương tác và video không được yêu cầu giữ im lặng
-                    if (audioUnlocked && !video.hasAttribute('data-keep-muted')) {
+                    // TỰ ĐỘNG BẬT TIẾNG: 
+                    // Khi một video xuất hiện, nếu đã có tương tác người dùng (audioUnlocked), 
+                    // ta sẽ tắt tiếng tất cả các video khác trước khi bật tiếng video này.
+                    if (audioUnlocked) {
+                        videos.forEach(v => {
+                            if (v !== video) {
+                                v.muted = true;
+                                updateMuteUI(v);
+                            }
+                        });
                         video.muted = false;
                     } else {
                         video.muted = true;
-  }
+                    }
                     updateMuteUI(video);
                     
                     const playPromise = video.play();
@@ -380,10 +405,10 @@
                             updateMuteUI(video);
                         });
                     }
-      } else {
+                } else {
                     video.pause();
-      }
-    });
+                }
+            });
         }, { threshold: 0.2 });
 
         videos.forEach(video => observer.observe(video));
