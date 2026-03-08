@@ -51,6 +51,13 @@
             folder: 'asset/image/Gala4/',
             images: ['image-3.jpg', 'image-2.jpg', 'image-1.jpg', 'image-4.jpg', 'image-5.jpg', 'image-6.jpg']
         },
+        gala6: {
+            folder: 'asset/image/Gala6/',
+            images: [
+                'SAG08883.jpg', 'SAG08449.jpg', 'SAG08642.jpg',
+                'SAG08716.jpg', 'SAG08430.jpg', 'SAG08905.jpg'
+            ]
+        },
         teambuilding1: {
             folder: 'asset/image/TeamBuilding/',
             images: [
@@ -88,6 +95,30 @@
             images: [
                 'IMG_3347.JPG', 'IMG_0162.JPG', 'IMG_9087.JPG', 'SHINHAN (403).jpeg',
                 'SHINHAN (398).jpeg', 'IMG_3348.JPG'
+            ]
+        },
+        yearend3: {
+            folder: 'asset/image/Year End Party3/',
+            images: [
+                '7407af9c-fb39-42d2-b525-75486da1c839.jpeg',
+                '973ffccc-4e64-49d2-81d5-3aef24650272.jpeg',
+                'b73eaf4e-5b91-406e-851d-85dd187ba218.jpeg',
+
+                'a3922ee1-37e6-41ff-a10a-03198835fd88.jpeg',
+                'cbc2ef13-3bfb-4bd2-b3cb-64305a3e65b1.jpeg',
+                'f2e533ac-14fa-4537-942a-da0c8820ad45.jpeg'
+            ]
+        },
+        yearend4: {
+            folder: 'asset/image/Year End Party4/',
+            images: [
+                'DSC00708.JPG',
+
+                '2beddac8-f829-4497-9967-11afa0cf206a.jpeg',
+                '2e3db9b7-8325-4d26-b39c-25321d79d412.jpeg',
+                '7c3c1047-6c1b-41ce-883a-b20f0a8b0755.jpeg',
+                'b73b0d23-2565-4d4e-9cb1-eecfbb832534.jpeg',
+                'f1c83f95-d9c5-4da2-908c-07590e2ac5e1.jpeg',
             ]
         },
         otherEvents: {
