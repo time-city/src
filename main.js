@@ -54,8 +54,19 @@
         gala6: {
             folder: 'asset/image/Gala6/',
             images: [
-                'SAG08883.jpg', 'SAG08449.jpg', 'SAG08642.jpg',
-                'SAG08716.jpg', 'SAG08430.jpg', 'SAG08905.jpg'
+                'SAG08430.jpg', 'SAG08449.jpg', 'SAG08642.jpg',
+                'SAG08716.jpg', 'SAG08883.jpg', 'SAG08905.jpg'
+            ]
+        },
+        gala7: {
+            folder: 'asset/image/Gala7/',
+            images: [
+                '1679d2fc-cf23-493b-9dea-f395ce44bb51.jpeg',
+                '27b83388-940c-4b30-8f89-7427354d2d63 (1).jpeg',
+                '54d3e174-5194-42dd-a0c7-970b50503c0.jpeg',
+                '5da18ff2-c07a-4d00-bf7e-5a281505552c.jpeg',
+                '9f35a47c-37e2-45ac-9c57-b0f37b1c4c1c.jpeg',
+                'c85e5eb9-d4c0-4c3a-890b-103d098926dd.jpeg'
             ]
         },
         teambuilding1: {
