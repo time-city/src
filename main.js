@@ -41,7 +41,7 @@
         },
         gala2: {
             folder: 'asset/image/Gala Dinner/',
-            images: ['image-9.jpg', 'image-13.png', 'image-7.jpg', 'new1.jpeg', 'new2.jpeg', 'image-12.jpg']
+            images: ['image-9.jpg', 'image-7.jpg', 'new1.jpeg', 'new2.jpeg', 'image-12.jpg', 'image-41.jpg']
         },
         gala3: {
             folder: 'asset/image/Gala3/',
@@ -87,6 +87,14 @@
             folder: 'asset/image/TeamBuilding3/',
             images: ['image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg', 'image-6.jpg']
         },
+        teambuilding4: {
+            folder: 'asset/image/teambuilding4/',
+            images: [
+                '2aOboQjrZbFMWbRqNDN5ElAI7Md7RlBYpzUR7g3c.jpg', '2aoboqjrzn2zlhqfkblj1zspkdz2bviixr3qqxu826.jpg',
+                '2aoboqjrzo5qrrtimqz5p9b8q8d4bkrgqlwspkiq27.jpg', '2aoboqjrzqd7x4tizd8huxlwzkcuqjovzzl3jpa828.jpg',
+                '2aoboqjrzrbmp26wvciblp9jwext9pc1yeq82mjs29.jpg', '2aoboqjrzumd9ubf2zw336gp3x5gkck0y2x6hbuc30.jpg'
+            ]
+        },
         clientMeeting1: {
             folder: 'asset/image/client_meeting/',
             images: [
@@ -111,7 +119,7 @@
         yearend3: {
             folder: 'asset/image/Year End Party3/',
             images: [
-                '7407af9c-fb39-42d2-b525-75486da1c839.jpeg',
+                'e0706fca-2aec-47a2-8ef4-1bc151563045.jpeg',
                 '973ffccc-4e64-49d2-81d5-3aef24650272.jpeg',
                 'b73eaf4e-5b91-406e-851d-85dd187ba218.jpeg',
 
@@ -135,42 +143,53 @@
         otherEvents: {
             folder: 'asset/image/other/',
             images: [
-                'SHINHAN (168).jpeg', 'IMG_4501.JPG', 'IMG_7116.JPG', 'IMG_9087.JPG', 'TTD04105.jpeg',
-                'TTD03357.jpeg', 'SHINHAN (403).jpeg', 'TTD03828.jpeg', 'SHINHAN (531).jpeg', 'LQT01122.jpeg',
-                'IMG_9088.JPG', 'IMG_9099.JPG', 'LQT01470.jpeg', 'IMG_0161.JPG', 'LQT03850 (1).jpeg',
-                'IMG_1564.JPG', 'IMG_9284 (1).JPG', 'LQT07888.jpeg', 'LQT08547.jpeg'
+                'asset/image/Year End Party/SHINHAN (168).jpeg',
+                'asset/image/ActivationEvent3/IMG_4501.JPG',
+                'asset/image/ActivationEvent3/IMG_7116.JPG',
+                'asset/image/Year End Party2/IMG_9087.JPG',
+                'asset/image/Year End Party2/SHINHAN (403).jpeg',
+                'asset/image/Year End Party/SHINHAN (531).jpeg',
+                'asset/image/client_meeting/LQT01122.jpeg',
+                'asset/image/Year End Party2/IMG_9088.JPG',
+                'asset/image/Year End Party2/IMG_9099.JPG',
+                'asset/image/TeamBuilding2/LQT08547.jpeg',
+                'asset/image/TeamBuilding2/LQT03850.jpeg',
+                'asset/image/TeamBuilding/IMG_9284.JPG'
+            ]
+        },
+        mbs: {
+            folder: 'asset/image/MBS/',
+            images: [
+                'IMG_8212.PNG', 'DUA05854.jpeg', 'DSC01385.jpeg', 'TUS00802.jpeg', 'TUS01816.jpeg', 'TUS01826.jpeg'
             ]
         }
     };
-
-    const logos = [
-        'asset/image/Logo/logo-1.png', 'asset/image/Logo/logo-2.png', 'asset/image/Logo/logo-3.png',
-        'asset/image/Logo/logo-4.jpg', 'asset/image/Logo/logo-5.png', 'asset/image/Logo/logo-6.jpg',
-        'asset/image/Logo/logo-7.avif', 'asset/image/Logo/logo-8.jpg', 'asset/image/Logo/logo-9.webp',
-        'asset/image/Logo/logo-10.jpg', 'asset/image/Logo/logo-11.png', 'asset/image/Logo/logo-12.png',
-        'asset/image/Logo/logo-13.png', 'asset/image/Logo/logo-14.png', 'asset/image/Logo/logo-15.png',
-        'asset/image/Logo/logo-16.png', 'asset/image/Logo/logo-17.png'
-    ];
 
     // ============================================
     // TẢI ẢNH AN TOÀN VÀ XỬ LÝ LỖI
     // ============================================
     function safeSetImage(img, imagePath) {
         if (!img) return;
-        img.src = imagePath;
 
         img.onload = () => img.classList.add('loaded');
 
         img.onerror = () => {
+            // Ngăn chặn infinite loop bằng cách gỡ sự kiện onerror
+            img.onerror = null;
             const lastDot = imagePath.lastIndexOf('.');
             if (lastDot > 0) {
                 const basePath = imagePath.substring(0, lastDot);
-                const extensions = ['jpg', 'png', 'webp', 'JPG', 'PNG', 'WEBP'];
+                const extensions = ['jpg', 'png', 'webp', 'jpeg', 'JPG', 'PNG', 'WEBP', 'JPEG'];
                 const currentExt = imagePath.substring(lastDot + 1);
+                // Thử các extension khác, tránh thử lại extension cũ
                 const nextExt = extensions.find(ext => ext.toLowerCase() !== currentExt.toLowerCase());
-                if (nextExt) img.src = `${basePath}.${nextExt}`;
+                if (nextExt) {
+                    img.src = `${basePath}.${nextExt}`;
+                }
             }
         };
+
+        img.src = imagePath;
     }
 
     // ============================================
@@ -211,7 +230,8 @@
             const images = config.images.slice(0, 6);
             slots.forEach((img, idx) => {
                 if (images[idx]) {
-                    safeSetImage(img, `${config.folder}${images[idx]}`);
+                    const imgPath = images[idx].startsWith('asset/') ? images[idx] : `${config.folder}${images[idx]}`;
+                    safeSetImage(img, imgPath);
                 }
             });
         }
@@ -232,7 +252,8 @@
                 item.appendChild(img);
                 dynamicGrid.appendChild(item);
 
-                safeSetImage(img, `${config.folder}${imgName}`);
+                const imgPath = imgName.startsWith('asset/') ? imgName : `${config.folder}${imgName}`;
+                safeSetImage(img, imgPath);
             });
         }
     }
@@ -492,3 +513,4 @@
         }
     });
 })();
+
