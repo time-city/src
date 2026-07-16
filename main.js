@@ -54,7 +54,7 @@
         yearend5: {
             folder: 'asset/image/year end party5/',
             images: [
-                'DSC03303.jpeg', 'DSC03640.jpeg', 'MCM_2.jpeg', 'DSC02270.jpeg', 
+                'DSC03303.jpeg', 'DSC03367.jpeg', 'DSC033032.jpeg', 'DSC02270.jpeg', 
                 'DSC02495.jpeg', 'IMG_0605.JPG'
             ]
         },
