@@ -3,7 +3,8 @@
    ============================================ */
 .event-section {
   min-height: auto;
-  padding: clamp(1rem, 2vw, 1.5rem) 0; /* Giảm mạnh padding giữa các sự kiện */
+  padding: clamp(1rem, 2vw, 1.5rem) 0;
+  /* Giảm mạnh padding giữa các sự kiện */
 }
 
 /* Kiểu Gallery cho các section lặp lại (không có title chính) */
@@ -22,7 +23,7 @@
 
 .event-section--gallery .event-collage-frame:hover {
   transform: translateY(-5px) scale(1.01);
-  box-shadow: 
+  box-shadow:
     0 30px 70px rgba(0, 0, 0, 0.8),
     0 0 40px rgba(212, 175, 55, 0.2);
 }
@@ -72,21 +73,20 @@
 
 .event-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 3.5vw, 3rem); /* Tăng kích thước tiêu đề */
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  /* Tăng kích thước tiêu đề */
   font-weight: 700;
   margin-bottom: 0.25rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  
+
   /* Hiệu ứng lấp lánh vàng kim */
-  background: linear-gradient(
-    90deg, 
-    var(--gold-dark) 0%, 
-    var(--gold-light) 25%, 
-    #fff 50%, 
-    var(--gold-light) 75%, 
-    var(--gold-dark) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--gold-dark) 0%,
+      var(--gold-light) 25%,
+      #fff 50%,
+      var(--gold-light) 75%,
+      var(--gold-dark) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -95,20 +95,19 @@
 }
 
 .event-subtitle {
-  font-size: clamp(0.75rem, 1vw, 0.9rem); /* Thu nhỏ subtitle */
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  /* Thu nhỏ subtitle */
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  
+
   /* Hiệu ứng lấp lánh vàng kim tương tự */
-  background: linear-gradient(
-    90deg, 
-    var(--gold-dark) 0%, 
-    var(--gold-light) 25%, 
-    #fff 50%, 
-    var(--gold-light) 75%, 
-    var(--gold-dark) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--gold-dark) 0%,
+      var(--gold-light) 25%,
+      #fff 50%,
+      var(--gold-light) 75%,
+      var(--gold-dark) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -121,7 +120,8 @@
 .event-collage-frame,
 .video-container {
   position: relative;
-  border: 2px solid var(--gold); /* Viền vàng kim rõ ràng, dày dặn */
+  border: 2px solid var(--gold);
+  /* Viền vàng kim rõ ràng, dày dặn */
   border-radius: 20px;
   padding: 12px;
   background: rgba(11, 15, 26, 0.6);
@@ -132,7 +132,8 @@
 }
 
 .video-container {
-  padding: 0; /* Video không cần padding bên trong khung */
+  padding: 0;
+  /* Video không cần padding bên trong khung */
 }
 
 /* Hiệu ứng tia sáng óng ánh lướt trên đường viền (Luxury Shimmer) */
@@ -140,22 +141,21 @@
 .video-container::before {
   content: "";
   position: absolute;
-  inset: -4px; /* Phóng nhẹ ra ngoài để bao phủ toàn bộ viền */
-  background: conic-gradient(
-    from 0deg,
-    transparent 0%,
-    transparent 35%,
-    var(--gold-light) 45%,
-    #fff 50%, 
-    var(--gold-light) 55%,
-    transparent 65%,
-    transparent 100%
-  );
-  -webkit-mask: 
-     linear-gradient(#fff 0 0) content-box, 
-     linear-gradient(#fff 0 0);
+  inset: -4px;
+  /* Phóng nhẹ ra ngoài để bao phủ toàn bộ viền */
+  background: conic-gradient(from 0deg,
+      transparent 0%,
+      transparent 35%,
+      var(--gold-light) 45%,
+      #fff 50%,
+      var(--gold-light) 55%,
+      transparent 65%,
+      transparent 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
-          mask-composite: exclude;
+  mask-composite: exclude;
   border-radius: inherit;
   animation: borderRotate 3s linear infinite;
   z-index: 2;
@@ -181,7 +181,8 @@
 .event-caption {
   position: absolute;
   bottom: -2.2rem;
-  right: 1rem; /* Mặc định bên phải */
+  right: 1rem;
+  /* Mặc định bên phải */
   font-family: var(--font-heading);
   font-size: clamp(1rem, 2vw, 1.4rem);
   color: var(--gold);
@@ -190,16 +191,14 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   pointer-events: none;
-  
+
   /* Hiệu ứng lấp lánh tương tự tiêu đề */
-  background: linear-gradient(
-    90deg, 
-    var(--gold-dark) 0%, 
-    var(--gold-light) 25%, 
-    #fff 50%, 
-    var(--gold-light) 75%, 
-    var(--gold-dark) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--gold-dark) 0%,
+      var(--gold-light) 25%,
+      #fff 50%,
+      var(--gold-light) 75%,
+      var(--gold-dark) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -231,6 +230,24 @@
     "img2 img3 img1"
     "img4 img4 img1"
     "img5 img6 img1";
+}
+
+/* Lớp mở rộng: Tăng chiều rộng ảnh chính (cột 1) và giảm chiều cao để ảnh ngang không bị crop quá nhiều */
+.event-collage--wide-main {
+  grid-template-columns: 0.55fr 0.225fr 0.225fr;
+  height: clamp(320px, 48vw, 560px);
+}
+
+/* Đảm bảo hình ảnh vừa vặn, không bị hở đen (no black gaps) */
+.event-collage[data-event="yearend5"] .event-collage-item>img {
+  object-fit: cover;
+  object-position: center 15%;
+  /* Canh lên trên một chút để lấy trọn khuôn mặt/người */
+}
+
+/* Dịch ảnh đầu tiên (2 MC) sang phải một xíu để thấy rõ MC nữ và chữ hơn */
+.event-collage[data-event="yearend5"] .event-collage-item--1>img {
+  object-position: 35% 15%;
 }
 
 /* Collage 5 ảnh cho Other Events */
@@ -269,13 +286,11 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    45deg,
-    rgba(216, 181, 106, 0.1) 0%,
-    transparent 40%,
-    transparent 60%,
-    rgba(216, 181, 106, 0.1) 100%
-  );
+  background: linear-gradient(45deg,
+      rgba(216, 181, 106, 0.1) 0%,
+      transparent 40%,
+      transparent 60%,
+      rgba(216, 181, 106, 0.1) 100%);
   z-index: 3;
   pointer-events: none;
   opacity: 0.5;
@@ -285,7 +300,7 @@
   transform: scale(1.05) translateY(-5px);
   z-index: 20;
   border-color: var(--gold);
-  box-shadow: 
+  box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.8),
     0 0 30px rgba(212, 175, 55, 0.5);
 }
@@ -296,12 +311,35 @@
 }
 
 /* Các item đặc biệt tạo sự ngẫu hứng và độc đáo (Bento Style) */
-.event-dynamic-grid .event-collage-item:nth-child(6n + 1) { grid-column: span 3; grid-row: span 2; }
-.event-dynamic-grid .event-collage-item:nth-child(6n + 2) { grid-column: span 3; grid-row: span 1; }
-.event-dynamic-grid .event-collage-item:nth-child(6n + 3) { grid-column: span 2; grid-row: span 1; }
-.event-dynamic-grid .event-collage-item:nth-child(6n + 4) { grid-column: span 1; grid-row: span 1; }
-.event-dynamic-grid .event-collage-item:nth-child(6n + 5) { grid-column: span 3; grid-row: span 2; }
-.event-dynamic-grid .event-collage-item:nth-child(6n + 6) { grid-column: span 3; grid-row: span 1; }
+.event-dynamic-grid .event-collage-item:nth-child(6n + 1) {
+  grid-column: span 3;
+  grid-row: span 2;
+}
+
+.event-dynamic-grid .event-collage-item:nth-child(6n + 2) {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.event-dynamic-grid .event-collage-item:nth-child(6n + 3) {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.event-dynamic-grid .event-collage-item:nth-child(6n + 4) {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.event-dynamic-grid .event-collage-item:nth-child(6n + 5) {
+  grid-column: span 3;
+  grid-row: span 2;
+}
+
+.event-dynamic-grid .event-collage-item:nth-child(6n + 6) {
+  grid-column: span 3;
+  grid-row: span 1;
+}
 
 /* Hiệu ứng góc máy ảnh (Camera Corners) cho từng frame */
 .event-dynamic-grid .event-collage-item::after {
@@ -318,7 +356,7 @@
   inset: 15px;
   border-color: rgba(212, 175, 55, 0.5);
   /* Tạo hiệu ứng 4 góc */
-  background: 
+  background:
     linear-gradient(to right, var(--gold) 2px, transparent 2px) 0 0,
     linear-gradient(to bottom, var(--gold) 2px, transparent 2px) 0 0,
     linear-gradient(to left, var(--gold) 2px, transparent 2px) 100% 0,
@@ -335,7 +373,7 @@
   transform: scale(1.03) translateY(-8px) rotate(1deg);
   z-index: 15;
   border-color: var(--gold);
-  box-shadow: 
+  box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.6),
     0 0 20px rgba(212, 175, 55, 0.4);
 }
@@ -348,12 +386,10 @@
   left: -100%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
+  background: linear-gradient(to right,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent);
   transform: skewX(-25deg);
   transition: 0.75s;
   z-index: 2;
@@ -364,7 +400,7 @@
   left: 150%;
 }
 
-.event-dynamic-grid .event-collage-item > img {
+.event-dynamic-grid .event-collage-item>img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -372,7 +408,7 @@
   filter: grayscale(20%) brightness(0.9);
 }
 
-.event-dynamic-grid .event-collage-item:hover > img {
+.event-dynamic-grid .event-collage-item:hover>img {
   transform: scale(1.1);
   filter: grayscale(0%) brightness(1.1);
 }
@@ -382,8 +418,16 @@
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 120px;
   }
-  .event-dynamic-grid .event-collage-item:nth-child(odd) { grid-column: span 2; grid-row: span 2; }
-  .event-dynamic-grid .event-collage-item:nth-child(even) { grid-column: span 2; grid-row: span 1; }
+
+  .event-dynamic-grid .event-collage-item:nth-child(odd) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .event-dynamic-grid .event-collage-item:nth-child(even) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
 }
 
 @media (max-width: 768px) {
@@ -413,7 +457,7 @@
 
   #other-events .event-title {
     display: block !important;
-    font-size: 1.1rem !important; 
+    font-size: 1.1rem !important;
     margin-top: 0 !important;
     margin-bottom: 12px !important;
     opacity: 1 !important;
@@ -433,12 +477,12 @@
   .event-dynamic-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 85px; 
+    grid-auto-rows: 85px;
     gap: 6px;
     width: 100%;
     grid-auto-flow: row;
   }
-  
+
   .event-dynamic-grid .event-collage-item {
     border-radius: 6px;
     grid-column: span 1;
@@ -452,14 +496,14 @@
   }
 
   /* Bố cục Bento 12 ảnh: 1 to (2x2), 1 rộng (2x1), 10 nhỏ (1x1) */
-  .event-dynamic-grid .event-collage-item:nth-child(1) { 
-    grid-column: span 2; 
-    grid-row: span 2; 
+  .event-dynamic-grid .event-collage-item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 2;
   }
-  
-  .event-dynamic-grid .event-collage-item:nth-child(6) { 
-    grid-column: span 2; 
-    grid-row: span 1; 
+
+  .event-dynamic-grid .event-collage-item:nth-child(6) {
+    grid-column: span 2;
+    grid-row: span 1;
   }
 
   /* Bỏ phần ảnh cuối chiếm hết dòng để Grid tự khít theo 4 hàng */
@@ -484,7 +528,7 @@
   border-radius: 12px;
 }
 
-.event-collage-item > img {
+.event-collage-item>img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -495,31 +539,54 @@
   transition: opacity 0.4s ease;
 }
 
-.event-collage-item > img.loaded {
+.event-collage-item>img.loaded {
   opacity: 1;
 }
 
-.event-collage-item--1 { grid-area: img1; }
-.event-collage-item--2 { grid-area: img2; }
-.event-collage-item--3 { grid-area: img3; }
-.event-collage-item--4 { grid-area: img4; }
-.event-collage-item--5 { grid-area: img5; }
-.event-collage-item--6 { grid-area: img6; }
+.event-collage-item--1 {
+  grid-area: img1;
+}
+
+.event-collage-item--2 {
+  grid-area: img2;
+}
+
+.event-collage-item--3 {
+  grid-area: img3;
+}
+
+.event-collage-item--4 {
+  grid-area: img4;
+}
+
+.event-collage-item--5 {
+  grid-area: img5;
+}
+
+.event-collage-item--6 {
+  grid-area: img6;
+}
 
 @media (max-width: 768px) {
   .event-section {
-    padding: 0 !important; /* Xóa triệt để padding trên/dưới trên mobile */
+    padding: 0 !important;
+    /* Xóa triệt để padding trên/dưới trên mobile */
   }
+
   .event-header {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     padding-bottom: 0.25rem;
   }
+
   .event-collage-frame {
-    padding: 8px; /* Giảm padding khung ảnh trên mobile */
+    padding: 8px;
+    /* Giảm padding khung ảnh trên mobile */
   }
+
   .event-collage {
-    height: clamp(200px, 60vw, 350px); /* Giảm chiều cao collage trên mobile */
+    height: clamp(200px, 60vw, 350px);
+    /* Giảm chiều cao collage trên mobile */
     gap: 8px;
   }
 }
@@ -539,12 +606,14 @@
 }
 
 #other-videos .video-container {
-  border: 1px solid rgba(216, 181, 106, 0.3); /* Viền tĩnh đơn giản */
+  border: 1px solid rgba(216, 181, 106, 0.3);
+  /* Viền tĩnh đơn giản */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .video-highlights-grid .event-video-wrapper {
-  margin-top: 0; /* Override default margin */
+  margin-top: 0;
+  /* Override default margin */
 }
 
 @media (max-width: 768px) {
@@ -641,16 +710,14 @@
   margin-bottom: 0.5rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  
+
   /* Shimmer effect for video titles */
-  background: linear-gradient(
-    90deg, 
-    var(--gold-dark) 0%, 
-    var(--gold-light) 25%, 
-    #fff 50%, 
-    var(--gold-light) 75%, 
-    var(--gold-dark) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--gold-dark) 0%,
+      var(--gold-light) 25%,
+      #fff 50%,
+      var(--gold-light) 75%,
+      var(--gold-dark) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -670,9 +737,8 @@
     margin-top: 2rem;
     padding: 0 0.5rem;
   }
-  
+
   .video-container {
     border-radius: 12px;
   }
 }
-
