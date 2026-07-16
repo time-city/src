@@ -572,6 +572,12 @@
   display: block;
 }
 
+.video-container--vertical {
+  aspect-ratio: 9 / 16;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 .video-container:hover {
   transform: translateY(-5px);
 }

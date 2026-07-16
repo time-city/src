@@ -41,7 +41,7 @@
         },
         gala2: {
             folder: 'asset/image/Gala Dinner/',
-            images: ['image-9.jpg', 'image-7.jpg', 'new1.jpeg', 'new2.jpeg', 'image-12.jpg', 'image-41.jpg']
+            images: ['image-9.jpg', 'image-13.png', 'image-7.jpg', 'new1.jpeg', 'new2.jpeg', 'image-12.jpg']
         },
         gala3: {
             folder: 'asset/image/Gala3/',
@@ -50,6 +50,13 @@
         gala4: {
             folder: 'asset/image/Gala4/',
             images: ['image-3.jpg', 'image-2.jpg', 'image-1.jpg', 'image-4.jpg', 'image-5.jpg', 'image-6.jpg']
+        },
+        yearend5: {
+            folder: 'asset/image/year end party5/',
+            images: [
+                'DSC03303.jpeg', 'DSC03640.jpeg', 'MCM_2.jpeg', 'DSC02270.jpeg', 
+                'DSC02495.jpeg', 'IMG_0605.JPG'
+            ]
         },
         gala6: {
             folder: 'asset/image/Gala6/',
@@ -164,6 +171,15 @@
             ]
         }
     };
+
+    const logos = [
+        'asset/image/Logo/logo-1.png', 'asset/image/Logo/logo-2.png', 'asset/image/Logo/logo-3.png',
+        'asset/image/Logo/logo-4.jpg', 'asset/image/Logo/logo-5.png', 'asset/image/Logo/logo-6.jpg',
+        'asset/image/Logo/logo-7.avif', 'asset/image/Logo/logo-8.jpg', 'asset/image/Logo/logo-9.webp',
+        'asset/image/Logo/logo-10.jpg', 'asset/image/Logo/logo-11.png', 'asset/image/Logo/logo-12.png',
+        'asset/image/Logo/logo-13.png', 'asset/image/Logo/logo-14.png', 'asset/image/Logo/logo-15.png',
+        'asset/image/Logo/logo-16.png', 'asset/image/Logo/logo-17.png'
+    ];
 
     // ============================================
     // TẢI ẢNH AN TOÀN VÀ XỬ LÝ LỖI
@@ -513,4 +529,3 @@
         }
     });
 })();
-
