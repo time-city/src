@@ -742,3 +742,38 @@
     border-radius: 12px;
   }
 }
+/* Event Model Cutout */
+.event-model-container {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  height: 115%;
+  pointer-events: none;
+}
+
+.event-model-container--left {
+  left: -10%;
+}
+
+.event-model-container--right {
+  right: -10%;
+}
+
+.event-model-img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+}
+
+@media (max-width: 1200px) {
+  .event-model-container {
+    height: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .event-model-container {
+    display: none; /* Hide on mobile to save space */
+  }
+}
