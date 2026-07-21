@@ -150,18 +150,14 @@
         otherEvents: {
             folder: 'asset/image/other/',
             images: [
-                'asset/image/Year End Party/SHINHAN (168).jpeg',
-                'asset/image/ActivationEvent3/IMG_4501.JPG',
-                'asset/image/ActivationEvent3/IMG_7116.JPG',
-                'asset/image/Year End Party2/IMG_9087.JPG',
-                'asset/image/Year End Party2/SHINHAN (403).jpeg',
-                'asset/image/Year End Party/SHINHAN (531).jpeg',
-                'asset/image/client_meeting/LQT01122.jpeg',
-                'asset/image/Year End Party2/IMG_9088.JPG',
-                'asset/image/Year End Party2/IMG_9099.JPG',
-                'asset/image/TeamBuilding2/LQT08547.jpeg',
-                'asset/image/TeamBuilding2/LQT03850.jpeg',
-                'asset/image/TeamBuilding/IMG_9284.JPG'
+                '1wupuke2irz2bh8w1r25twlnhft0mkxhcfdpa3ht22o6bekhelsqx175znxctpfvvzw31.jpg',
+                '1wupuke2itddbkexnrni9bgvhvcazamcvwrgwt6npsldrolzblj07tql2odoovp1wuv32.jpg',
+                '2aoboqjrasadaymkkagwjm6hpnkg3tgkqeedtlr634.jpg',
+                '2aoboqjratii5gzsrv8upldatgjhuudweyhe3utk33.jpg',
+                '2aoboqjraxg2qqn3z2rh1ebuxlqnewnpmvpnz6ky35.jpg',
+                '2aoboqjrbgfnkmt450kj3j79goq5vchavkjrxax237.jpg',
+                '2aoboqjrbrgfwaq5o20w7rcwfstalkw8dmbelvg836.jpg',
+                '2aoboqjrcnfi5udoh8nwrl4o4a0cfgdsjsvdd8xa38.jpg'
             ]
         },
         mbs: {
