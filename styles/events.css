@@ -746,11 +746,7 @@
 
 /* Event Model Cutout */
 .event-model-container {
-  position: absolute;
-  bottom: 0;
-  z-index: 10;
-  height: 115%;
-  pointer-events: none;
+  display: none !important;
 }
 
 .event-model-container--left {
