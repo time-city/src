@@ -245,9 +245,10 @@
   /* Canh lên trên một chút để lấy trọn khuôn mặt/người */
 }
 
-/* Dịch ảnh đầu tiên (2 MC) sang phải một xíu để thấy rõ MC nữ và chữ hơn */
+/* Dịch ảnh đầu tiên (2 MC) sang phải và zoom nhẹ để thấy rõ nhân vật vest trắng */
 .event-collage[data-event="yearend5"] .event-collage-item--1>img {
-  object-position: 35% 15%;
+  object-position: 18% 25%;
+  transform: scale(1.15);
 }
 
 /* Collage 5 ảnh cho Other Events */
@@ -742,6 +743,7 @@
     border-radius: 12px;
   }
 }
+
 /* Event Model Cutout */
 .event-model-container {
   position: absolute;
@@ -763,7 +765,7 @@
   height: 100%;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
 }
 
 @media (max-width: 1200px) {
@@ -774,6 +776,7 @@
 
 @media (max-width: 768px) {
   .event-model-container {
-    display: none; /* Hide on mobile to save space */
+    display: none;
+    /* Hide on mobile to save space */
   }
 }
