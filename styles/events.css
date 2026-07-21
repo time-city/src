@@ -486,8 +486,8 @@
 
   .event-dynamic-grid .event-collage-item {
     border-radius: 6px;
-    grid-column: span 1;
-    grid-row: span 1;
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
     display: block !important;
   }
 
@@ -498,13 +498,13 @@
 
   /* Bố cục Bento 12 ảnh: 1 to (2x2), 1 rộng (2x1), 10 nhỏ (1x1) */
   .event-dynamic-grid .event-collage-item:nth-child(1) {
-    grid-column: span 2;
-    grid-row: span 2;
+    grid-column: span 2 !important;
+    grid-row: span 2 !important;
   }
 
   .event-dynamic-grid .event-collage-item:nth-child(6) {
-    grid-column: span 2;
-    grid-row: span 1;
+    grid-column: span 2 !important;
+    grid-row: span 1 !important;
   }
 
   /* Bỏ phần ảnh cuối chiếm hết dòng để Grid tự khít theo 4 hàng */

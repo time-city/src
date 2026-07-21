@@ -85,8 +85,8 @@ existingVideos.forEach((vid, i) => {
     console.log(`Compressing video ${i+1}/${existingVideos.length}: ${vid}`);
     const tmpOut = vid + '.tmp.mp4';
     try {
-        // Scale to max 1280px width, preserving aspect ratio (height divisible by 2)
-        execSync(`/opt/homebrew/bin/ffmpeg -y -i "${vid}" -vf "scale='min(1280,iw)':-2" -c:v libx264 -preset fast -crf 28 -c:a aac -b:a 128k "${tmpOut}"`, { stdio: 'pipe' });
+        // Scale to max 1280px width, preserving aspect ratio (height divisible by 2), and enable faststart for web
+        execSync(`/opt/homebrew/bin/ffmpeg -y -i "${vid}" -movflags +faststart -vf "scale='min(1280,iw)':-2" -c:v libx264 -preset fast -crf 28 -c:a aac -b:a 128k "${tmpOut}"`, { stdio: 'pipe' });
         execSync(`mv "${tmpOut}" "${vid}"`);
         console.log(`Done: ${vid}`);
     } catch (e) {
