@@ -168,8 +168,8 @@
 .about-image-box {
   position: relative;
   margin-left: -5%; 
-  margin-top: -6rem; /* Đẩy khung hình lên cao */
-  margin-bottom: -10rem; /* Kéo phần dưới của ảnh lên để không lấn sang section khác */
+  margin-top: -2rem; 
+  margin-bottom: 0; 
 }
 
 .about-image-box .model-visual--about {
@@ -178,8 +178,9 @@
   max-height: 75vh;
   object-fit: contain;
   filter: drop-shadow(0 20px 50px rgba(0,0,0,0.6));
-  transform: scale(1.2);
-  display: block; /* Đảm bảo không có khoảng trống inline */
+  transform: scale(1.1);
+  transform-origin: bottom center;
+  display: block; 
 }
 
 /* MOBILE HORIZONTAL LAYOUT */
