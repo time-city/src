@@ -157,7 +157,12 @@
                 '2aoboqjraxg2qqn3z2rh1ebuxlqnewnpmvpnz6ky35.jpg',
                 '2aoboqjrbgfnkmt450kj3j79goq5vchavkjrxax237.jpg',
                 '2aoboqjrbrgfwaq5o20w7rcwfstalkw8dmbelvg836.jpg',
-                '2aoboqjrcnfi5udoh8nwrl4o4a0cfgdsjsvdd8xa38.jpg'
+                '2aoboqjrcnfi5udoh8nwrl4o4a0cfgdsjsvdd8xa38.jpg',
+                'image-1.jpg',
+                'image-2.jpg',
+                'image-3.jpg',
+                'image-4.jpg',
+                'image-5.jpg'
             ]
         },
         mbs: {
