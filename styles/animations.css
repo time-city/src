@@ -117,18 +117,20 @@
   overflow: hidden; /* Đảm bảo hiệu ứng ánh kim không tràn ra ngoài */
 }
 
-.event-collage-frame::after,
-.thankyou-poster::after,
-.contact-card::after {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  pointer-events: none;
-  background: linear-gradient(120deg, transparent 35%, rgba(255, 215, 120, 0.15) 45%, rgba(255, 215, 120, 0.45) 50%, rgba(255, 215, 120, 0.15) 55%, transparent 65%);
-  transform: translateX(-120%);
-  animation: goldSweep 4.5s ease-in-out infinite;
-  mix-blend-mode: screen;
+@media (min-width: 769px) {
+  .event-collage-frame::after,
+  .thankyou-poster::after,
+  .contact-card::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(120deg, transparent 35%, rgba(255, 215, 120, 0.15) 45%, rgba(255, 215, 120, 0.45) 50%, rgba(255, 215, 120, 0.15) 55%, transparent 65%);
+    transform: translateX(-120%);
+    animation: goldSweep 4.5s ease-in-out infinite;
+    mix-blend-mode: screen;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

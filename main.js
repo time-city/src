@@ -183,6 +183,10 @@
     function safeSetImage(img, imagePath) {
         if (!img) return;
 
+        // Tối ưu hiệu năng: thêm lazy loading cho tất cả ảnh inject qua JS
+        img.setAttribute('loading', 'lazy');
+        img.setAttribute('decoding', 'async');
+
         img.onload = () => img.classList.add('loaded');
 
         img.onerror = () => {
@@ -208,6 +212,9 @@
     // HIỆU ỨNG HẠT LẤP LÁNH (SPARKLES) CHO TẤT CẢ SECTION
     // ============================================
     function injectSparkles() {
+        // Tắt hiệu ứng sparkles trên mobile để giảm lag
+        if (window.innerWidth < 768) return;
+
         const sections = document.querySelectorAll('.section');
         sections.forEach(section => {
             // Không thêm nếu đã có container sparkles
@@ -341,6 +348,9 @@
     // TRANG TRÍ GALLERY (VỆT SÁNG & BOKEH)
     // ============================================
     function decorateGalleries() {
+        // Tắt hiệu ứng trang trí nền trên mobile để tối ưu
+        if (window.innerWidth < 768) return;
+
         const galleries = document.querySelectorAll('.event-section--gallery');
         galleries.forEach(section => {
             // Thêm vệt sáng (Light Streak)
