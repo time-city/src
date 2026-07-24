@@ -466,6 +466,39 @@
                     video.muted = willBeMuted;
                     audioUnlocked = true;
                     updateMuteUI(video);
+                    
+                    // Thử phát video nếu đang bị tạm dừng (giải quyết lỗi trên mobile)
+                    if (video.paused) {
+                        const playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(() => {});
+                        }
+                    }
+                }
+            });
+        });
+
+        // Thêm sự kiện click vào toàn bộ khung video để Play/Pause (vì video đã có pointer-events: none)
+        document.querySelectorAll('.video-container').forEach(container => {
+            container.addEventListener('click', (e) => {
+                // Bỏ qua nếu click vào nút mute
+                if (e.target.closest('.mute-toggle')) return;
+                
+                const video = container.querySelector('video');
+                if (video) {
+                    if (video.paused) {
+                        // Gọi load() và play() để force mobile browser chạy
+                        if (video.getAttribute('preload') === 'none') {
+                            video.setAttribute('preload', 'metadata');
+                            video.load();
+                        }
+                        const playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(() => {});
+                        }
+                    } else {
+                        video.pause();
+                    }
                 }
             });
         });
@@ -475,6 +508,11 @@
                 const video = entry.target;
 
                 if (entry.isIntersecting) {
+                    // Đổi preload từ none sang metadata để trình duyệt tải video
+                    if (video.getAttribute('preload') === 'none') {
+                        video.setAttribute('preload', 'metadata');
+                    }
+
                     // TỰ ĐỘNG BẬT TIẾNG: 
                     // Khi một video xuất hiện, nếu đã có tương tác người dùng (audioUnlocked), 
                     // ta sẽ tắt tiếng tất cả các video khác trước khi bật tiếng video này.
