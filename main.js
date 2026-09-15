@@ -45,7 +45,7 @@
         },
         gala3: {
             folder: 'asset/image/Gala3/',
-            images: ['image-2.jpg', 'new3.jpeg', 'new4.jpeg', 'new5.jpeg', 'image-1.jpg', 'image-6.jpg']
+            images: ['image-1.jpg', 'image-2.jpg', 'new3.jpeg', 'new4.jpeg', 'new5.jpeg', 'image-6.jpg']
         },
         gala4: {
             folder: 'asset/image/Gala4/',
@@ -54,7 +54,7 @@
         yearend5: {
             folder: 'asset/image/year end party5/',
             images: [
-                'DSC03303.jpeg', 'DSC03367.jpeg', 'DSC033032.jpeg', 'DSC02270.jpeg', 
+                'DSC03303.jpeg', 'DSC03367.jpeg', 'DSC033032.jpeg', 'DSC02270.jpeg',
                 'DSC02495.jpeg', 'IMG_0605.JPG'
             ]
         },
@@ -74,6 +74,30 @@
                 '5da18ff2-c07a-4d00-bf7e-5a281505552c.jpeg',
                 '9f35a47c-37e2-45ac-9c57-b0f37b1c4c1c.jpeg',
                 'c85e5eb9-d4c0-4c3a-890b-103d098926dd.jpeg'
+            ]
+        },
+        gala8: {
+            folder: 'asset/image/gala8/',
+            images: [
+                'e57ea1c5-6474-4dea-92fc-e7dfefb2357d.jpeg',
+                '831683e6-cf10-40c7-abb5-4fe3786a8556.jpeg',
+                '9787acd8-130d-4a73-92f1-696e31c6a0e9.jpeg',
+                'f8a115bc-c735-4613-b86a-f7208da009cb.jpeg',
+                '273251d0-755b-4b86-b464-fa5670560ccc.jpeg',
+                '629d59bf-4a13-4aba-91a0-ecc4083add61.jpeg',
+            ]
+        },
+        hoithao1: {
+            folder: 'asset/image/hội thảo /',
+            images: [
+                'image.png',
+                '16fffc21-b4e1-4384-b0ca-c48691eef2eb.jpeg',
+                '5bf0d230-1813-468a-8206-661818e03d46.jpeg',
+                'b1241c9f-866c-41d7-944c-384111e525a3.jpeg',
+                '13115274-b58d-4d53-9f60-34cc538ea0e9.jpeg',
+                '2109f0a9-5d8c-40e3-8c75-bb5ec65088a0.jpeg',
+
+
             ]
         },
         teambuilding1: {

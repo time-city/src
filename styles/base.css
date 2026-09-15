@@ -43,8 +43,6 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  overflow-x: hidden;
-  overscroll-behavior-y: none; /* Giới hạn không cho kéo quá đầu/cuối trang trên mobile */
 }
 
 body {

@@ -483,7 +483,9 @@
     grid-auto-flow: row;
   }
 
-  .event-dynamic-grid .event-collage-item {
+  .event-dynamic-grid .event-collage-item,
+  .event-dynamic-grid .event-collage-item:nth-child(odd),
+  .event-dynamic-grid .event-collage-item:nth-child(even) {
     border-radius: 6px;
     grid-column: span 1;
     grid-row: span 1;
