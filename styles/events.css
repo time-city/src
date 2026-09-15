@@ -492,12 +492,12 @@
     display: block !important;
   }
 
-  /* Lấy chính xác 16 hình để tạo thành 5 hàng hoàn hảo (20 ô) */
-  .event-dynamic-grid .event-collage-item:nth-child(n+17) {
+  /* Lấy chính xác 20 hình để tạo thành 6 hàng hoàn hảo (24 ô) */
+  .event-dynamic-grid .event-collage-item:nth-child(n+21) {
     display: none !important;
   }
 
-  /* Bố cục Bento 16 ảnh: 1 to (2x2), 1 rộng (2x1), 14 nhỏ (1x1) */
+  /* Bố cục Bento 20 ảnh: 1 to (2x2), 1 rộng (2x1), 18 nhỏ (1x1) */
   .event-dynamic-grid .event-collage-item:nth-child(1) {
     grid-column: span 2;
     grid-row: span 2;

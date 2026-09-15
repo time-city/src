@@ -182,14 +182,18 @@
                 'asset/image/Gala Dinner/image-32.jpg',
                 'asset/image/client_meeting/LQT01122.jpeg',
                 'asset/image/Year End Party2/IMG_9088.JPG',
-                'asset/image/Year End Party2/IMG_9099.JPG',
                 'asset/image/TeamBuilding2/LQT08547.jpeg',
                 'asset/image/TeamBuilding2/LQT03850.jpeg',
                 'asset/image/TeamBuilding/IMG_9284.JPG',
                 'asset/image/MBS/TUS01826.jpeg',
                 'asset/image/MBS/DUA05854.jpeg',
                 'asset/image/Gala Dinner/new2.jpeg',
-                'asset/image/client_meeting/IMG_2984.JPG'
+                'asset/image/client_meeting/IMG_2984.JPG',
+                'asset/image/other_events/0cb32781-efa5-4e6c-bb82-2cb62527ed7e.jpeg',
+                'asset/image/other_events/64e451e1-4c0e-4502-9d47-ab80474c944a.jpeg',
+                'asset/image/other_events/b4fa3a58-be34-4b44-b5d8-cbc7c613608f.jpeg',
+                'asset/image/other_events/df3d3dfd-f194-4427-a2c8-4e2ca4b74b20.jpeg',
+                'asset/image/other_events/f1de9a97-5007-4859-a736-edb772898f09.jpeg'
             ]
         },
         mbs: {
