@@ -179,13 +179,17 @@
                 'asset/image/ActivationEvent3/IMG_7116.JPG',
                 'asset/image/Year End Party2/IMG_9087.JPG',
                 'asset/image/Year End Party2/SHINHAN (403).jpeg',
-                'asset/image/Year End Party/SHINHAN (531).jpeg',
+                'asset/image/Gala Dinner/image-32.jpg',
                 'asset/image/client_meeting/LQT01122.jpeg',
                 'asset/image/Year End Party2/IMG_9088.JPG',
                 'asset/image/Year End Party2/IMG_9099.JPG',
                 'asset/image/TeamBuilding2/LQT08547.jpeg',
                 'asset/image/TeamBuilding2/LQT03850.jpeg',
-                'asset/image/TeamBuilding/IMG_9284.JPG'
+                'asset/image/TeamBuilding/IMG_9284.JPG',
+                'asset/image/MBS/TUS01826.jpeg',
+                'asset/image/MBS/DUA05854.jpeg',
+                'asset/image/Gala Dinner/new2.jpeg',
+                'asset/image/client_meeting/IMG_2984.JPG'
             ]
         },
         mbs: {
