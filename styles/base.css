@@ -153,3 +153,17 @@ body {
   }
 }
 
+
+body {
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+}
+.thankyou-section {
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 40px));
+}
+
+
+/* Bổ sung padding cực lớn ở dưới cùng để tránh bị thanh điều hướng của Zalo/Facebook/Safari che khuất */
+body {
+  padding-bottom: 120px !important; 
+}
+
