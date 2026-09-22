@@ -196,6 +196,28 @@
                 'asset/image/other_events/f1de9a97-5007-4859-a736-edb772898f09.jpeg'
             ]
         },
+        ferroli: {
+            folder: 'asset/image/ferroli/',
+            images: [
+                '30b41b57-d7ff-41df-9a6f-27f4e2d54bd7.jpeg',
+                '1574aae2-9a3b-4790-96d7-003ed06354e7.jpeg',
+                '17edeb86-84ac-44be-8fae-d6acd3ce38b0.jpeg',
+                '1de44b94-f1cc-4d37-a4da-734d7e8d34d3.jpeg',
+                '53ce6901-2c23-4967-b4e2-47d20e58dbb1.jpeg',
+                '750df101-19dd-448e-9a9b-b530402671aa.jpeg'
+            ]
+        },
+        vietxanhGroup: {
+            folder: 'asset/image/vietxanh_group/',
+            images: [
+                'dce49d99-4ac7-4119-a7ae-59dc5cae5cda.jpeg',
+                '13ba1302-bc66-45e7-96a3-fc866a8371ed.jpeg',
+                '29d3f98c-9079-4a62-9921-b88a00e0cedc.jpeg',
+                '57009bad-52e8-4dc4-a513-8d9c69fe66a9.jpeg',
+                '64142120-8929-44cc-aed1-fe25f9214a85.jpeg',
+                '8916fc06-f997-478e-ac74-67eb4aacbe9e.jpeg'
+            ]
+        },
         mbs: {
             folder: 'asset/image/MBS/',
             images: [
