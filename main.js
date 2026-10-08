@@ -310,21 +310,44 @@
         const dynamicGrid = document.querySelector(`.event-dynamic-grid[data-event="${eventKey}"]`);
         if (dynamicGrid) {
             dynamicGrid.innerHTML = ''; // Clear existing
-            config.images.forEach((imgName, idx) => {
-                const item = document.createElement('div');
-                item.className = 'event-collage-item';
+            
+            // Chuyển đổi thành Marquee (băng chuyền chạy ngang)
+            dynamicGrid.classList.remove('event-dynamic-grid');
+            dynamicGrid.classList.add('event-marquee');
+            
+            const numRows = 5;
+            const itemsPerRow = Math.ceil(config.images.length / numRows);
+            
+            const createItems = (images, track) => {
+                // Nhân đôi mảng ảnh để tạo hiệu ứng cuộn vô tận mượt mà
+                const repeated = [...images, ...images];
+                repeated.forEach((imgName, idx) => {
+                    const item = document.createElement('div');
+                    item.className = 'marquee-item';
+                    
+                    const img = document.createElement('img');
+                    img.alt = `Other event photo ${idx + 1}`;
+                    img.loading = 'lazy';
+                    img.decoding = 'async';
+                    
+                    item.appendChild(img);
+                    track.appendChild(item);
+                    
+                    const imgPath = imgName.startsWith('asset/') ? imgName : `${config.folder}${imgName}`;
+                    safeSetImage(img, imgPath);
+                });
+            };
 
-                const img = document.createElement('img');
-                img.alt = `Other event photo ${idx + 1}`;
-                img.loading = 'lazy';
-                img.decoding = 'async';
-
-                item.appendChild(img);
-                dynamicGrid.appendChild(item);
-
-                const imgPath = imgName.startsWith('asset/') ? imgName : `${config.folder}${imgName}`;
-                safeSetImage(img, imgPath);
-            });
+            for (let i = 0; i < numRows; i++) {
+                const track = document.createElement('div');
+                track.className = `marquee-track ${i % 2 === 0 ? 'marquee-left' : 'marquee-right'}`;
+                
+                const start = i * itemsPerRow;
+                const end = start + itemsPerRow;
+                createItems(config.images.slice(start, end), track);
+                
+                dynamicGrid.appendChild(track);
+            }
         }
     }
 

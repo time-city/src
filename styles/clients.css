@@ -11,8 +11,7 @@
 }
 
 .logo-frame {
-  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.55), rgba(243, 237, 220, 0.95)),
-              linear-gradient(135deg, #f3eddc 0%, #e8dfc5 100%);
+  background: #ffffff;
   border: 1px solid rgba(216, 181, 106, 0.7);
   border-radius: 18px;
   padding: clamp(1.4rem, 2.2vw, 1.75rem);
