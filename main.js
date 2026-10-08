@@ -193,7 +193,15 @@
                 'asset/image/other_events/64e451e1-4c0e-4502-9d47-ab80474c944a.jpeg',
                 'asset/image/other_events/b4fa3a58-be34-4b44-b5d8-cbc7c613608f.jpeg',
                 'asset/image/other_events/df3d3dfd-f194-4427-a2c8-4e2ca4b74b20.jpeg',
-                'asset/image/other_events/f1de9a97-5007-4859-a736-edb772898f09.jpeg'
+                'asset/image/other_events/f1de9a97-5007-4859-a736-edb772898f09.jpeg',
+                '5b55507d-d332-43cf-a230-c4ba7f935958.jpeg',
+                '8c5e7457-323e-47c9-9cd9-1838077e508c.jpeg',
+                '310fbbe2-59e0-4063-92e7-b7554173db03.jpeg',
+                '867e018b-5dd2-4e6c-a2ae-5b2dcdabfbe5.jpeg',
+                '8345cfe1-0e4d-432c-815b-ea0e06c42355.jpeg',
+                '8498d00a-2175-461b-8b39-edde08945ecb.jpeg',
+                'aa516a12-1b4a-4b59-90ae-40cd45c1ccc8.jpeg',
+                'b51fb74a-4ce2-4c84-b806-04538cd99b81.jpeg'
             ]
         },
         ferroli: {
@@ -315,7 +323,7 @@
             dynamicGrid.classList.remove('event-dynamic-grid');
             dynamicGrid.classList.add('event-marquee');
             
-            const numRows = 5;
+            const numRows = 7;
             const itemsPerRow = Math.ceil(config.images.length / numRows);
             
             const createItems = (images, track) => {
