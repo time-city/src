@@ -274,7 +274,7 @@
     // HIỆU ỨNG HẠT LẤP LÁNH (SPARKLES) CHO TẤT CẢ SECTION
     // ============================================
     function injectSparkles() {
-        const sections = document.querySelectorAll('.section');
+        const sections = document.querySelectorAll('#hero, #about, #other-events, #thankyou, .event-section:nth-of-type(3n)');
         sections.forEach(section => {
             // Không thêm nếu đã có container sparkles
             if (section.querySelector('.sparkles-container')) return;
@@ -283,8 +283,8 @@
             container.className = 'sparkles-container';
             container.setAttribute('aria-hidden', 'true');
 
-            // Tạo ngẫu nhiên 10-15 hạt cho mỗi section
-            const count = 12;
+            // Tạo vừa phải 6 hạt nhẹ nhàng để tránh tốn GPU
+            const count = 6;
             for (let i = 0; i < count; i++) {
                 const sparkle = document.createElement('div');
                 sparkle.className = 'sparkle';
@@ -314,7 +314,7 @@
             });
         }
 
-        // Xử lý Dynamic Grid (Tất cả ảnh trong folder) - Dành riêng cho Other Events
+        // Xử lý Dynamic Grid (Tất cả ảnh trong folder) - Dành riêng cho Other Events (Một Số Chương Trình Khác)
         const dynamicGrid = document.querySelector(`.event-dynamic-grid[data-event="${eventKey}"]`);
         if (dynamicGrid) {
             dynamicGrid.innerHTML = ''; // Clear existing
@@ -322,8 +322,10 @@
             // Chuyển đổi thành Marquee (băng chuyền chạy ngang)
             dynamicGrid.classList.remove('event-dynamic-grid');
             dynamicGrid.classList.add('event-marquee');
+            dynamicGrid.classList.add('is-paused'); // Mặc định dừng để không tốn tài nguyên
             
-            const numRows = 7;
+            // 3 hàng chuẩn sang trọng, mượt mà trên desktop và 2 hàng trên mobile
+            const numRows = window.innerWidth <= 768 ? 2 : 3;
             const itemsPerRow = Math.ceil(config.images.length / numRows);
             
             const createItems = (images, track) => {
@@ -356,6 +358,19 @@
                 
                 dynamicGrid.appendChild(track);
             }
+
+            // Tự động kích hoạt khi người dùng cuộn đến và tạm dừng khi rời khỏi để chống lag 100%
+            const sectionOther = dynamicGrid.closest('#other-events') || dynamicGrid;
+            const marqueeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        dynamicGrid.classList.remove('is-paused');
+                    } else {
+                        dynamicGrid.classList.add('is-paused');
+                    }
+                });
+            }, { threshold: 0.05 });
+            marqueeObserver.observe(sectionOther);
         }
     }
 
@@ -452,32 +467,7 @@
     }
 
     // ============================================
-    // HIỆU ỨNG HẠT LẤP LÁNH (SPARKLES) CHO TẤT CẢ SECTION
-    // ============================================
-    function injectSparkles() {
-        const sections = document.querySelectorAll('.section');
-        sections.forEach(section => {
-            if (section.querySelector('.sparkles-container')) return;
-
-            const container = document.createElement('div');
-            container.className = 'sparkles-container';
-            container.setAttribute('aria-hidden', 'true');
-
-            const count = 10;
-            for (let i = 0; i < count; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.top = `${Math.random() * 90 + 5}%`;
-                sparkle.style.left = `${Math.random() * 90 + 5}%`;
-                sparkle.style.animationDelay = `${Math.random() * 4}s`;
-                container.appendChild(sparkle);
-            }
-            section.appendChild(container);
-        });
-    }
-
-    // ============================================
-    // TỰ ĐỘNG PHÁT VIDEO CÓ ÂM THANH KHI CUỘN TỚI
+    // TỰ ĐỘNG PHÁT VIDEO CÓ ÂM THANH KHI CUỘN TỚI & TỐI ƯU HIỆU NĂNG
     // ============================================
     function initAutoPlayVideos() {
         const videos = document.querySelectorAll('.profile-video, .hero-video');
@@ -489,7 +479,7 @@
             if (audioUnlocked) return;
             audioUnlocked = true;
 
-            // Tìm video đầu tiên đang phát để bật tiếng, đảm bảo chỉ có 1 nguồn âm thanh
+            // Tìm video đầu tiên đang phát để bật tiếng
             let unmutedAny = false;
             videos.forEach(v => {
                 if (!v.paused && !unmutedAny) {
@@ -528,7 +518,6 @@
                     const willBeMuted = !video.muted;
 
                     if (!willBeMuted) {
-                        // Nếu đang bật tiếng video này, tắt tiếng tất cả các video khác
                         videos.forEach(v => {
                             if (v !== video) {
                                 v.muted = true;
@@ -544,14 +533,40 @@
             });
         });
 
+        // Xử lý thông minh cho lưới video (Other Videos): chỉ phát 1 video tại một thời điểm
+        const gridWrappers = document.querySelectorAll('.video-highlights-grid .event-video-wrapper');
+        gridWrappers.forEach(wrapper => {
+            const currentVideo = wrapper.querySelector('video');
+            if (!currentVideo) return;
+
+            wrapper.addEventListener('mouseenter', () => {
+                gridWrappers.forEach(otherWrapper => {
+                    const otherVideo = otherWrapper.querySelector('video');
+                    if (otherVideo && otherVideo !== currentVideo) {
+                        otherVideo.pause();
+                    }
+                });
+                const p = currentVideo.play();
+                if (p !== undefined) p.catch(() => {});
+            });
+        });
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const video = entry.target;
 
                 if (entry.isIntersecting) {
-                    // TỰ ĐỘNG BẬT TIẾNG: 
-                    // Khi một video xuất hiện, nếu đã có tương tác người dùng (audioUnlocked), 
-                    // ta sẽ tắt tiếng tất cả các video khác trước khi bật tiếng video này.
+                    // Nếu là video trong lưới 3 video, chỉ tự động phát video đầu tiên hiển thị
+                    const gridParent = video.closest('.video-highlights-grid');
+                    if (gridParent) {
+                        const allGridVideos = Array.from(gridParent.querySelectorAll('video'));
+                        const isFirstOrPlaying = allGridVideos[0] === video || allGridVideos.some(v => !v.paused);
+                        if (!isFirstOrPlaying) {
+                            video.pause();
+                            return;
+                        }
+                    }
+
                     if (audioUnlocked) {
                         videos.forEach(v => {
                             if (v !== video) {
@@ -577,7 +592,7 @@
                     video.pause();
                 }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.3 });
 
         videos.forEach(video => observer.observe(video));
     }
