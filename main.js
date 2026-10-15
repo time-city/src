@@ -533,6 +533,39 @@
             });
         });
 
+        // Xử lý bấm vào khung video: phát / dừng tại chỗ, chặn hoàn toàn hành vi phóng to / zoom của trình duyệt
+        document.querySelectorAll('.video-container').forEach(container => {
+            container.addEventListener('dblclick', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+
+            container.addEventListener('click', (e) => {
+                // Nếu bấm trúng nút bật/tắt tiếng thì để nút loa tự xử lý
+                if (e.target.closest('.mute-toggle')) return;
+                e.preventDefault();
+
+                const video = container.querySelector('video');
+                if (!video) return;
+
+                if (video.paused) {
+                    // Nếu là video trong lưới 3 video (Other Videos), tạm dừng các video khác
+                    const gridParent = container.closest('.video-highlights-grid');
+                    if (gridParent) {
+                        gridParent.querySelectorAll('video').forEach(otherV => {
+                            if (otherV !== video) otherV.pause();
+                        });
+                    }
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(() => {});
+                    }
+                } else {
+                    video.pause();
+                }
+            });
+        });
+
         // Xử lý thông minh cho lưới video (Other Videos): chỉ phát 1 video tại một thời điểm
         const gridWrappers = document.querySelectorAll('.video-highlights-grid .event-video-wrapper');
         gridWrappers.forEach(wrapper => {
