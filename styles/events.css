@@ -251,7 +251,7 @@
 
 /* Dịch ảnh đầu tiên (2 MC) sang phải một xíu để thấy rõ MC nữ và chữ hơn */
 .event-collage[data-event="yearend5"] .event-collage-item--1>img {
-  object-position: 55% 15%;
+  object-position: 17% 15%;
 }
 
 /* Collage 5 ảnh cho Other Events */
@@ -278,7 +278,7 @@
   position: relative;
   background: rgba(11, 15, 26, 0.25);
   border-radius: 16px;
-  box-shadow: inset 0 0 30px rgba(0,0,0,0.4);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
   contain: content;
 }
 
@@ -293,10 +293,12 @@
   z-index: 10;
   pointer-events: none;
 }
+
 .event-marquee::before {
   left: 0;
   background: linear-gradient(to right, rgba(11, 15, 26, 0.95), transparent);
 }
+
 .event-marquee::after {
   right: 0;
   background: linear-gradient(to left, rgba(11, 15, 26, 0.95), transparent);
@@ -334,7 +336,7 @@
   overflow: hidden;
   position: relative;
   border: 1px solid rgba(216, 181, 106, 0.35);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease;
   cursor: pointer;
   will-change: transform;
@@ -345,7 +347,7 @@
   transform: scale(1.04) translateY(-3px);
   border-color: var(--gold);
   z-index: 10;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.35);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.35);
 }
 
 .marquee-item img {
@@ -356,13 +358,23 @@
 }
 
 @keyframes scrollLeft {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 @keyframes scrollRight {
-  0% { transform: translate3d(-50%, 0, 0); }
-  100% { transform: translate3d(0, 0, 0); }
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @media (max-width: 1024px) {
@@ -376,25 +388,31 @@
   #other-events {
     padding: 1.5rem 0 !important;
   }
+
   .event-marquee {
     gap: 0.6rem;
     padding: 0.5rem 0;
   }
+
   .marquee-track {
     gap: 0.6rem;
   }
+
   .marquee-item {
     width: 150px;
     height: 100px;
     border-radius: 8px;
   }
+
   .marquee-left {
     animation: scrollLeft 32s linear infinite;
   }
+
   .marquee-right {
     animation: scrollRight 28s linear infinite;
   }
 }
+
 .event-collage-item {
   position: relative;
   overflow: hidden;
@@ -535,7 +553,8 @@
   object-fit: cover;
   display: block;
   background: #000;
-  pointer-events: none; /* Tránh trình duyệt bật native player/zoom toàn màn hình khi bấm vào video */
+  pointer-events: none;
+  /* Tránh trình duyệt bật native player/zoom toàn màn hình khi bấm vào video */
   touch-action: manipulation;
   user-select: none;
   -webkit-user-select: none;
@@ -625,6 +644,7 @@
     border-radius: 12px;
   }
 }
+
 /* Event Model Cutout */
 .event-model-container {
   position: absolute;
@@ -646,7 +666,7 @@
   height: 100%;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
 }
 
 @media (max-width: 1200px) {
@@ -657,16 +677,18 @@
 
 @media (max-width: 768px) {
   .event-model-container {
-    display: none; /* Hide on mobile to save space */
+    display: none;
+    /* Hide on mobile to save space */
   }
 }
 
 /* Fix extra space and border below other-events subtitle */
 #other-events .event-header {
-    border-bottom: none !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
+
 #other-events {
-    padding-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
