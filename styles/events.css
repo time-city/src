@@ -251,7 +251,7 @@
 
 /* Dịch ảnh đầu tiên (2 MC) sang phải một xíu để thấy rõ MC nữ và chữ hơn */
 .event-collage[data-event="yearend5"] .event-collage-item--1>img {
-  object-position: 35% 15%;
+  object-position: 55% 15%;
 }
 
 /* Collage 5 ảnh cho Other Events */
