@@ -194,14 +194,14 @@
                 'asset/image/other_events/b4fa3a58-be34-4b44-b5d8-cbc7c613608f.jpeg',
                 'asset/image/other_events/df3d3dfd-f194-4427-a2c8-4e2ca4b74b20.jpeg',
                 'asset/image/other_events/f1de9a97-5007-4859-a736-edb772898f09.jpeg',
-                '5b55507d-d332-43cf-a230-c4ba7f935958.jpeg',
-                '8c5e7457-323e-47c9-9cd9-1838077e508c.jpeg',
-                '310fbbe2-59e0-4063-92e7-b7554173db03.jpeg',
-                '867e018b-5dd2-4e6c-a2ae-5b2dcdabfbe5.jpeg',
-                '8345cfe1-0e4d-432c-815b-ea0e06c42355.jpeg',
-                '8498d00a-2175-461b-8b39-edde08945ecb.jpeg',
-                'aa516a12-1b4a-4b59-90ae-40cd45c1ccc8.jpeg',
-                'b51fb74a-4ce2-4c84-b806-04538cd99b81.jpeg'
+                'asset/image/other/5b55507d-d332-43cf-a230-c4ba7f935958.jpeg',
+                'asset/image/other/8c5e7457-323e-47c9-9cd9-1838077e508c.jpeg',
+                'asset/image/other/310fbbe2-59e0-4063-92e7-b7554173db03.jpeg',
+                'asset/image/other/867e018b-5dd2-4e6c-a2ae-5b2dcdabfbe5.jpeg',
+                'asset/image/other/8345cfe1-0e4d-432c-815b-ea0e06c42355.jpeg',
+                'asset/image/other/8498d00a-2175-461b-8b39-edde08945ecb.jpeg',
+                'asset/image/other/aa516a12-1b4a-4b59-90ae-40cd45c1ccc8.jpeg',
+                'asset/image/other/b51fb74a-4ce2-4c84-b806-04538cd99b81.jpeg'
             ]
         },
         ferroli: {
@@ -252,22 +252,24 @@
         img.onload = () => img.classList.add('loaded');
 
         img.onerror = () => {
-            // Ngăn chặn infinite loop bằng cách gỡ sự kiện onerror
             img.onerror = null;
             const lastDot = imagePath.lastIndexOf('.');
             if (lastDot > 0) {
                 const basePath = imagePath.substring(0, lastDot);
-                const extensions = ['jpg', 'png', 'webp', 'jpeg', 'JPG', 'PNG', 'WEBP', 'JPEG'];
                 const currentExt = imagePath.substring(lastDot + 1);
-                // Thử các extension khác, tránh thử lại extension cũ
-                const nextExt = extensions.find(ext => ext.toLowerCase() !== currentExt.toLowerCase());
+                const variations = [
+                    currentExt.toLowerCase(),
+                    currentExt.toUpperCase(),
+                    'jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG'
+                ];
+                const nextExt = variations.find(ext => ext !== currentExt);
                 if (nextExt) {
-                    img.src = `${basePath}.${nextExt}`;
+                    img.src = encodeURI(`${basePath}.${nextExt}`);
                 }
             }
         };
 
-        img.src = imagePath;
+        img.src = encodeURI(imagePath);
     }
 
     // ============================================
@@ -322,23 +324,21 @@
             // Chuyển đổi thành Marquee (băng chuyền chạy ngang)
             dynamicGrid.classList.remove('event-dynamic-grid');
             dynamicGrid.classList.add('event-marquee');
-            dynamicGrid.classList.add('is-paused'); // Mặc định dừng để không tốn tài nguyên
             
-            // 3 hàng chuẩn sang trọng, mượt mà trên desktop và 2 hàng trên mobile
-            const numRows = window.innerWidth <= 768 ? 2 : 3;
-            const itemsPerRow = Math.ceil(config.images.length / numRows);
+            // 5 hàng chuẩn cuộn marquee mượt mà theo yêu cầu
+            const numRows = 5;
             
             const createItems = (images, track) => {
-                // Nhân đôi mảng ảnh để tạo hiệu ứng cuộn vô tận mượt mà
-                const repeated = [...images, ...images];
+                // Nhân bản mảng ảnh để tạo hiệu ứng cuộn vô tận mượt mà không bị hụt khoảng trống
+                const repeated = [...images, ...images, ...images, ...images];
                 repeated.forEach((imgName, idx) => {
                     const item = document.createElement('div');
                     item.className = 'marquee-item';
                     
                     const img = document.createElement('img');
                     img.alt = `Other event photo ${idx + 1}`;
-                    img.loading = 'lazy';
-                    img.decoding = 'async';
+                    img.loading = 'eager'; // Tải ngay lập tức để không bị rỗng/đen khi cuộn marquee
+                    img.decoding = 'auto';
                     
                     item.appendChild(img);
                     track.appendChild(item);
@@ -348,29 +348,21 @@
                 });
             };
 
+            let currentIndex = 0;
+            const remainder = config.images.length % numRows;
+            const baseCount = Math.floor(config.images.length / numRows);
+
             for (let i = 0; i < numRows; i++) {
                 const track = document.createElement('div');
                 track.className = `marquee-track ${i % 2 === 0 ? 'marquee-left' : 'marquee-right'}`;
                 
-                const start = i * itemsPerRow;
-                const end = start + itemsPerRow;
-                createItems(config.images.slice(start, end), track);
+                const count = baseCount + (i < remainder ? 1 : 0);
+                const rowImages = config.images.slice(currentIndex, currentIndex + count);
+                currentIndex += count;
                 
+                createItems(rowImages, track);
                 dynamicGrid.appendChild(track);
             }
-
-            // Tự động kích hoạt khi người dùng cuộn đến và tạm dừng khi rời khỏi để chống lag 100%
-            const sectionOther = dynamicGrid.closest('#other-events') || dynamicGrid;
-            const marqueeObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        dynamicGrid.classList.remove('is-paused');
-                    } else {
-                        dynamicGrid.classList.add('is-paused');
-                    }
-                });
-            }, { threshold: 0.05 });
-            marqueeObserver.observe(sectionOther);
         }
     }
 
